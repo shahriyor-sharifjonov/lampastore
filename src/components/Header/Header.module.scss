@@ -1,0 +1,96 @@
+@import '@/styles/mixins.scss';
+.header{
+
+}
+.top{
+    @include resl('height', 70px);
+    @include resl('padding-right', 30px);
+    @include resl('padding-left', 30px);
+    display: flex;
+    align-items: center;
+    border-bottom: solid var(--primary-text-color);
+    @include resl('border-width', 1px);
+    &Body{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        position: relative;
+    }
+}
+.logo{
+    @include resl('width', 234px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    svg{
+        width: 100%;
+    }
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @include resl('gap', 30px);
+}
+.right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    @include resl('gap', 30px);
+}
+.link{
+    @include resl('font-size', 15px);
+    font-weight: 500;
+    line-height: 120%;
+    text-decoration: none;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    span{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        @include resl('font-size', 15px);
+        border: solid var(--primary-text-color);
+        @include resl('border-width', 1px);
+    }
+}
+.button{
+    @include resl('width', 50px);
+    @include resl('height', 14px);
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        @include resl('height', 2px);
+        background: var(--primary-text-color);
+    }
+    &::after{
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        @include resl('height', 2px);
+        background: var(--primary-text-color);
+    }
+    &Line{
+        position: absolute;
+        display: block;
+        @include resl('top', 6px);
+        left: 0;
+        background: var(--primary-text-color);
+        width: 100%;
+        @include resl('height', 2px);
+    }
+}
