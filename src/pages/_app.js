@@ -40,6 +40,8 @@ const Loader = () => {
         setTimeout(() => {
           dispatch(setLoading(false));
         }, 500);
+      }else{
+        console.log(router.asPath);
       }
     };
 
@@ -61,6 +63,6 @@ const Loader = () => {
   }, [loading]);
 
   return (
-    <div className={`loading ${loading.value ? 'active' : ''}`}></div>
+    <div className={`loading active ${loading.value ? 'active' : ''}`}></div>
   );
 };

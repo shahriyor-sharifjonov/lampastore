@@ -13,8 +13,8 @@ const Intro = () => {
                 slidesPerView={1}
                 loop={true}
             >
-                <SwiperSlide><Image src="/intro.png" alt="" width={1440} height={730} draggable={false}/></SwiperSlide>
-                <SwiperSlide><Image src="/intro.png" alt="" width={1440} height={730} draggable={false}/></SwiperSlide>
+                <SwiperSlide><Image src="/intro.png" alt="" width={1920} height={1080} draggable={false}/></SwiperSlide>
+                <SwiperSlide><Image src="/intro.png" alt="" width={1920} height={1080} draggable={false}/></SwiperSlide>
             </Swiper>
         </motion.section>
     )
