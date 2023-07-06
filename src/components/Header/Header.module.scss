@@ -3,13 +3,13 @@
 
 }
 .top{
-    @include resl('height', 70px);
-    @include resl('padding-right', 30px);
-    @include resl('padding-left', 30px);
+    @include res('height', 70px);
+    @include res('padding-right', 30px);
+    @include res('padding-left', 30px);
     display: flex;
     align-items: center;
     border-bottom: solid var(--primary-text-color);
-    @include resl('border-width', 1px);
+    @include res('border-width', 1px);
     &Body{
         display: flex;
         align-items: center;
@@ -19,29 +19,31 @@
     }
 }
 .logo{
-    @include resl('width', 234px);
+    @include res('width', 234px);
+    @include res('height', 26px);
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     svg{
         width: 100%;
+        height: 100%;
     }
 }
 .left{
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    @include resl('gap', 30px);
+    @include res('gap', 30px);
 }
 .right{
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    @include resl('gap', 30px);
+    @include res('gap', 30px);
 }
 .link{
-    @include resl('font-size', 15px);
+    @include res('font-size', 15px);
     font-weight: 500;
     line-height: 120%;
     text-decoration: none;
@@ -54,17 +56,17 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        width: 30px;
-        height: 30px;
+        @include res('width', 30px);
+        @include res('height', 30px);
         border-radius: 50%;
-        @include resl('font-size', 15px);
+        @include res('font-size', 15px);
         border: solid var(--primary-text-color);
-        @include resl('border-width', 1px);
+        @include res('border-width', 1px);
     }
 }
 .button{
-    @include resl('width', 50px);
-    @include resl('height', 14px);
+    @include res('width', 50px);
+    @include res('height', 14px);
     position: relative;
     &::before{
         content: '';
@@ -72,7 +74,7 @@
         top: 0;
         left: 0;
         width: 100%;
-        @include resl('height', 2px);
+        @include res('height', 2px);
         background: var(--primary-text-color);
     }
     &::after{
@@ -81,16 +83,39 @@
         bottom: 0;
         left: 0;
         width: 100%;
-        @include resl('height', 2px);
+        @include res('height', 2px);
         background: var(--primary-text-color);
     }
     &Line{
         position: absolute;
         display: block;
-        @include resl('top', 6px);
+        @include res('top', 6px);
         left: 0;
         background: var(--primary-text-color);
         width: 100%;
-        @include resl('height', 2px);
+        @include res('height', 2px);
+    }
+}
+.bot{
+    @include res('height', 50px);
+    @include res('gap', 20px);
+    border-bottom: solid var(--primary-text-color);
+    @include res('border-width', 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &Link{
+        @include res('border-radius', 50px);
+        border: solid var(--primary-text-color);
+        @include res('border-width', 1px);
+        @include res('padding-top', 5px);
+        @include res('padding-bottom', 5px);
+        @include res('padding-left', 10px);
+        @include res('padding-right', 10px);
+        font-weight: 500;
+        text-decoration: none;
+        @include res('font-size', 14px);
+        line-height: 120%;
+        letter-spacing: 0.84px;
     }
 }

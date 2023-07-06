@@ -1,16 +1,36 @@
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 import styles from './Header.module.scss'
+import { setCategories } from '@/store/slices/categoriesSlice'
+import { setLoading } from '@/store/slices/loadingSlice'
+import axios from 'axios'
 
 const Header = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(setLoading(true))
+        axios.get('/api/categories')
+            .then((response) => {
+                dispatch(setCategories(response.data))
+                dispatch(setLoading(false))
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+    }, []);
+
+    const categories = useSelector((state) => state.categories)
+     
     return (
         <header className={styles.header}>
-            <div className={styles.top}>
+            <div className={styles.top}> 
                 <div className={styles.topBody}>
                     <div className={styles.left}>
                         <Link href="#!" className={styles.link}>WHATSAPP</Link>
                         <Link href="#!" className={styles.link}>EMAIL</Link>
-                        <Link href="#!" className={styles.link} showNumber="+79917617072">ПОКАЗАТЬ НОМЕР</Link>
+                        <Link href="#!" className={styles.link}>ПОКАЗАТЬ НОМЕР</Link>
                     </div>
                     <Link href="/" className={styles.logo}>
                         <svg width="220" height="18" viewBox="0 0 220 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -30,6 +50,11 @@ const Header = () => {
                         </button>
                     </div>
                 </div>
+            </div>
+            <div className={styles.bot}>
+                {categories.map(cat => (
+                    <Link key={cat.link} href={`/c/${cat.link}`} className={styles.botLink}>{cat.name}</Link>
+                ))}
             </div>
         </header>
     )

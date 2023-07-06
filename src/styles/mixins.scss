@@ -18,16 +18,12 @@ $sizes: (1320:$xxl,
     }
 }
 
-$baseValueLarge: 1440px;
-$baseValueMedium: 768px;
+$baseValueLarge: 1920px;
 $baseValueSmall: 360px;
 
-@mixin resl($property, $value) {
+@mixin res($property, $value) {
     #{$property}: calc(($value / $baseValueLarge) * 100vw);
 }
-@mixin resm($property, $value) {
-    #{$property}: calc(($value / $baseValueMedium) * 100vw);
-}
-@mixin ress($property, $value) {
+@mixin resa($property, $value) {
     #{$property}: calc(($value / $baseValueSmall) * 100vw);
 }

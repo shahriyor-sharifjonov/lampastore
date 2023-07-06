@@ -1,0 +1,23 @@
+import Image from 'next/image'
+import React from 'react'
+import styles from './Intro.module.scss'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion';
+import 'swiper/css';
+
+const Intro = () => {
+    return ( 
+        <motion.section transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`${styles.intro} intro`}>
+            <Swiper  
+                spaceBetween={0}
+                slidesPerView={1}
+                loop={true}
+            >
+                <SwiperSlide><Image src="/intro.png" alt="" width={1440} height={730} draggable={false}/></SwiperSlide>
+                <SwiperSlide><Image src="/intro.png" alt="" width={1440} height={730} draggable={false}/></SwiperSlide>
+            </Swiper>
+        </motion.section>
+    )
+}
+
+export default Intro

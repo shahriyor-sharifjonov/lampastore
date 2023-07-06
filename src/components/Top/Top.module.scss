@@ -1,0 +1,45 @@
+@import '@/styles/mixins.scss';
+.top{
+    @include res('padding-top', 60px);
+    @include res('padding-bottom', 60px);
+    border-bottom: solid var(--primary-text-color);
+    @include res('border-width', 1px);
+}
+.title{
+    color: var(--primary-text-color);
+    text-align: center;
+    @include res('font-size', 54px);
+    @include res('letter-spacing', 3.24px);
+    font-weight: 400;
+    line-height: 120%;
+    overflow: hidden;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    span{
+        display: block;
+    }
+}
+.items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include res('gap', 8px);
+    @include res('margin-top', 30px);
+    @include res('margin-bottom', 30px);
+    @include res('max-width', 740px);
+    @include res('min-height', 74px);
+    margin-left: auto;
+    margin-right: auto;
+}
+.item{
+    text-decoration: none;
+    border: solid var(--primary-text-color);
+    @include res('border-width', 1px);
+    @include res('padding-top', 6px);
+    @include res('padding-bottom', 6px);
+    @include res('padding-left', 10px);
+    @include res('padding-right', 10px);
+    @include res('border-radius', 50px);
+}
