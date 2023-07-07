@@ -6,7 +6,7 @@
 }
 .row{
     display: flex;
-    border: solid #F9F8F4;
+    border: solid var(--primary-bg-color);
     @include res('border-width', 1px);
     border-right: none;
     border-left: none;
@@ -17,7 +17,7 @@
     display: flex;
     flex-direction: column;
     &+.col{
-        border-left: solid #F9F8F4;
+        border-left: solid var(--primary-bg-color);
         @include res('border-width', 1px);
     }
 }
@@ -27,26 +27,58 @@
     font-style: normal;
     font-weight: 600;
     line-height: 120%;
-    color: #F9F8F4;
+    color: var(--primary-bg-color);
 }
 .link{
-    color: #F9F8F4;
+    color: var(--primary-bg-color);
     @include res('font-size', 20px);
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
     text-decoration: none;
+    width: max-content;
     &+.link{
-        margin-top: 12px;
+        @include res('margin-top', 12px);
     }
 }
 .big{
     @include res('padding-top', 40px);
     @include res('padding-bottom', 26px);
-    border-bottom: solid #F9F8F4;
+    border-bottom: solid var(--primary-bg-color);
     @include res('border-width', 1px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
     svg{
         width: 100%;
         @include res('height', 139px);
+    }
+}
+.bot{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include res('padding-top', 20px);
+    @include res('padding-bottom', 20px);
+    @include res('padding-right', 30px);
+    @include res('padding-left', 30px);
+    border-bottom: solid var(--primary-bg-color);
+    @include res('border-width', 1px);
+}
+.copy{
+    color: var(--primary-bg-color);
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    a{
+        color: var(--primary-bg-color);
+        text-align: center;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        text-decoration: underline;
     }
 }
