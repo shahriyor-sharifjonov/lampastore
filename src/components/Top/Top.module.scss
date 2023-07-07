@@ -35,11 +35,17 @@
 }
 .item{
     text-decoration: none;
-    border: solid var(--primary-text-color);
-    @include res('border-width', 1px);
+    font-weight: 500;
+    line-height: 120%;
+    @include res('font-size', 16px);
+    @include res('letter-spacing', 0.96px);
     @include res('padding-top', 6px);
     @include res('padding-bottom', 6px);
     @include res('padding-left', 10px);
     @include res('padding-right', 10px);
     @include res('border-radius', 50px);
+    transition: color 0s .5s linear;
+    &.active{
+        color: var(--primary-color);
+    }
 }

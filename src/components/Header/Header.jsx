@@ -5,9 +5,11 @@ import styles from './Header.module.scss'
 import { setCategories } from '@/store/slices/categoriesSlice'
 import { setLoading } from '@/store/slices/loadingSlice'
 import axios from 'axios'
+import { useRouter } from 'next/router'
 
 const Header = () => {
     const dispatch = useDispatch()
+    const router = useRouter()
 
     useEffect(() => {
         dispatch(setLoading(true))
@@ -53,7 +55,7 @@ const Header = () => {
             </div>
             <div className={styles.bot}>
                 {categories.map(cat => (
-                    <Link key={cat.link} href={`/c/${cat.link}`} className={styles.botLink}>{cat.name}</Link>
+                    <Link key={cat.link} href={`/c/${cat.link}`} className={`${styles.botLink} ${router.query?.category == cat.link ? styles.active : ''}`}>{cat.name}</Link>
                 ))}
             </div>
         </header>

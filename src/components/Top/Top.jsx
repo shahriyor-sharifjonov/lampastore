@@ -11,6 +11,7 @@ const Top = () => {
     const loading = useSelector((state) => state.loading)
     const router = useRouter()
     const [category, setCategory] = useState({})
+    const [subcategory, setSubCategory] = useState({})
     const dispatch = useDispatch()
 
 
@@ -18,7 +19,10 @@ const Top = () => {
         setTimeout(() => {
             setCategory(categories.find(category => category.link === router.query.category))
         }, 500)
-    }, [router, categories, category])
+        if(router.query.subcategory){
+            setSubCategory(category?.subcategories?.find(sub => sub.link === router.query.subcategory))
+        }
+    }, [router, categories, category, subcategory])
 
     useEffect(() => {
         dispatch(setLoading(true));
@@ -36,7 +40,7 @@ const Top = () => {
             {category?.subcategories && (
                 <div className={styles.items}>
                     {category.subcategories.map(item => (
-                        <Link href={`/c/${category.link}/${item.link}`} key={item.link} className={styles.item}>{item.name}</Link>
+                        <Link href={`/c/${category.link}/${item.link}`} key={item.link} className={`${styles.item} ${item.link === subcategory?.link ? styles.active : ''}`}>{item.name}</Link>
                     ))}
                 </div>
             )}
