@@ -49,3 +49,102 @@
         color: var(--primary-color);
     }
 }
+.filters{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.filter{
+    &Btn{
+        color: #F9F8F4;
+        @include res('font-size', 14px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        @include res('letter-spacing', 0.84px);
+        @include res('padding-top', 10px);
+        @include res('padding-bottom', 10px);
+        @include res('padding-left', 24px);
+        @include res('padding-right', 24px);
+        @include res('border-radius', 50px);
+        background: #1A1A19;
+    }
+    &Top{
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        @include res('padding-right', 30px);
+        @include res('padding-left', 30px);
+        &::before{
+            content: '';
+            position: absolute;
+            @include res('left', 30px);
+            top: 50%;
+            transform: translateY(-50%);
+            @include res('height', 1px);
+            @include res('width', 1570px);
+            background: var(--primary-text-color);
+        }
+    }
+    &Reset{
+        position: absolute;
+        @include res('top', 50px);
+        @include res('right', 110px);
+        color: #646461;
+        font-family: Montserrat;
+        @include res('font-size', 14px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+    }
+    &Bot{
+        @include res('padding-left', 30px);
+        @include res('padding-right', 30px);
+    }
+    &Title{
+        @include res('margin-bottom', 10px);
+        color: var(--primary-text-color);
+        @include res('font-size', 14px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+    }
+    &Price{
+        @include res('border-radius', 51px);
+        background: var(--primary-bg-color);
+        border: solid var(--primary-text-color);
+        @include res('border-width', 1px);
+        display: flex;
+        @include res('padding-left', 12px);
+        @include res('padding-right', 12px);
+        width: max-content;
+        @include res('height', 30px);
+        &P{
+            @include res('font-size', 14px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+        }
+        &Item{
+            display: flex;
+            align-items: center;
+            @include res('padding-right', 12px);
+            &:first-of-type{
+                border-right: solid var(--primary-text-color);
+                @include res('border-width', 1px);
+                @include res('margin-right', 12px);
+            }
+            input{
+                @include res('height', 30px);
+                border: none;
+                background: none;
+                @include res('padding-left', 9px);
+                @include res('font-size', 14px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+                
+            }
+        }
+    }
+}

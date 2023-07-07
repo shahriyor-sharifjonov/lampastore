@@ -7,6 +7,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import Router, { useRouter } from 'next/router'
 import { setLoading } from '@/store/slices/loadingSlice'
 import { AnimatePresence, motion } from 'framer-motion'
+import Footer from '@/components/Footer/Footer'
 
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {
@@ -15,7 +16,10 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       <AnimatePresence mode='wait'>
         <Loader />
         <Header />
-        <Component {...pageProps} />
+        <main>
+          <Component {...pageProps} />
+        </main>
+        <Footer />
       </AnimatePresence>
     </Provider>
   );

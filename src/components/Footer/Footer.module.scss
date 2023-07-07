@@ -68,14 +68,14 @@
 .copy{
     color: var(--primary-bg-color);
     text-align: center;
-    font-size: 14px;
+    @include res('font-size', 14px);
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
     a{
         color: var(--primary-bg-color);
         text-align: center;
-        font-size: 14px;
+        @include res('font-size', 14px);
         font-style: normal;
         font-weight: 400;
         line-height: 120%;

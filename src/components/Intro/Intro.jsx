@@ -4,10 +4,12 @@ import styles from './Intro.module.scss'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { motion } from 'framer-motion';
 import 'swiper/css';
+import { useRouter } from 'next/router'
 
 const Intro = () => {
+    const router = useRouter()
     return ( 
-        <motion.section transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`${styles.intro} intro`}>
+        <motion.section key={router.asPath} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`${styles.intro} intro`}>
             <Swiper  
                 spaceBetween={0}
                 slidesPerView={1}
