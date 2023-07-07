@@ -1,6 +1,6 @@
 @import '@/styles/mixins.scss';
 .header{
-
+    background: var(--primary-bg-color);
 }
 .top{
     @include res('height', 70px);

@@ -15,9 +15,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       <AnimatePresence mode='wait'>
         <Loader />
         <Header />
-        <main>
-          <Component {...pageProps} />
-        </main>
+        <Component {...pageProps} />
       </AnimatePresence>
     </Provider>
   );
