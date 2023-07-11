@@ -27,7 +27,6 @@
     flex-wrap: wrap;
     @include res('gap', 8px);
     @include res('margin-top', 30px);
-    @include res('margin-bottom', 30px);
     @include res('max-width', 740px);
     @include res('min-height', 74px);
     margin-left: auto;
@@ -53,6 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include res('margin-top', 30px);
 }
 .filter{
     &Btn{
@@ -75,6 +75,7 @@
         position: relative;
         @include res('padding-right', 30px);
         @include res('padding-left', 30px);
+        @include res('margin-top', 30px);
         &::before{
             content: '';
             position: absolute;
@@ -143,7 +144,6 @@
                 font-style: normal;
                 font-weight: 400;
                 line-height: 120%;
-                
             }
         }
     }

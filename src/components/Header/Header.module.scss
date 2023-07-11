@@ -55,6 +55,10 @@
     align-items: center;
     justify-content: center;
     @include res('gap', 8px);
+    svg{
+        @include res('width', 24px);
+        @include res('height', 24px);
+    }
     span{
         display: flex;
         align-items: center;

@@ -19,11 +19,6 @@ const NewProducts = () => {
                     <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
                     <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
                     <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
-                    <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
-                    <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
-                    <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
-                    <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
-                    <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
                 </div>
             </div>
         </section>

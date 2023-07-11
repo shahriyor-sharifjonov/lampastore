@@ -138,19 +138,19 @@ input[type="number"] {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
-  }
-  &-title{
-    color: #1A1A19;
-    @include res('font-size', 18px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-  }
-  &-p{
-    color: #1A1A19;
-    @include res('font-size', 18px);
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
+    &-title{
+      color: #1A1A19;
+      @include res('font-size', 18px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
+    }
+    &-p{
+      color: #1A1A19;
+      @include res('font-size', 18px);
+      font-style: normal;
+      font-weight: 400;
+      line-height: 120%;
+    }
   }
 }
