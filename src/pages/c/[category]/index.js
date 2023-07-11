@@ -1,4 +1,5 @@
 import Footer from '@/components/Footer/Footer'
+import NewProducts from '@/components/NewProducts/NewProducts'
 import Top from '@/components/Top/Top'
 import Head from 'next/head'
 import Image from 'next/image'
@@ -14,6 +15,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Top />
+      <NewProducts />
     </>
   )
 }

@@ -1,8 +1,8 @@
-import Footer from '@/components/Footer/Footer'
-import NewProducts from '@/components/NewProducts/NewProducts'
-import Top from '@/components/Top/Top'
+import Intro from '@/components/Intro/Intro'
 import Head from 'next/head'
 import Image from 'next/image'
+import Footer from '@/components/Footer/Footer'
+import NewProducts from '@/components/NewProducts/NewProducts'
 
 
 export default function Home() {
@@ -14,7 +14,6 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Top />
       <NewProducts />
     </>
   )

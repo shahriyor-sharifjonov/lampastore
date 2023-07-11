@@ -30,9 +30,9 @@ const Header = () => {
             <div className={styles.top}> 
                 <div className={styles.topBody}>
                     <div className={styles.left}>
-                        <Link href="#!" className={styles.link}>WHATSAPP</Link>
-                        <Link href="#!" className={styles.link}>EMAIL</Link>
-                        <Link href="#!" className={styles.link}>ПОКАЗАТЬ НОМЕР</Link>
+                        <Link href="#!" className={styles.link}>WHATSAPP +79917617072</Link>
+                        <Link href="#!" className={styles.link}>info@lampa-store.ru</Link>
+                        <Link href="#!" className={styles.link}>+79917617072</Link>
                     </div>
                     <Link href="/" className={styles.logo}>
                         <svg width="220" height="18" viewBox="0 0 220 18" fill="none" xmlns="http://www.w3.org/2000/svg">
