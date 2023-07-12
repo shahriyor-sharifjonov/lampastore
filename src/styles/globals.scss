@@ -80,6 +80,30 @@ input[type="number"] {
     }
   }
 }
+.productpage-swiper{
+  .swiper-button-next{
+    position: absolute;
+    top: 50%;
+    z-index: 50;
+    cursor: pointer;
+    transform: translateY(-50%);
+    @include res('right', 30px);
+    @include res('width', 50px);
+    @include res('height', 50px);
+    background: url('/right.svg') center / cover no-repeat;
+  }
+  .swiper-button-prev{
+    position: absolute;
+    top: 50%;
+    z-index: 50;
+    cursor: pointer;
+    transform: translateY(-50%);
+    @include res('left', 30px);
+    @include res('width', 50px);
+    @include res('height', 50px);
+    background: url('/left.svg') center / cover no-repeat;
+  }
+}
 .catalog{
   &__body{
     @include res('padding-left', 30px);

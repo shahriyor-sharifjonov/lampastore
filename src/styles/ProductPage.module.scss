@@ -2,16 +2,16 @@
 .body{
     @include res('padding-left', 30px);
     @include res('padding-right', 30px);
-    @include res('padding-top', 60px);
-    @include res('padding-bottom', 60px);
+    @include res('padding-top', 40px);
+    @include res('padding-bottom', 40px);
 }
 .title{
     color: var(--primary-text-color);
-    @include res('font-size', 54px);
+    @include res('font-size', 46px);
     @include res('letter-spacing', 3.24px);
     font-weight: 400;
     line-height: 120%;
-    @include res('margin-bottom', 60px);
+    @include res('margin-bottom', 40px);
 }
 .content{
     display: flex;
@@ -26,6 +26,7 @@
     &>div{
         margin-left: 0 !important;
         margin-right: 0 !important;
+        position: relative;
         &:nth-of-type(1){
             @include res('width', 845.44px);
             &>div>div{

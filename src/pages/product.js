@@ -7,7 +7,7 @@ import NewProducts from '@/components/NewProducts/NewProducts'
 import styles from '@/styles/ProductPage.module.scss'
 import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Thumbs } from 'swiper/modules';
+import { Thumbs, Navigation } from 'swiper/modules';
 import 'swiper/css';
 
 
@@ -24,20 +24,21 @@ export default function Home() {
       <motion.section key="subcategorycatalog" transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.body}>
         <h2 className={styles.title}>EVIAN ONE</h2>
         <div className={styles.content}>
-          <div className={styles.swiper}>
+          <div className={`${styles.swiper} productpage-swiper`}>
             {thumbsSwiper && (
               <Swiper  
-                modules={[Thumbs]}
+                modules={[Thumbs, Navigation]}
                 thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                navigation={true}
                 spaceBetween={0} 
                 slidesPerView={1}
                 className={styles.slides}
               >
                 <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
-                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
-                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
-                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
-                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-2.png" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-3.png" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-4.png" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-5.png" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
               </Swiper>
             )}
             <Swiper  
@@ -49,10 +50,10 @@ export default function Home() {
               direction="vertical"
             >
               <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
-              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
-              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
-              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
-              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-2.png" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-3.png" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-4.png" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-5.png" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
             </Swiper>
           </div>
           <div className={styles.info}>
