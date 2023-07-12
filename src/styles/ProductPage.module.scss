@@ -1,0 +1,36 @@
+@import './mixins.scss';
+.body{
+    @include res('padding-left', 30px);
+    @include res('padding-right', 30px);
+    @include res('padding-top', 60px);
+    @include res('padding-bottom', 60px);
+}
+.title{
+    color: var(--primary-text-color);
+    @include res('font-size', 54px);
+    @include res('letter-spacing', 3.24px);
+    font-weight: 400;
+    line-height: 120%;
+    @include res('margin-bottom', 60px);
+}
+.content{
+    display: flex;
+    justify-content: space-between;
+    @include res('gap', 40px);
+}
+.swiper{
+    @include res('width', 1081.8px);
+
+}
+.info{
+    @include res('width', 721.2px);
+}
+.subtitle{
+    @include res('font-size', 24px);
+    line-height: 140%;
+    @include res('margin-bottom', 20px);
+}
+.price{
+    @include res('font-size', 48px);
+    line-height: 140%;
+}

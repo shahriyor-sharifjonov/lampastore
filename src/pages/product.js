@@ -3,6 +3,8 @@ import Head from 'next/head'
 import Image from 'next/image'
 import Footer from '@/components/Footer/Footer'
 import NewProducts from '@/components/NewProducts/NewProducts'
+import styles from '@/styles/ProductPage.module.scss'
+import { motion } from 'framer-motion'
 
 
 export default function Home() {
@@ -14,7 +16,18 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <NewProducts />
+      <motion.section key="subcategorycatalog" transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.body}>
+        <h2 className={styles.title}>EVIAN ONE</h2>
+        <div className={styles.content}>
+          <div className={styles.swiper}>
+            <Image src="/product-1.jpg" alt="" width={756.7} height={756.7} draggable="false"/>
+          </div>
+          <div className={styles.info}>
+            <p className={styles.subtitle}>Настенный светильник с коническим текстильным абажуром на сборной стойке из латуни и хрусталя</p>
+            <p className={styles.price}>14 600₽</p>
+          </div>
+        </div>
+      </motion.section>
     </>
   )
 }

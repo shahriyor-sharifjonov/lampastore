@@ -32,7 +32,6 @@ const Top = () => {
         }
     }, [category])
 
-
     return ( 
         <motion.section key={router.asPath} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.top}>
             <h1 className={styles.title}>

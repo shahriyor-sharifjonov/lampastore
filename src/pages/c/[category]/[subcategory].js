@@ -18,19 +18,19 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Top />
-      <motion.section key="newproducts" transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
+      <motion.section key="subcategorycatalog" transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
         <div className='catalog__body'>
           <div className='catalog__content'>
-            <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
-            <Product img="product-2" title="CRATA" price="14 600₽"/>
-            <Product img="product-3" title="PIET CONE" price="12 800₽"/>
-            <Product img="product-4" title="NIORD" price="19 900₽"/>
-            <Product img="product-5" title="EVIAN ONE" price="12 800₽"/>
-            <Product img="product-6" title="EVIAN ONE" price="12 800₽"/>
-            <Product img="product-7" title="CRATA" price="14 600₽"/>
-            <Product img="product-8" title="PIET CONE" price="12 800₽"/>
-            <Product img="product-1" title="NIORD" price="19 900₽"/>
-            <Product img="product-2" title="EVIAN ONE" price="12 800₽"/>
+            <Product img="product-1.jpg" title="EVIAN ONE" price="12 800₽"/>
+            <Product img="product-2.png" title="CRATA" price="14 600₽"/>
+            <Product img="product-3.png" title="PIET CONE" price="12 800₽"/>
+            <Product img="product-4.png" title="NIORD" price="19 900₽"/>
+            <Product img="product-5.png" title="EVIAN ONE" price="12 800₽"/>
+            <Product img="product-6.png" title="EVIAN ONE" price="12 800₽"/>
+            <Product img="product-7.png" title="CRATA" price="14 600₽"/>
+            <Product img="product-8.png" title="PIET CONE" price="12 800₽"/>
+            <Product img="product-1.jpg" title="NIORD" price="19 900₽"/>
+            <Product img="product-2.png" title="EVIAN ONE" price="12 800₽"/>
           </div>
         </div>
       </motion.section>
