@@ -1,13 +1,18 @@
 import Intro from '@/components/Intro/Intro'
+import { useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 import Footer from '@/components/Footer/Footer'
 import NewProducts from '@/components/NewProducts/NewProducts'
 import styles from '@/styles/ProductPage.module.scss'
 import { motion } from 'framer-motion'
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Thumbs } from 'swiper/modules';
+import 'swiper/css';
 
 
 export default function Home() {
+  const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
       <Head>
@@ -20,7 +25,35 @@ export default function Home() {
         <h2 className={styles.title}>EVIAN ONE</h2>
         <div className={styles.content}>
           <div className={styles.swiper}>
-            <Image src="/product-1.jpg" alt="" width={756.7} height={756.7} draggable="false"/>
+            {thumbsSwiper && (
+              <Swiper  
+                modules={[Thumbs]}
+                thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
+                spaceBetween={0} 
+                slidesPerView={1}
+                className={styles.slides}
+              >
+                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+                <SwiperSlide><Image src="/product-1.jpg" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
+              </Swiper>
+            )}
+            <Swiper  
+              modules={[Thumbs]}
+              watchSlidesProgress
+              onSwiper={setThumbsSwiper} 
+              spaceBetween={0}
+              slidesPerView="auto"
+              direction="vertical"
+            >
+              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+              <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
+            </Swiper>
           </div>
           <div className={styles.info}>
             <p className={styles.subtitle}>Настенный светильник с коническим текстильным абажуром на сборной стойке из латуни и хрусталя</p>

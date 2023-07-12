@@ -20,7 +20,67 @@
 }
 .swiper{
     @include res('width', 1081.8px);
-
+    @include res('height', 845.44px);
+    display: flex;
+    justify-content: space-between;
+    &>div{
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        &:nth-of-type(1){
+            @include res('width', 845.44px);
+            &>div>div{
+                line-height: 0;
+                img{
+                    line-height: 0;
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                }
+            }
+        }
+        &:nth-of-type(2){
+            @include res('width', 216.36px);
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                top: -2px;
+                left: 0;
+                width: 100%;
+                @include res('height', 50px);
+                background: linear-gradient(180deg, #F9F8F4 0%, rgba(249, 248, 244, 0.00) 100%);
+                z-index: 10;
+                pointer-events: none;
+            }
+            &::after{
+                content: '';
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                width: 100%;
+                @include res('height', 50px);
+                background: linear-gradient(0deg, #F9F8F4 0%, rgba(249, 248, 244, 0.00) 100%);
+                z-index: 10;
+                pointer-events: none;
+            }
+            &>div{
+                &>div{
+                    line-height: 0;
+                    @include res('width', 216.36px);
+                    @include res('height', 216.36px);
+                    cursor: pointer;
+                    &:not(:last-of-type){
+                        @include res('margin-bottom', 20px);
+                    }
+                    img{
+                        width: 100%;
+                        height: 100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+        }
+    }
 }
 .info{
     @include res('width', 721.2px);
