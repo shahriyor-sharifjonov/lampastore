@@ -3,6 +3,9 @@ import NewProducts from '@/components/NewProducts/NewProducts'
 import Top from '@/components/Top/Top'
 import Head from 'next/head'
 import Image from 'next/image'
+import { motion } from 'framer-motion'
+import Product from '@/components/Product/Product'
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -15,7 +18,22 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Top />
-      <NewProducts />
+      <motion.section key="newproducts" transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
+        <div className='catalog__body'>
+          <div className='catalog__content'>
+            <Product img="product-1" title="EVIAN ONE" price="12 800₽"/>
+            <Product img="product-2" title="CRATA" price="14 600₽"/>
+            <Product img="product-3" title="PIET CONE" price="12 800₽"/>
+            <Product img="product-4" title="NIORD" price="19 900₽"/>
+            <Product img="product-5" title="EVIAN ONE" price="12 800₽"/>
+            <Product img="product-6" title="EVIAN ONE" price="12 800₽"/>
+            <Product img="product-7" title="CRATA" price="14 600₽"/>
+            <Product img="product-8" title="PIET CONE" price="12 800₽"/>
+            <Product img="product-1" title="NIORD" price="19 900₽"/>
+            <Product img="product-2" title="EVIAN ONE" price="12 800₽"/>
+          </div>
+        </div>
+      </motion.section>
     </>
   )
 }

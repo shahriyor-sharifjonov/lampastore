@@ -40,6 +40,7 @@ const Top = () => {
             </h1>
             {category?.subcategories?.length !== 0 && (
                 <div className={styles.items}>
+                    <Link href={`/c/${category?.link}`} className={`${styles.item} ${router.query.subcategory ? '' : styles.active}`}>ВСЕ</Link>
                     {category?.subcategories?.map(item => (
                         <Link href={`/c/${category.link}/${item.link}`} key={item.link} className={`${styles.item} ${item.link === subcategory?.link ? styles.active : ''}`}>{item.name}</Link>
                     ))}

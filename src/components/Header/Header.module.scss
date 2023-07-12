@@ -105,7 +105,7 @@
 }
 .bot{
     @include res('height', 50px);
-    @include res('gap', 20px);
+    @include res('gap', 10px);
     border-bottom: solid var(--primary-text-color);
     @include res('border-width', 1px);
     display: flex;
@@ -121,7 +121,7 @@
         @include res('padding-right', 10px);
         font-weight: 500;
         text-decoration: none;
-        @include res('font-size', 14px);
+        @include res('font-size', 12px);
         line-height: 120%;
         @include res('letter-spacing', 0.84px);
         transition: background 0s .5s linear, color 0s .5s linear;
