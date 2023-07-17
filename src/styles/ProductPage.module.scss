@@ -85,6 +85,9 @@
 }
 .info{
     @include res('width', 721.2px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 .subtitle{
     @include res('font-size', 24px);
@@ -94,4 +97,60 @@
 .price{
     @include res('font-size', 48px);
     line-height: 140%;
+    @include res('margin-bottom', 20px);
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    @include res('gap', 10px);
+    &+.row{
+        @include res('margin-top', 10px);
+    }
+    b{
+        font-weight: 500;
+        @include res('font-size', 18px);
+    }
+    span{
+        @include res('font-size', 18px);
+    }
+    div{
+        flex: 1 1 auto;
+        border-bottom: dashed #ddd;
+        height: 70%;
+        @include res('border-width', 1px);
+    }
+}
+.qua{
+    @include res('font-size', 28px);
+    color: var(--primary-color);
+    @include res('margin-top', 20px);
+    @include res('margin-bottom', 20px);
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include res('border-radius', 100px);
+    width: 100%;
+    @include res('height', 60px);
+    border: solid var(--primary-border);
+    @include res('border-width', 1px);
+    color: var(--primary-text-color);
+    @include res('font-size', 18px);
+    @include res('margin-bottom', 10px);
+}
+.button2{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-text-color);
+    @include res('border-radius', 100px);
+    width: 100%;
+    @include res('height', 60px);
+    border: solid var(--primary-text-color);
+    @include res('border-width', 1px);
+    color: #fff;
+    @include res('font-size', 18px);
 }

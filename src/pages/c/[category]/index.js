@@ -5,10 +5,15 @@ import Head from 'next/head'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import Product from '@/components/Product/Product'
+import { useSelector, useDispatch } from 'react-redux'
 import Link from 'next/link'
+import FourOhFour from '@/pages/404'
+import { useRouter } from 'next/router'
 
 
 export default function Home() {
+  const loading = useSelector((state) => state.loading)
+  const router = useRouter()
   return (
     <>
       <Head>
@@ -17,23 +22,29 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Top />
-      <motion.section key="categorycatalog" transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
-        <div className='catalog__body'>
-          <div className='catalog__content'>
-            <Product img="product-1.jpg" title="EVIAN ONE" price="12 800₽"/>
-            <Product img="product-2.png" title="CRATA" price="14 600₽"/>
-            <Product img="product-3.png" title="PIET CONE" price="12 800₽"/>
-            <Product img="product-4.png" title="NIORD" price="19 900₽"/>
-            <Product img="product-5.png" title="EVIAN ONE" price="12 800₽"/>
-            <Product img="product-6.png" title="EVIAN ONE" price="12 800₽"/>
-            <Product img="product-7.png" title="CRATA" price="14 600₽"/>
-            <Product img="product-8.png" title="PIET CONE" price="12 800₽"/>
-            <Product img="product-1.jpg" title="NIORD" price="19 900₽"/>
-            <Product img="product-2.png" title="EVIAN ONE" price="12 800₽"/>
-          </div>
-        </div>
-      </motion.section>
+      {loading.value !== 404 ? (
+        <>
+          <Top />
+          <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
+            <div className='catalog__body'>
+              <div className='catalog__content'>
+                <Product img="product-1.jpg" title="EVIAN ONE" price="12 800₽"/>
+                <Product img="product-2.png" title="CRATA" price="14 600₽"/>
+                <Product img="product-3.png" title="PIET CONE" price="12 800₽"/>
+                <Product img="product-4.png" title="NIORD" price="19 900₽"/>
+                <Product img="product-5.png" title="EVIAN ONE" price="12 800₽"/>
+                <Product img="product-6.png" title="EVIAN ONE" price="12 800₽"/>
+                <Product img="product-7.png" title="CRATA" price="14 600₽"/>
+                <Product img="product-8.png" title="PIET CONE" price="12 800₽"/>
+                <Product img="product-1.jpg" title="NIORD" price="19 900₽"/>
+                <Product img="product-2.png" title="EVIAN ONE" price="12 800₽"/>
+              </div>
+            </div>
+          </motion.section>
+        </>
+      ) : (
+        <FourOhFour />
+      )}
     </>
   )
 }

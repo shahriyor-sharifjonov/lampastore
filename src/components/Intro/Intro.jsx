@@ -9,7 +9,7 @@ import { useRouter } from 'next/router'
 const Intro = () => {
     const router = useRouter()
     return ( 
-        <motion.section key={router.asPath} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`${styles.intro} intro`}>
+        <motion.section key={`${router.asPath}intro`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`${styles.intro} intro`}>
             <Swiper  
                 spaceBetween={0}
                 slidesPerView={1}

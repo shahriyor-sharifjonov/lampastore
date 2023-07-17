@@ -30,10 +30,13 @@ const Top = () => {
         if(category?.name){
             dispatch(setLoading(false));
         }
+        if(category === undefined){
+            dispatch(setLoading(404));
+        }
     }, [category])
 
     return ( 
-        <motion.section key={router.asPath} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.top}>
+        <motion.section key={`${router.asPath}top`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.top}>
             <h1 className={styles.title}>
                 {category?.name}
             </h1>
@@ -41,16 +44,16 @@ const Top = () => {
                 <div className={styles.items}>
                     <Link href={`/c/${category?.link}`} className={`${styles.item} ${router.query.subcategory ? '' : styles.active}`}>ВСЕ</Link>
                     {category?.subcategories?.map(item => (
-                        <Link href={`/c/${category.link}/${item.link}`} key={item.link} className={`${styles.item} ${item.link === subcategory?.link ? styles.active : ''}`}>{item.name}</Link>
+                        <Link href={`/c/${category.link}/${item.link}`} key={`${item.link}`} className={`${styles.item} ${item.link === subcategory?.link ? styles.active : ''}`}>{item.name}</Link>
                     ))}
                 </div>
             )}
             {!filter.value ? (
-                <motion.div key="notopenedfilter" transition={{duration: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.filters}>
+                <motion.div key={`${router.asPath}notopenedfilter`} transition={{duration: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.filters}>
                     <button className={styles.filterBtn} onClick={() => {dispatch(setFilter(!filter.value))}}>ФИЛЬТР & СОРТИРОВКА</button>
                 </motion.div>
             ) : (
-                <motion.div key="openedfilter" transition={{duration: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.filter}>
+                <motion.div key={`${router.asPath}openedfilter`} transition={{duration: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.filter}>
                     <div className={styles.filterTop}>
                         <button className={styles.filterBtn} onClick={() => {dispatch(setFilter(!filter.value))}}>ФИЛЬТР & СОРТИРОВКА</button>
                         <button className={styles.filterReset}>СБРОСИТЬ</button>

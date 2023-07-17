@@ -7,7 +7,7 @@ import { useRouter } from 'next/router'
 const Footer = () => {
     const router = useRouter()
     return ( 
-        <motion.footer key={router.asPath} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }}  className={styles.footer}>
+        <motion.footer key={`${router.asPath}footer`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }}  className={styles.footer}>
             <div className={styles.row}>
                 <div className={styles.col}>
                     <p className={styles.title}>КОМПАНИЯ</p>

@@ -6,8 +6,10 @@ import { setCategories } from '@/store/slices/categoriesSlice'
 import { setLoading } from '@/store/slices/loadingSlice'
 import axios from 'axios'
 import { useRouter } from 'next/router'
+import { useSession, signIn, signOut } from 'next-auth/react'
 
 const Header = () => {
+    const { data: session, status } = useSession()
     const dispatch = useDispatch()
     const router = useRouter()
 
@@ -24,7 +26,7 @@ const Header = () => {
     }, []);
 
     const categories = useSelector((state) => state.categories)
-     
+
     return (
         <header className={styles.header}>
             <div className={styles.top}> 
@@ -44,6 +46,11 @@ const Header = () => {
                         </svg>
                     </Link>
                     <div className={styles.right}>
+                        {session?.customUser?.role === 'admin' ? (
+                            <Link href="/admin" className={styles.link}>
+                                АДМИН
+                            </Link>
+                        ) : ''}
                         <Link href="#!" className={styles.link}>
                             ПОИСК
                         </Link>

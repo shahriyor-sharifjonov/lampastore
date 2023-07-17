@@ -9,9 +9,11 @@ import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Thumbs, Navigation } from 'swiper/modules';
 import 'swiper/css';
+import { useRouter } from 'next/router'
 
 
 export default function Home() {
+  const router = useRouter()
   const [thumbsSwiper, setThumbsSwiper] = useState(null);
   return (
     <>
@@ -21,7 +23,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <motion.section key="subcategorycatalog" transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.body}>
+      <motion.section key={`${router.asPath}subcategorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.body}>
         <h2 className={styles.title}>EVIAN ONE</h2>
         <div className={styles.content}>
           <div className={`${styles.swiper} productpage-swiper`}>
@@ -31,6 +33,7 @@ export default function Home() {
                 thumbs={{ swiper: thumbsSwiper && !thumbsSwiper.destroyed ? thumbsSwiper : null }}
                 navigation={true}
                 spaceBetween={0} 
+                loop={true}
                 slidesPerView={1}
                 className={styles.slides}
               >
@@ -41,13 +44,14 @@ export default function Home() {
                 <SwiperSlide><Image src="/product-5.png" alt="" width={845.44} height={845.44} draggable="false"/></SwiperSlide>
               </Swiper>
             )}
-            <Swiper  
+            <Swiper
               modules={[Thumbs]}
               watchSlidesProgress
               onSwiper={setThumbsSwiper} 
               spaceBetween={0}
               slidesPerView="auto"
               direction="vertical"
+              loop={true}
             >
               <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
               <SwiperSlide><Image src="/product-2.png" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
@@ -59,6 +63,66 @@ export default function Home() {
           <div className={styles.info}>
             <p className={styles.subtitle}>Настенный светильник с коническим текстильным абажуром на сборной стойке из латуни и хрусталя</p>
             <p className={styles.price}>14 600₽</p>
+            <div className={styles.row}>
+              <b>Производитель</b>
+              <div></div>
+              <span>Loft-Concept</span>
+            </div>
+            <div className={styles.row}>
+              <b>Тип</b>
+              <div></div>
+              <span>Люстра</span>
+            </div>
+            <div className={styles.row}>
+              <b>Материалы</b>
+              <div></div>
+              <span>Металл / Стекло</span>
+            </div>
+            <div className={styles.row}>
+              <b>Высота</b>
+              <div></div>
+              <span>80 см</span>
+            </div>
+            <div className={styles.row}>
+              <b>Диаметр</b>
+              <div></div>
+              <span>17 см</span>
+            </div>
+            <div className={styles.row}>
+              <b>Количество ламп</b>
+              <div></div>
+              <span>1</span>
+            </div>
+            <div className={styles.row}>
+              <b>Тип патрона</b>
+              <div></div>
+              <span>E27</span>
+            </div>
+            <div className={styles.row}>
+              <b>Максимальная мощность ламп, Вт</b>
+              <div></div>
+              <span>40</span>
+            </div>
+            <div className={styles.row}>
+              <b>Тип лампы</b>
+              <div></div>
+              <span>1 x E27 х 40W</span>
+            </div>
+            <div className={styles.row}>
+              <b>Источник света</b>
+              <div></div>
+              <span>в комплект не входит</span>
+            </div>
+            <div className={styles.row}>
+              <b>Стиль</b>
+              <div></div>
+              <span>Модерн / Арт-деко</span>
+            </div>
+            <p className={styles.qua}>В наличии: 11 шт</p>
+            <button type="button" className={styles.button}>
+              Добавить в корзину
+            </button>
+            <button type="button" className={styles.button2}>Купить</button>
           </div>
         </div>
       </motion.section>
