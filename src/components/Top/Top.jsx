@@ -56,7 +56,7 @@ const Top = () => {
                 <motion.div key={`${router.asPath}openedfilter`} transition={{duration: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.filter}>
                     <div className={styles.filterTop}>
                         <button className={styles.filterBtn} onClick={() => {dispatch(setFilter(!filter.value))}}>ФИЛЬТР & СОРТИРОВКА</button>
-                        <button className={styles.filterReset}>СБРОСИТЬ</button>
+                        <button className={styles.filterReset}>СБРОСИТЬ</button> 
                     </div>
                     <div className={styles.filterBot}>
                         <div className={styles.filterItem}>
