@@ -7,6 +7,7 @@ import FourOhFour from '../404'
 import Loader from '@/components/Loader/Loader'
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router'
+import AdminSidebar from '@/components/AdminSidebar/AdminSidebar'
 
 const AdminDashboard = () => {
     const router = useRouter()
@@ -14,14 +15,11 @@ const AdminDashboard = () => {
     return (
         <>
             <Head>  
-                <title>Админ панель - avezo</title>
+                <title>Админ панель - Lampastore</title>
             </Head>
             <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.section}`}>
-                <div className='container'>
-                    <h1 className='title tal'>Админ</h1>
-                    <div className={styles.box}>
-
-                    </div>
+                <div className={styles.wrapper}>
+                    <AdminSidebar />
                 </div>
             </motion.section>
         </>
