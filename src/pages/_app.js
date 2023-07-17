@@ -43,10 +43,8 @@ function Auth({ children }) {
   const dispatch = useDispatch()
 
   if (status === "loading") {
-    dispatch(setLoading(true))
     return ''
   } else {
-    dispatch(setLoading(false))
   }
 
   if (role){

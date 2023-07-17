@@ -8,7 +8,7 @@
     @include res('padding-left', 30px);
     display: flex;
     align-items: center;
-    border-bottom: solid var(--primary-text-color);
+    border-bottom: solid var(--primary-border);
     @include res('border-width', 1px);
     &Body{
         display: flex;
@@ -67,7 +67,7 @@
         @include res('height', 30px);
         border-radius: 50%;
         @include res('font-size', 15px);
-        border: solid var(--primary-text-color);
+        border: solid var(--primary-border);
         @include res('border-width', 1px);
     }
 }
@@ -106,14 +106,14 @@
 .bot{
     @include res('height', 50px);
     @include res('gap', 10px);
-    border-bottom: solid var(--primary-text-color);
+    border-bottom: solid var(--primary-border);
     @include res('border-width', 1px);
     display: flex;
     align-items: center;
     justify-content: center;
     &Link{
         @include res('border-radius', 50px);
-        border: solid var(--primary-text-color);
+        border: solid var(--primary-border);
         @include res('border-width', 1px);
         @include res('padding-top', 5px);
         @include res('padding-bottom', 5px);

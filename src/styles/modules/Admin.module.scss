@@ -1,0 +1,10 @@
+@import '@/styles/mixins.scss';
+.admin{
+    @include res('min-height', 600px);
+    display: flex;
+}
+.wrapper{
+    display: flex;
+    justify-content: space-between;
+    @include res('gap', 40px);
+}

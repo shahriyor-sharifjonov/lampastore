@@ -1,16 +1,18 @@
 import Link from 'next/link'
 import React from 'react'
 import styles from './AdminSidebar.module.scss'
+import { useRouter } from 'next/router'
 
 const AdminSidebar = () => {
-  return (
-    <div className={styles.sidebar}>
-        <Link href="/admin">Главная</Link>
-        <Link href="/admin/users">Пользователи</Link>
-        <Link href="/admin/categories">Категории</Link>
-        <Link href="/admin/products">Продукты</Link>
-    </div>
-  )
+    const router = useRouter()
+    return (
+        <div className={styles.sidebar}>
+            <Link href="/admin" className={`${styles.link} ${router.asPath === '/admin' ? styles.active : ''}`}>Главная</Link>
+            <Link href="/admin/users" className={`${styles.link} ${router.asPath === '/admin/users' ? styles.active : ''}`}>Пользователи</Link>
+            <Link href="/admin/categories" className={`${styles.link} ${router.asPath === '/admin/categories' ? styles.active : ''}`}>Категории</Link>
+            <Link href="/admin/products" className={`${styles.link} ${router.asPath === '/admin/products' ? styles.active : ''}`}>Продукты</Link>
+        </div>
+    )
 }
 
 export default AdminSidebar
