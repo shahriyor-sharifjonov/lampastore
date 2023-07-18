@@ -11,3 +11,6 @@
 .content{
     @include res('padding-top', 40px);
 }
+.title{
+    @include res('font-size', 36px);
+}

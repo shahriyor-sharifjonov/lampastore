@@ -21,7 +21,7 @@ const AdminDashboard = () => {
                 <div className={styles.wrapper}>
                     <AdminSidebar />
                     <div className={styles.content}>
-                        <h1 className={styles.title}>Добро пожаловать, {session?.customUser?.name}</h1>
+                        <h1 className={styles.title}>Пользователи</h1>
                     </div>
                 </div>
             </motion.section>
