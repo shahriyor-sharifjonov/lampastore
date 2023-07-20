@@ -7,10 +7,37 @@
     display: flex;
     justify-content: space-between;
     @include res('gap', 40px);
+    width: 100%;
 }
 .content{
     @include res('padding-top', 40px);
+    @include res('padding-right', 40px);
+    flex: 1 1 auto;
 }
 .title{
     @include res('font-size', 36px);
+    @include res('margin-bottom', 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include res('gap', 40px);
+    a{
+        @include res('font-size', 24px);
+        text-decoration: none;
+    }
+}
+.row{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    border-right: solid var(--primary-border);
+    border-left: solid var(--primary-border);
+    border-top: solid var(--primary-border);
+    @include res('border-width', 1px);
+    @include res('padding', 10px);
+    &:last-of-type{
+        border-bottom: solid var(--primary-border);
+        @include res('border-width', 1px);
+    }
 }

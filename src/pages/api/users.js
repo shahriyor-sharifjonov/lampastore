@@ -12,7 +12,6 @@ const getUsers = async (req, res) => {
     try {
         const client = await clientPromise
         const db = client.db('test')
-        console.log('fa');
 
         const users = await db.collection('customUser').find().toArray()
         res.status(200).json(users)

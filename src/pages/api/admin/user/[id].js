@@ -10,8 +10,11 @@ const def = async (req, res) => {
         case 'DELETE':
             await deleteUser(req, res)
             break
+        case 'PUT':
+            await updateUser(req, res)
+            break
         default:
-            res.setHeader('Allow', ['DELETE']);
+            res.setHeader('Allow', ['DELETE', 'PUT']);
             res.status(405).json({ error: `Method ${req.method} Not Allowed` });
     }
 }
@@ -26,7 +29,7 @@ const deleteUser = async (req, res) => {
         res.status(401).json({ error: 'Unauthorized' });
         return;
     }
-  
+
     try {
         const customUser = await db.collection("customUser").find({ _id: new ObjectId(id) }).toArray()
 
@@ -46,6 +49,46 @@ const deleteUser = async (req, res) => {
         }
     } catch (error) {
         console.error("Error occurred:", error)
+        res.status(500).json({ error: error })
+    }
+}
+
+const updateUser = async (req, res) => {
+    try {
+        const session = await getServerSession(req, res, authOptions);
+        const client = await clientPromise
+        const db = client.db('test')
+    
+        if (!session || session.customUser.role !== 'admin') {
+            res.status(401).json({ error: 'Unauthorized' })
+            return
+        }
+    
+        const { query: { id } } = req
+        const { role } = req.body
+    
+        if (!role) {
+            res.status(400).json({ message: 'Please provide all fields' })
+            return
+        }
+    
+        const result = await db.collection('customUser').updateOne(
+            { _id: new ObjectId(id) },
+            {
+                $set: {
+                    role: role
+                }
+            }
+        )
+    
+        if (result.modifiedCount === 1) {
+            const updatedUser = await db.collection('customUser').findOne({ _id: new ObjectId(id) })
+            res.status(200).json({updatedUser})
+        } else {
+            res.status(404).json({ message: 'User not found or not updated' })
+        }
+    } catch (error) {
+        console.error('Error occurred:', error)
         res.status(500).json({ error: error })
     }
 }

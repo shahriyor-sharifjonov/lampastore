@@ -5,14 +5,15 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/store/slices/loadingSlice'
 
 import { useSession, signIn, signOut } from 'next-auth/react'
-import FourOhFour from '../404'
+import FourOhFour from '../../404'
 import Loader from '@/components/Loader/Loader'
 import { motion } from 'framer-motion';
 import { useRouter } from 'next/router'
 import AdminSidebar from '@/components/AdminSidebar/AdminSidebar'
 import axios from 'axios'
+import Link from 'next/link'
 
-const AdminUsers = () => {
+const AdminCategories = () => {
     const router = useRouter()
     const [users, setUsers] = useState([])
     const { data: session, status } = useSession()
@@ -82,7 +83,9 @@ const AdminUsers = () => {
                 <div className={styles.wrapper}>
                     <AdminSidebar />
                     <div className={styles.content}>
-                        <h1 className={styles.title}>Пользователи</h1>
+                        <h1 className={styles.title}>Категории
+                            <Link href="/admin/categories/create">Создать</Link>
+                        </h1>
                         {users.map(el => (
                             <div key={el._id} className={styles.row}>
                                 <p>{el.name}</p>
@@ -97,9 +100,10 @@ const AdminUsers = () => {
     )
 }
 
-export default AdminUsers
+export default AdminCategories
 
-AdminUsers.auth = {
+
+AdminCategories.auth = {
     role: "admin",
     loading: <Loader />,
     unauthorized: "/",
