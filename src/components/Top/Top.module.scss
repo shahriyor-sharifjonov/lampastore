@@ -38,7 +38,7 @@
     font-weight: 500;
     line-height: 120%;
     text-transform: uppercase;
-    @include res('font-size', 16px);
+    @include res('font-size', 14px);
     @include res('letter-spacing', 0.96px);
     @include res('padding-top', 6px);
     @include res('padding-bottom', 6px);

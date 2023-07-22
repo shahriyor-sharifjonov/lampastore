@@ -32,6 +32,8 @@ const createProduct = async (req, res) => {
             return
         }
 
+        let num = await db.collection('products').find().toArray()
+
         const product = {
             title: title,
             description: description,
@@ -41,6 +43,7 @@ const createProduct = async (req, res) => {
             images: images,
             fields: fields,
             vip: vip,
+            num: num.length+=2,
             created_at: new Date(),
             updated_at: new Date(),
         }
