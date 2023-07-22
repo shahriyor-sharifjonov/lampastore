@@ -17,9 +17,7 @@ const Top = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        // setTimeout(() => {
-            setCategory(categories.find(category => category.slug === router.query.category))
-        // }, 500)
+        setCategory(categories.find(category => category.slug === router.query.category))
         if(router.query.subcategory){
             setSubCategory(category?.subcategories?.find(sub => sub.slug === router.query.subcategory))
         }

@@ -64,7 +64,7 @@ const updateProduct = async (req, res) => {
             return;
         }
     
-        if (!title || !category || !fields || !price) {
+        if (!title || !category || !fields || !price || !images[0]) {
             res.status(400).json({ message: 'Add all fields' });
             return;
         }

@@ -172,7 +172,7 @@ const AdminProductsUpdate = () => {
                                 <div className={styles.imagesContent}>
                                     {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((key) => (
                                         <div className={styles.image} key={key}>
-                                            <input type="file" required={key === 0} onChange={handleFileUpload} />
+                                            <input type="file" onChange={handleFileUpload} />
                                             {images.length > key && (
                                             <div className={styles.imageContainer}>
                                                 <button className={styles.imageDelete} onClick={() => handleDeleteImage(key)}>
