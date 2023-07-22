@@ -97,7 +97,7 @@ const AdminCategoriesEdit = () => {
             {loading.value == '404' ? (
                 <FourOhFour />
             ) : (
-                <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
+                <motion.section key={`${router.asPath}admincategoriescreate1124`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
                     <div className={styles.wrapper}>
                         <AdminSidebar />
                         <div className={styles.content}>
@@ -121,7 +121,7 @@ const AdminCategoriesEdit = () => {
                                             setSubcategories(newSubcategories);
                                         }}
                                         className={styles.input}/>
-                                        <input type="text" value={subcategory.slug} onChange={(e) => {
+                                        <input type="text" value={subcategory.slug} disabled onChange={(e) => {
                                             let newSubcategories = [...subcategories];
                                             newSubcategories[key] = {
                                                 ...newSubcategories[key],

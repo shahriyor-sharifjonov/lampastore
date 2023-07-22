@@ -17,7 +17,7 @@ const AdminDashboard = () => {
             <Head>  
                 <title>Админ панель - Lampastore</title>
             </Head>
-            <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
+            <motion.section key={`${router.asPath}admincategories`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
                 <div className={styles.wrapper}>
                     <AdminSidebar />
                     <div className={styles.content}>

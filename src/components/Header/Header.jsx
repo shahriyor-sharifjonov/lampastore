@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Header.module.scss'
 import { setCategories } from '@/store/slices/categoriesSlice'
+import { setProducts } from '@/store/slices/productsSlice'
 import { setLoading } from '@/store/slices/loadingSlice'
 import axios from 'axios'
 import { useRouter } from 'next/router'
@@ -15,9 +16,18 @@ const Header = () => {
 
     useEffect(() => {
         dispatch(setLoading(true))
+        
         axios.get('/api/categories')
             .then((response) => {
                 dispatch(setCategories(response.data))
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        axios.get('/api/products')
+            .then((response) => {
+                dispatch(setProducts(response.data))
                 dispatch(setLoading(false))
             })
             .catch((error) => {

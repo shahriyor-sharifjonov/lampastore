@@ -18,7 +18,7 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
     <Provider store={store}>
       <SessionProvider session={session}>
         <AnimatePresence mode='wait'>
-          <Loader />
+          <Loader key='loader'/>
           <div className='wrapper'>
             <Header />
             <main>

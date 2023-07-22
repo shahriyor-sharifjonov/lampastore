@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '@/styles/modules/Admin.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/store/slices/loadingSlice'
+import { setProducts } from '@/store/slices/productsSlice'
 
 import { useSession, signIn, signOut } from 'next-auth/react'
 import FourOhFour from '../../404'
@@ -15,28 +16,17 @@ import Link from 'next/link'
 
 const AdminProducts = () => {
     const router = useRouter()
-    const [categories, setCategories] = useState([])
+    const products = useSelector((state) => state.products)
     const { data: session, status } = useSession()
     const dispatch = useDispatch()
 
-    useEffect(() => {
-        axios
-            .get('/api/categories')
-            .then(function (response) {
-                setCategories(response.data)
-            })
-            .catch(function (error) {
-                console.error(error)
-            })
-    }, [])
-
-    const handleDelete = (categoryId) => {
+    const handleDelete = (productId) => {
         dispatch(setLoading(true))
         axios
-            .delete(`/api/admin/category/${categoryId}`)
+            .delete(`/api/admin/product/${productId}`)
             .then(function (response) {
                 dispatch(setLoading(false))
-                window.location.reload();
+                dispatch(setProducts(response.data))
             })
             .catch(function (error) {
                 console.error(error)
@@ -49,17 +39,16 @@ const AdminProducts = () => {
             <Head>  
                 <title>Админ панель - Lampastore</title>
             </Head>
-            <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
+            <motion.section key={`${router.asPath}adminproducts`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
                 <div className={styles.wrapper}>
                     <AdminSidebar />
                     <div className={styles.content}>
                         <h1 className={styles.title}>Продукты
-                            <Link href="/admin/categories/create">Создать</Link>
+                            <Link href="/admin/products/create">Создать</Link>
                         </h1>
-                        {categories.map(el => (
+                        {products.map(el => (
                             <div key={el._id} className={`${styles.row} ${styles.border}`}>
-                                <p className={styles.p}>{el.name}</p>
-                                <p className={styles.p}>{el.slug}</p>
+                                <p className={styles.p}>{el.title}</p>
                                 <div className={styles.rowButtons}>
                                     <Link href={`/admin/categories/edit/${el._id}`} className={`${styles.button} ${styles.icon}`}>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

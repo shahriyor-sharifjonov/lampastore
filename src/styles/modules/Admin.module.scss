@@ -55,6 +55,17 @@
     @include res('padding-left', 20px);
     @include res('font-size', 14px);
 }
+.textarea{
+    @include res('border-radius', 10px);
+    @include res('height', 50px);
+    border: solid #ddd;
+    @include res('border-width', 1px);
+    @include res('padding-left', 20px);
+    @include res('padding-top', 20px);
+    @include res('font-size', 14px);
+    @include res('min-height', 100px);
+    resize: vertical;
+}
 .row{
     display: flex;
     align-items: center;
