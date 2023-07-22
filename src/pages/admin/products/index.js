@@ -3,7 +3,6 @@ import Head from 'next/head'
 import styles from '@/styles/modules/Admin.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/store/slices/loadingSlice'
-import { setCategories } from '@/store/slices/categoriesSlice'
 
 import { useSession, signIn, signOut } from 'next-auth/react'
 import FourOhFour from '../../404'
@@ -14,11 +13,22 @@ import AdminSidebar from '@/components/AdminSidebar/AdminSidebar'
 import axios from 'axios'
 import Link from 'next/link'
 
-const AdminCategories = () => {
+const AdminProducts = () => {
     const router = useRouter()
-    const categories = useSelector((state) => state.categories)
+    const [categories, setCategories] = useState([])
     const { data: session, status } = useSession()
     const dispatch = useDispatch()
+
+    useEffect(() => {
+        axios
+            .get('/api/categories')
+            .then(function (response) {
+                setCategories(response.data)
+            })
+            .catch(function (error) {
+                console.error(error)
+            })
+    }, [])
 
     const handleDelete = (categoryId) => {
         dispatch(setLoading(true))
@@ -26,7 +36,7 @@ const AdminCategories = () => {
             .delete(`/api/admin/category/${categoryId}`)
             .then(function (response) {
                 dispatch(setLoading(false))
-                dispatch(setCategories(response.data))
+                window.location.reload();
             })
             .catch(function (error) {
                 console.error(error)
@@ -43,7 +53,7 @@ const AdminCategories = () => {
                 <div className={styles.wrapper}>
                     <AdminSidebar />
                     <div className={styles.content}>
-                        <h1 className={styles.title}>Категории
+                        <h1 className={styles.title}>Продукты
                             <Link href="/admin/categories/create">Создать</Link>
                         </h1>
                         {categories.map(el => (
@@ -69,10 +79,10 @@ const AdminCategories = () => {
     )
 }
 
-export default AdminCategories
+export default AdminProducts
 
 
-AdminCategories.auth = {
+AdminProducts.auth = {
     role: "admin",
     loading: <Loader />,
     unauthorized: "/",

@@ -3,6 +3,7 @@ import Head from 'next/head'
 import styles from '@/styles/modules/Admin.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { setLoading } from '@/store/slices/loadingSlice'
+import { setCategories } from '@/store/slices/categoriesSlice'
 
 import { useSession, signIn, signOut } from 'next-auth/react'
 import FourOhFour from '../../../404'
@@ -77,6 +78,7 @@ const AdminCategoriesEdit = () => {
                 })
                 .then(function (response) {
                     dispatch(setLoading(false))
+                    dispatch(setCategories(response.data))
                 })
                 .catch(function (error) {
                     dispatch(setLoading(false))

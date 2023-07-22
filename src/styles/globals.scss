@@ -72,9 +72,23 @@ input[type="number"] {
   background-size: 200vw 100%;
   background-position: -200vw 0;
   pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   &.active{
     background-position: 0 0;
     pointer-events: all;
+    img{
+      opacity: 1;
+      visibility: visible;
+      transition-delay: 700ms;
+    }
+  }
+  img{
+    opacity: 0;
+    visibility: hidden;
+    transition: 300ms ease-out;
+    transition-delay: 0ms;
   }
 }
 .intro{

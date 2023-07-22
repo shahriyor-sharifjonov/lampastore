@@ -34,13 +34,14 @@ const deleteCategory = async (req, res) => {
         const deleteCategoryRecursive = async (categoryId) => {
             await db.collection("categories").deleteOne({ _id: new ObjectId(categoryId) })
         };
-  
         
         await db.collection("products").deleteMany({ category: { $in: [id] } })
 
         await deleteCategoryRecursive(id)
+
+        const result = await db.collection("categories").find().toArray()
     
-        res.status(200).json({ message: "Category and its subcategories, along with associated products, deleted successfully" })
+        res.status(200).json(result)
     } catch (error) {
         console.error("Error occurred:", error)
         res.status(500).json({ error: error })
@@ -80,7 +81,9 @@ const updateCategory = async (req, res) => {
 
         if (result.modifiedCount === 1) {
             const updatedCategory = await db.collection('categories').findOne({ _id: new ObjectId(id) })
-            res.status(200).json(updatedCategory)
+            const result = await db.collection("categories").find().toArray()
+        
+            res.status(200).json(result)
         } else {
             res.status(404).json({ message: 'Category not found or not updated' })
         }

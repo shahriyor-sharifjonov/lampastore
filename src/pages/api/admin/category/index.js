@@ -43,7 +43,8 @@ const createCategory = async (req, res) => {
         }
 
         const result = await db.collection('categories').insertOne(category)
-        res.status(201).json(result)
+        const categories = await db.collection('categories').find().toArray()
+        res.status(201).json(categories)
     } catch (err) {
         return res.status(500).json({ err: err.message })
     }
