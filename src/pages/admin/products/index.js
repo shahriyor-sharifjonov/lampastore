@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import AdminSidebar from '@/components/AdminSidebar/AdminSidebar'
 import axios from 'axios'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const AdminProducts = () => {
     const router = useRouter()
@@ -48,8 +49,13 @@ const AdminProducts = () => {
                         </h1>
                         {products.map(el => (
                             <div key={el._id} className={`${styles.row} ${styles.border}`}>
-                                <p className={styles.p}>{el.title}</p>
-                                <p className={styles.p}>{el.price}</p>
+                                <div className={styles.rowLeft}>
+                                    {el.images[0] ? (
+                                        <Image src={el.images[0].url} alt="" width={50} height={50} />
+                                    ) : ""}
+                                    <p className={styles.p}>{el.title}</p>
+                                </div>
+                                <p className={`${styles.p} ${styles.rowPrice}`}>{el.price}₽</p>
                                 <div className={styles.rowButtons}>
                                     <Link href={`/admin/products/edit/${el._id}`} className={`${styles.button} ${styles.icon}`}>
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
