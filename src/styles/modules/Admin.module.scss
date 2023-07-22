@@ -1,6 +1,6 @@
 @import '@/styles/mixins.scss';
 .admin{
-    @include res('min-height', 600px);
+    min-height: calc(100vh - 36vw);
     display: flex;
 }
 .wrapper{
@@ -11,6 +11,7 @@
 }
 .content{
     @include res('padding-top', 40px);
+    @include res('padding-bottom', 40px);
     @include res('padding-right', 40px);
     flex: 1 1 auto;
 }
@@ -22,22 +23,130 @@
     justify-content: space-between;
     @include res('gap', 40px);
     a{
-        @include res('font-size', 24px);
+        @include res('font-size', 16px);
         text-decoration: none;
+        background: var(--primary-text-color);
+        color: #fff;
+        @include res('padding-top', 14px);
+        @include res('padding-bottom', 14px);
+        @include res('padding-left', 24px);
+        @include res('padding-right', 24px);
+        @include res('border-radius', 10px);
+        font-weight: 400;
     }
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    @include res('gap', 10px);
+}
+.subtitle{
+    @include res('font-size', 16px);
+}
+.p{
+    @include res('font-size', 16px);
+}
+.input{
+    @include res('border-radius', 10px);
+    @include res('height', 50px);
+    border: solid #ddd;
+    @include res('border-width', 1px);
+    @include res('padding-left', 20px);
+    @include res('font-size', 14px);
 }
 .row{
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 100%;
-    border-right: solid var(--primary-border);
-    border-left: solid var(--primary-border);
-    border-top: solid var(--primary-border);
-    @include res('border-width', 1px);
-    @include res('padding', 10px);
-    &:last-of-type{
-        border-bottom: solid var(--primary-border);
+    @include res('gap', 10px);
+    &.border{
+        border-left: solid var(--primary-text-color);
+        border-right: solid var(--primary-text-color);
         @include res('border-width', 1px);
+        @include res('padding', 10px);
+        &:not(:last-of-type){
+            border-bottom: solid var(--primary-text-color);
+            @include res('border-width', 1px);
+            margin-bottom: 0;
+        }
+        &:first-of-type{
+            border-top: solid var(--primary-text-color);
+            @include res('border-width', 1px);
+        }
+        &:last-of-type{
+            border-bottom: solid var(--primary-text-color);
+            @include res('border-width', 1px);
+        }
+
     }
+    &:not(:last-of-type){
+        @include res('margin-bottom', 10px);
+        &.border{
+            border-bottom: solid var(--primary-text-color);
+            @include res('border-width', 1px);
+        }
+    }
+    &:first-of-type{
+        @include res('border-top-left-radius', 10px);
+        @include res('border-top-right-radius', 10px);
+    }
+    &:last-of-type{
+        // border-bottom: solid var(--primary-border);
+        @include res('border-width', 1px);
+        @include res('border-bottom-right-radius', 10px);
+        @include res('border-bottom-left-radius', 10px);
+    }
+    .input{
+        width: 50%;
+    }
+    &Buttons{
+        display: flex;
+        justify-content: flex-end;
+        @include res('gap', 8px);
+    }
+}
+.btn{
+    @include res('width', 50px);
+    @include res('min-width', 50px);
+    @include res('height', 50px);
+    background: var(--primary-text-color);
+    @include res('border-radius', 10px);
+    color: #fff;
+    font-weight: 500;
+    @include res('font-size', 16px);
+    svg{
+        @include res('width', 20px);
+        @include res('height', 20px);
+        line-height: 0;
+    }
+}
+.button{
+    @include res('font-size', 14px);
+    text-decoration: none;
+    background: var(--primary-text-color);
+    color: #fff;
+    @include res('padding-top', 10px);
+    @include res('padding-bottom', 10px);
+    @include res('padding-left', 15px);
+    @include res('padding-right', 15px);
+    @include res('border-radius', 10px);
+    font-weight: 400;
+    svg{
+        @include res('width', 20px);
+        @include res('height', 20px);
+        line-height: 0;
+    }
+}
+.icon{
+    @include res('padding', 12px);
+    line-height: 0;
+}
+.submit{
+    background: var(--primary-text-color);
+    color: #fff;
+    @include res('border-radius', 10px);
+    @include res('height', 50px);
+    @include res('font-size', 14px);
+    @include res('margin-top', 20px);
 }

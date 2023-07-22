@@ -18,24 +18,28 @@ const createCategory = async (req, res) => {
     try {
         const session = await getServerSession(req, res, authOptions)
         const client = await clientPromise
-        const db = client.db('test')
+        const db = client.db()
 
         if (!session || session.customUser.role !== 'admin') {
             res.status(401).json({ error: 'Unauthorized' })
             return
         }
 
-        const { title, slug, subcategories, fields } = req.body
-        if (!title || !slug) {
+        const { name, slug, subcategories } = req.body
+        if (!name || !slug) {
             res.status(400).json({ message: 'Add all fields' })
             return
         }
 
+        if (await db.collection('categories').findOne({slug: slug})){
+            res.status(400).json({ message: 'category with this link already exists' })
+            return
+        }
+
         const category = {
-            title: title,
+            name: name,
             slug: slug,
             subcategories: subcategories,
-            fields: fields,
         }
 
         const result = await db.collection('categories').insertOne(category)

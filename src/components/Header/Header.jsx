@@ -66,7 +66,7 @@ const Header = () => {
             </div>
             <div className={styles.bot}>
                 {categories.map(cat => (
-                    <Link key={cat.link} href={`/c/${cat.link}`} className={`${styles.botLink} ${router.query?.category == cat.link ? styles.active : ''}`}>{cat.name}</Link>
+                    <Link key={cat.slug} href={`/c/${cat.slug}`} className={`${styles.botLink} ${router.query?.category == cat.slug ? styles.active : ''}`}>{cat.name}</Link>
                 ))}
             </div>
         </header>

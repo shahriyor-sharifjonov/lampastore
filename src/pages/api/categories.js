@@ -1,16 +1,24 @@
-import categories from '@/db/categories';
+import clientPromise from '@/lib/mongodb';
 
-export default async function handler(req, res) {
-  if (req.method !== 'GET') {
-    return res.status(405).json({ message: 'Method Not Allowed' });
+const def = async (req, res) => {
+  switch(req.method){
+    case 'GET':
+      await getCategories(req, res)
+      break;
   }
-
-  if (!categories || categories.length === 0) {
-    return res.status(404).json({ message: 'No categories found' });
-  }
-
-  // await new Promise(resolve => setTimeout(resolve, 5000));
-
-  const response = categories;
-  res.status(200).json(response);
 }
+
+const getCategories = async (req, res) => {
+  try {
+    const client = await clientPromise
+    const db = client.db()
+
+    const categories = await db.collection('categories').find().toArray()
+    res.status(200).json(categories)
+  }
+  catch (err) {
+    return res.status(500).json({err: err.message})
+  }
+}
+
+export default def

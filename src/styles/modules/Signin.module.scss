@@ -5,3 +5,11 @@
     align-items: center;
     justify-content: center;
 }
+.p{
+    @include res('font-size', 16px);
+}
+.btn{
+    @include res('font-size', 14px);
+    @include res('padding', 10px);
+    background: var(--primary-text-color);
+}

@@ -17,11 +17,11 @@ const Top = () => {
     const dispatch = useDispatch()
 
     useEffect(() => {
-        setTimeout(() => {
-            setCategory(categories.find(category => category.link === router.query.category))
-        }, 500)
+        // setTimeout(() => {
+            setCategory(categories.find(category => category.slug === router.query.category))
+        // }, 500)
         if(router.query.subcategory){
-            setSubCategory(category?.subcategories?.find(sub => sub.link === router.query.subcategory))
+            setSubCategory(category?.subcategories?.find(sub => sub.slug === router.query.subcategory))
         }
     }, [router, categories, category, subcategory])
 
@@ -42,9 +42,9 @@ const Top = () => {
             </h1>
             {category?.subcategories?.length !== 0 && (
                 <div className={styles.items}>
-                    <Link href={`/c/${category?.link}`} className={`${styles.item} ${router.query.subcategory ? '' : styles.active}`}>ВСЕ</Link>
+                    <Link href={`/c/${category?.slug}`} className={`${styles.item} ${router.query.subcategory ? '' : styles.active}`}>Все</Link>
                     {category?.subcategories?.map(item => (
-                        <Link href={`/c/${category.link}/${item.link}`} key={`${item.link}`} className={`${styles.item} ${item.link === subcategory?.link ? styles.active : ''}`}>{item.name}</Link>
+                        <Link href={`/c/${category.slug}/${item.slug}`} key={`${item.slug}`} className={`${styles.item} ${item.slug === subcategory?.slug ? styles.active : ''}`}>{item.name}</Link>
                     ))}
                 </div>
             )}

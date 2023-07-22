@@ -8,8 +8,8 @@ const Signin = () => {
     return (
         <div className={styles.signin}>
             {session?.customUser?.role === 'admin' ? (
-                <p>Вы уже зарегистрированы</p>
-            ) : <button onClick={() => signIn("yandex")}>Sign In</button>}
+                <p className={styles.p}>Вы уже зарегистрированы</p>
+            ) : <button onClick={() => signIn("yandex")} className={styles.btn}>Sign In</button>}
         </div>
     )
 }

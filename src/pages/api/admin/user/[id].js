@@ -57,7 +57,7 @@ const updateUser = async (req, res) => {
     try {
         const session = await getServerSession(req, res, authOptions);
         const client = await clientPromise
-        const db = client.db('test')
+        const db = client.db()
     
         if (!session || session.customUser.role !== 'admin') {
             res.status(401).json({ error: 'Unauthorized' })

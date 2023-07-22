@@ -19,17 +19,19 @@ export default function App({ Component, pageProps: { session, ...pageProps } })
       <SessionProvider session={session}>
         <AnimatePresence mode='wait'>
           <Loader />
-          <Header />
-          <main>
-            {Component.auth ? (
-              <Auth>
+          <div className='wrapper'>
+            <Header />
+            <main>
+              {Component.auth ? (
+                <Auth>
+                  <Component {...pageProps} />
+                </Auth>
+              ) : (
                 <Component {...pageProps} />
-              </Auth>
-            ) : (
-              <Component {...pageProps} />
-            )}
-          </main>
-          <Footer />
+              )}
+            </main>
+            <Footer />
+          </div>
         </AnimatePresence>
       </SessionProvider>
     </Provider>

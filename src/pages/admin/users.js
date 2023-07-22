@@ -84,10 +84,10 @@ const AdminUsers = () => {
                     <div className={styles.content}>
                         <h1 className={styles.title}>Пользователи</h1>
                         {users.map(el => (
-                            <div key={el._id} className={styles.row}>
-                                <p>{el.name}</p>
-                                <p>{el.role}</p>
-                                {el.role === 'user' ? <button type="button" onClick={() => makeAdmin(el._id)}>Сделать Админ</button> : <button onClick={() => makeUser(el._id)}>Сделать Юсер</button>}
+                            <div key={el._id} className={`${styles.row} ${styles.border}`}>
+                                <p className={styles.p}>{el.name}</p>
+                                <p className={styles.p}>{el.role}</p>
+                                {el.role === 'user' ? <button type="button" onClick={() => makeAdmin(el._id)} className={styles.button}>Сделать Админ</button> : <button onClick={() => makeUser(el._id)} className={styles.button}>Сделать Юсер</button>}
                             </div>
                         ))}
                     </div>
