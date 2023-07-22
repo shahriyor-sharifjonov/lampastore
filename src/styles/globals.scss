@@ -30,6 +30,21 @@ html{
 body{
   color: var(--primary-text-color);
   background: var(--primary-bg-color);
+  font-size: 16px;
+  scrollbar-color: rgba(0, 0, 0, 0.5) rgba(0, 0, 0, 0.1);
+  overflow: auto;
+  &::-webkit-scrollbar {
+    @include res('width', 10px);
+  }
+  &::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
 }
 a{
   color: var(--primary-text-color);
@@ -132,10 +147,13 @@ input[type="number"] {
 }
 .catalog{
   &__body{
-    @include res('padding-left', 30px);
-    @include res('padding-right', 30px);
+    // @include res('padding-left', 30px);
+    // @include res('padding-right', 30px);
     @include res('padding-top', 36px);
     @include res('padding-bottom', 36px);
+    @include res('width', 1860px);
+    margin-left: auto;
+    margin-right: auto;
   }
   &__content{
     display: flex;
@@ -169,7 +187,7 @@ input[type="number"] {
   }
 }
 .product{
-  @include res('width', 344px);
+  @include res('width', 348px);
   text-decoration: none;
   &__top{
     width: 100%;

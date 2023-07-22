@@ -162,3 +162,16 @@
     @include res('font-size', 14px);
     @include res('margin-top', 20px);
 }
+.chkrow{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @include res('gap', 8px);
+    label{
+        user-select: none;
+        cursor: pointer;
+    }
+    .chk{
+        cursor: pointer;
+    }
+}

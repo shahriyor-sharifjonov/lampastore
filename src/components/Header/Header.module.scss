@@ -115,13 +115,13 @@
         @include res('border-radius', 50px);
         border: solid var(--primary-border);
         @include res('border-width', 1px);
-        @include res('padding-top', 5px);
-        @include res('padding-bottom', 5px);
-        @include res('padding-left', 10px);
-        @include res('padding-right', 10px);
+        @include res('padding-top', 8px);
+        @include res('padding-bottom', 8px);
+        @include res('padding-left', 16px);
+        @include res('padding-right', 16px);
         font-weight: 500;
         text-decoration: none;
-        @include res('font-size', 12px);
+        @include res('font-size', 14px);
         line-height: 120%;
         @include res('letter-spacing', 0.84px);
         transition: background 0s .5s linear, color 0s .5s linear;

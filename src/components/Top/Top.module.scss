@@ -16,6 +16,7 @@
     display: flex;
     align-items: center; 
     justify-content: center;
+    text-transform: uppercase;
     span{
         display: block;
     }
@@ -25,9 +26,9 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    @include res('gap', 8px);
+    @include res('gap', 15px);
     @include res('margin-top', 30px);
-    @include res('max-width', 740px);
+    @include res('max-width', 950px);
     @include res('min-height', 74px);
     margin-left: auto;
     margin-right: auto;
@@ -36,6 +37,7 @@
     text-decoration: none;
     font-weight: 500;
     line-height: 120%;
+    text-transform: uppercase;
     @include res('font-size', 16px);
     @include res('letter-spacing', 0.96px);
     @include res('padding-top', 6px);

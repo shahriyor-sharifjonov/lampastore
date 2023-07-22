@@ -51,7 +51,7 @@ export default function Home() {
               spaceBetween={0}
               slidesPerView="auto"
               direction="vertical"
-              loop={true}
+              // loop={true}
             >
               <SwiperSlide><Image src="/product-1.jpg" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>
               <SwiperSlide><Image src="/product-2.png" alt="" width={216.36} height={216.36} draggable="false"/></SwiperSlide>

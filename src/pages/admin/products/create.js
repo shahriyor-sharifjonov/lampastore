@@ -27,6 +27,8 @@ const AdminProductsCreate = () => {
     const [fields, setFields] = useState([])
     const [fieldTitle, setFieldTitle] = useState('')
     const [fieldValue, setFieldValue] = useState('')
+    const [price, setPrice] = useState('')
+    const [vip, setVip] = useState(false)
 
     const handleAddField = (e) => {
         e.preventDefault()
@@ -46,6 +48,8 @@ const AdminProductsCreate = () => {
         setFields([])
         setFieldTitle('')
         setFieldValue('')
+        setPrice('')
+        setVip(false)
     }
 
     const handleCreateProduct = (e) => {
@@ -61,6 +65,8 @@ const AdminProductsCreate = () => {
                     subcategory: subcategory,
                     images: images,
                     fields: fields,
+                    price: price,
+                    vip: vip,
                 })
                 .then(function (response) {
                     dispatch(setLoading(false))
@@ -139,6 +145,12 @@ const AdminProductsCreate = () => {
                                 <input type="text" placeholder="Название поля (Тип)" value={fieldTitle} onChange={(e) => setFieldTitle(e.target.value)} className={styles.input}/>
                                 <input type="text" placeholder="Значение поля (Люстра)" value={fieldValue} onChange={(e) => setFieldValue(e.target.value)} className={styles.input}/>
                                 <button type="submit" onClick={handleAddField} className={`${styles.btn} ${styles.icon}`}>+</button>
+                            </div>
+                            <p className={styles.subtitle}>Цена ₽</p>
+                            <input className={styles.input} type="number" placeholder="Цена" value={price} onChange={(e) => {setPrice(e.target.value)}} />
+                            <div className={styles.chkrow}>
+                                <label htmlFor='chkvip' className={styles.subtitle}>VIP</label>
+                                <input id="chkvip" className={styles.chk} type="checkbox" value={vip} onChange={(e) => {setVip(!vip)}} />
                             </div>
                             <button type="submit" className={styles.submit}>Создать</button>
                         </form>

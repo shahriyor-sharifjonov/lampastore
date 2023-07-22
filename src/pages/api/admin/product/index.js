@@ -26,8 +26,8 @@ const createProduct = async (req, res) => {
             return
         }
 
-        const { title, description, category, subcategory, fields, images } = req.body
-        if (!title || !category || !fields) {
+        const { title, description, category, subcategory, fields, images, price, vip } = req.body
+        if (!title || !category || !fields || !price) {
             res.status(400).json({ message: 'Add all fields' })
             return
         }
@@ -35,10 +35,13 @@ const createProduct = async (req, res) => {
         const product = {
             title: title,
             description: description,
+            price: price,
             category: category,
             subcategory: subcategory,
             images: images,
             fields: fields,
+            vip: vip,
+            created_at: new Date(),
         }
 
         const result = await db.collection('products').insertOne(product)
