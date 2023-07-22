@@ -42,6 +42,7 @@ const createProduct = async (req, res) => {
             fields: fields,
             vip: vip,
             created_at: new Date(),
+            updated_at: new Date(),
         }
 
         const result = await db.collection('products').insertOne(product)

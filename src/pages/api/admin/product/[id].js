@@ -56,45 +56,40 @@ const updateProduct = async (req, res) => {
         }
     
         const { query: { id } } = req;
-        const { name, slug, subcategories } = req.body;
-        const oldCategory = await db.collection('categories').findOne({ _id: new ObjectId(id) });
+        const { title, description, category, subcategory, fields, images, price, vip } = req.body;
+        const oldProduct = await db.collection('products').findOne({ _id: new ObjectId(id) });
 
-        if (!oldCategory) {
-            res.status(404).json({ message: 'Category not found' });
+        if (!oldProduct) {
+            res.status(404).json({ message: 'Product not found' });
             return;
         }
     
-        if (!name || !slug) {
+        if (!title || !category || !fields || !price) {
             res.status(400).json({ message: 'Add all fields' });
             return;
         }
     
-        const result = await db.collection('categories').findOneAndUpdate(
+        const result = await db.collection('products').findOneAndUpdate(
             { _id: new ObjectId(id) },
             {
                 $set: {
-                    name: name,
-                    slug: slug,
-                    subcategories: subcategories,
+                    title: title,
+                    description: description,
+                    price: price,
+                    category: category,
+                    subcategory: subcategory,
+                    images: images,
+                    fields: fields,
+                    vip: vip,
+                    updated_at: new Date(),
                 },
             },
             { returnOriginal: false }
         );
   
         if (result.value) {
-            const updatedCategory = result.value;
-    
-            const deletedSubcategories = oldCategory.subcategories.filter(subcategory =>
-                !subcategories.some(updatedSubcategory => updatedSubcategory.slug === subcategory.slug)
-            );
-    
-            await db.collection('products').deleteMany({
-                category: id,
-                subcategory: { $in: deletedSubcategories.map(subcategory => subcategory.slug) }
-            });
-    
-            const categories = await db.collection("categories").find().toArray();
-            res.status(200).json(categories);
+            const products = await db.collection("products").find().toArray();
+            res.status(200).json({"result": result.value, products});
         } else {
             res.status(404).json({ message: 'Product not found or not updated' });
         }

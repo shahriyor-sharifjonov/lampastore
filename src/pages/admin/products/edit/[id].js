@@ -13,11 +13,14 @@ import AdminSidebar from '@/components/AdminSidebar/AdminSidebar'
 import axios from 'axios'
 import Link from 'next/link'
 
-const AdminProductsCreate = () => {
+const AdminProductsUpdate = () => {
     const router = useRouter()
     const { data: session, status } = useSession()
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.categories)
+    const products = useSelector((state) => state.products)
+
+    const [product, setProduct] = useState({})
 
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -29,6 +32,30 @@ const AdminProductsCreate = () => {
     const [fieldValue, setFieldValue] = useState('')
     const [price, setPrice] = useState('')
     const [vip, setVip] = useState(false)
+
+    useEffect(() => {
+        dispatch(setLoading(true));
+        const pd = products?.filter(product => product._id === router.query.id)
+        setProduct(pd[0])
+    }, [products])
+
+    useEffect(() => {
+        if(product === undefined){
+            dispatch(setLoading(404))
+        }
+        if(product?._id){
+            dispatch(setLoading(false))
+            console.log(product.subcategory);
+            setTitle(product.title)
+            setDescription(product.description)
+            setCategory(product.category)
+            setSubcategory(product.subcategory)
+            setImages(product.images)
+            setFields(product.fields)
+            setPrice(product.price)
+            setVip(product.vip)
+        }
+    }, [product])
 
     const handleAddField = (e) => {
         e.preventDefault()
@@ -52,13 +79,13 @@ const AdminProductsCreate = () => {
         setVip(false)
     }
 
-    const handleCreateProduct = (e) => {
+    const handleUpdateProduct = (e) => {
         e.preventDefault()
         if(title !== '' && category !== ''){
             dispatch(setLoading(true));
 
             axios
-                .post('/api/admin/product', {
+                .put(`/api/admin/product/${product._id}`, {
                     title: title,
                     description: description,
                     category: category,
@@ -71,7 +98,7 @@ const AdminProductsCreate = () => {
                 .then(function (response) {
                     dispatch(setLoading(false))
                     dispatch(setProducts(response.data.products))
-                    router.push(`/product/${response.data.result.insertedId}`)
+                    router.push(`/product/${response.data.result._id}`)
                     clearStates()
                 })
                 .catch(function (error) {
@@ -87,14 +114,14 @@ const AdminProductsCreate = () => {
             <Head>  
                 <title>Админ панель - Lampastore</title>
             </Head>
-            <motion.section key={`${router.asPath}adminproductcreate`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
+            <motion.section key={`${router.asPath}adminproductupdate`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={`section ${styles.admin}`}>
                 <div className={styles.wrapper}>
                     <AdminSidebar />
                     <div className={styles.content}>
                         <h1 className={styles.title}>Создать продукт
                             <Link href="/admin/products">Назад</Link>
                         </h1>
-                        <form action="#" onSubmit={handleCreateProduct} className={styles.form}>
+                        <form action="#" onSubmit={handleUpdateProduct} className={styles.form}>
                             <p className={styles.subtitle}>Категория</p>
                             <div className={styles.row}>
                                 <select className={styles.input} value={category} onChange={(e) => {setCategory(e.target.value);setSubcategory('')}}>
@@ -122,13 +149,19 @@ const AdminProductsCreate = () => {
                                 <div key={key} className={styles.row}>
                                     <input type="text" value={field.title} onChange={(e) => {
                                         let newFields = [...fields];
-                                        newFields[key].title = e.target.value;
+                                        newFields[key] = {
+                                            ...newFields[key],
+                                            title: e.target.value
+                                        };
                                         setFields(newFields);
                                     }}
                                     className={styles.input}/>
                                     <input type="text" value={field.value} onChange={(e) => {
                                         let newFields = [...fields];
-                                        newFields[key].value = e.target.value;
+                                        newFields[key] = {
+                                            ...newFields[key],
+                                            value: e.target.value
+                                        };
                                         setFields(newFields);
                                     }}
                                     className={styles.input}/>
@@ -152,7 +185,7 @@ const AdminProductsCreate = () => {
                                 <label htmlFor='chkvip' className={styles.subtitle}>VIP</label>
                                 <input id="chkvip" className={styles.chk} type="checkbox" value={vip} onChange={(e) => {setVip(!vip)}} />
                             </div>
-                            <button type="submit" className={styles.submit}>Создать</button>
+                            <button type="submit" className={styles.submit}>Сохранить</button>
                         </form>
                     </div>
                 </div>
@@ -161,10 +194,10 @@ const AdminProductsCreate = () => {
     )
 }
 
-export default AdminProductsCreate
+export default AdminProductsUpdate
 
 
-AdminProductsCreate.auth = {
+AdminProductsUpdate.auth = {
     role: "admin",
     loading: <Loader />,
     unauthorized: "/",
