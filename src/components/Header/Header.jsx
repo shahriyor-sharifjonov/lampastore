@@ -23,7 +23,7 @@ const Header = () => {
             .catch((error) => {
                 console.error(error)
             })
-    }, []);
+    }, [router.asPath]);
 
     const categories = useSelector((state) => state.categories)
 

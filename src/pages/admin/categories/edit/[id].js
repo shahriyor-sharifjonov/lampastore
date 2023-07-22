@@ -80,9 +80,10 @@ const AdminCategoriesEdit = () => {
                 })
                 .catch(function (error) {
                     dispatch(setLoading(false))
-                    console.error(error);
+                    console.error(error)
             })
 
+            router.push('/admin/categories');
         }
     }
 

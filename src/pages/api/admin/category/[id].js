@@ -33,14 +33,9 @@ const deleteCategory = async (req, res) => {
     try {
         const deleteCategoryRecursive = async (categoryId) => {
             await db.collection("categories").deleteOne({ _id: new ObjectId(categoryId) })
-    
-            const subcategories = await db.collection("categories").find({ parentCategory: categoryId }).toArray()
-    
-            for (const subcategory of subcategories) {
-                await deleteCategoryRecursive(subcategory._id.toString())
-            }
         };
   
+        
         await db.collection("products").deleteMany({ category: { $in: [id] } })
 
         await deleteCategoryRecursive(id)
