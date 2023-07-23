@@ -56,7 +56,7 @@ const updateProduct = async (req, res) => {
         }
     
         const { query: { id } } = req;
-        const { title, description, category, subcategory, fields, images, price, vip } = req.body;
+        const { title, description, category, subcategory, fields, images, price, vip, quantity } = req.body;
         const oldProduct = await db.collection('products').findOne({ _id: new ObjectId(id) });
 
         if (!oldProduct) {
@@ -81,6 +81,7 @@ const updateProduct = async (req, res) => {
                     images: images,
                     fields: fields,
                     vip: vip,
+                    quantity: quantity,
                     updated_at: new Date(),
                 },
             },

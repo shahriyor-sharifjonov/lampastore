@@ -7,38 +7,19 @@ import { useRouter } from 'next/router'
 import { setLoading } from '@/store/slices/loadingSlice'
 import { setFilter } from '@/store/slices/filterSlice'
 
-const Top = () => {
+const Top = ({news, category, subcategory}) => {
     const categories = useSelector((state) => state.categories)
     const loading = useSelector((state) => state.loading)
     const filter = useSelector((state) => state.filter)
     const router = useRouter()
-    const [category, setCategory] = useState({})
-    const [subcategory, setSubCategory] = useState({})
     const dispatch = useDispatch()
-
-    useEffect(() => {
-        setCategory(categories.find(category => category.slug === router.query.category))
-        if(router.query.subcategory){
-            setSubCategory(category?.subcategories?.find(sub => sub.slug === router.query.subcategory))
-        }
-    }, [router, categories, category, subcategory])
-
-    useEffect(() => {
-        dispatch(setLoading(true));
-        if(category?.name){
-            dispatch(setLoading(false));
-        }
-        if(category === undefined){
-            dispatch(setLoading(404));
-        }
-    }, [category])
 
     return ( 
         <motion.section key={`${router.asPath}top`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.top}>
             <h1 className={styles.title}>
-                {category?.name}
+                {news ? 'НОВИНКИ' : category?.name}
             </h1>
-            {category?.subcategories?.length !== 0 && (
+            {!news && category?.subcategories?.length !== 0 && (
                 <div className={styles.items}>
                     <Link href={`/c/${category?.slug}`} className={`${styles.item} ${router.query.subcategory ? '' : styles.active}`}>Все</Link>
                     {category?.subcategories?.map(item => (

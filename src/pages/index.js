@@ -2,10 +2,12 @@ import Intro from '@/components/Intro/Intro'
 import Head from 'next/head'
 import Image from 'next/image'
 import Footer from '@/components/Footer/Footer'
-import NewProducts from '@/components/NewProducts/NewProducts'
+import Catalog from '@/components/Catalog/Catalog'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 export default function Home() {
+  const categories = useSelector((state) => state.categories)
   return (
     <>
       <Head>
@@ -15,7 +17,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Intro />
-      <NewProducts />
+      <Catalog categoryTitle={'НОВИНКИ'} category={'news'} more={true}/>
+      {categories.map(cat => (
+        <Catalog key={cat._id} categorySlug={cat.slug} categoryTitle={cat.name} category={cat._id} more={true}/>
+      ))}
     </>
   )
 }

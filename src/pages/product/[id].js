@@ -107,7 +107,7 @@ const Product = () => {
                                         <span>{f.value}</span>
                                     </div>
                                 ))}
-                                <p className={styles.qua}>В наличии: 11 шт</p>
+                                {product.quantity && <p className={styles.qua}>В наличии: {product.quantity} шт</p>}
                                 <button type="button" className={styles.button}>Добавить в корзину</button>
                                 <button type="button" className={styles.button2}>Купить</button>
                             </div>

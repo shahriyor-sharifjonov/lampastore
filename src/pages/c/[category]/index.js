@@ -1,19 +1,38 @@
-import Footer from '@/components/Footer/Footer'
-import NewProducts from '@/components/NewProducts/NewProducts'
+import React, { useState, useEffect } from 'react'
 import Top from '@/components/Top/Top'
 import Head from 'next/head'
-import Image from 'next/image'
 import { motion } from 'framer-motion'
-import Product from '@/components/Product/Product'
 import { useSelector, useDispatch } from 'react-redux'
-import Link from 'next/link'
+import { setLoading } from '@/store/slices/loadingSlice'
 import FourOhFour from '@/pages/404'
 import { useRouter } from 'next/router'
-
+import Catalog from '@/components/Catalog/Catalog'
 
 export default function Home() {
+  const categories = useSelector((state) => state.categories)
   const loading = useSelector((state) => state.loading)
   const router = useRouter()
+  const dispatch = useDispatch()
+  const [category, setCategory] = useState({})
+  const [subcategory, setSubCategory] = useState({})
+
+  useEffect(() => {
+    setCategory(categories.find(category => category.slug === router.query.category))
+    if(router.query.subcategory){
+      setSubCategory(category?.subcategories?.find(sub => sub.slug === router.query.subcategory))
+    }
+  }, [router, categories, category, subcategory])
+
+  useEffect(() => {
+    dispatch(setLoading(true));
+    if(category?.name){
+      dispatch(setLoading(false));
+    }
+    if(category === undefined){
+      dispatch(setLoading(404));
+    }
+  }, [category])
+
   return (
     <>
       <Head>
@@ -24,10 +43,11 @@ export default function Home() {
       </Head>
       {loading.value !== 404 ? (
         <>
-          <Top />
+          <Top category={category} subcategory={subcategory} />
           <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
             <div className='catalog__body'>
               <div className='catalog__content'>
+                <Catalog key={category?._id} categorySlug={category?.slug} categoryTitle={category?.name} category={category?._id} more={false}/>
               </div>
             </div>
           </motion.section>

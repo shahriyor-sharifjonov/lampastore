@@ -162,6 +162,7 @@ input[type="number"] {
   }
   &__title{
     color: #000;
+    text-transform: uppercase;
     @include res('font-size', 36px);
     font-style: normal;
     font-weight: 400;

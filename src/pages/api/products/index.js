@@ -13,7 +13,7 @@ const getProducts = async (req, res) => {
     const client = await clientPromise
     const db = client.db()
 
-    const products = await db.collection('products').find().toArray()
+    const products = await db.collection('products').find().sort({ created_at: -1 }).toArray()
     res.status(200).json(products)
   }
   catch (err) {
