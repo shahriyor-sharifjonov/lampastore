@@ -8,6 +8,8 @@ import Image from 'next/image'
 export default function Loader() {
     const router = useRouter()
     const loading = useSelector((state) => state.loading)
+    const categories = useSelector((state) => state.categories)
+    const products = useSelector((state) => state.products)
     const dispatch = useDispatch()
   
     useEffect(() => {
@@ -20,7 +22,9 @@ export default function Loader() {
         const handleComplete = (url) => {
             if (url === router.asPath) {
                 setTimeout(() => {
-                    dispatch(setLoading(false))
+                    if(products.length !== 0 && categories.length !== 0){
+                        dispatch(setLoading(false))
+                    }
                 }, 500)
             }else{
                 console.log(router.asPath)
@@ -41,7 +45,9 @@ export default function Loader() {
     useEffect(() => {
         if (loading.value === false || loading.value === 404) {
             setTimeout(() => {
-                document.querySelector('.loading').classList.remove('active')
+                if(products.length !== 0 && categories.length !== 0){
+                    document.querySelector('.loading').classList.remove('active')
+                }
             }, 1000)
         }
     }, [loading])

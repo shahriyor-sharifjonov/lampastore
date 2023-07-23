@@ -13,6 +13,9 @@ const getCategories = async (req, res) => {
     const client = await clientPromise
     const db = client.db()
 
+    // const wait = new Promise(resolve => setTimeout(resolve, 5000))
+
+    // const categories = await wait.then(() => db.collection('categories').find().toArray())
     const categories = await db.collection('categories').find().toArray()
     res.status(200).json(categories)
   }

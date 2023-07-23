@@ -6,6 +6,7 @@ export default async function handler(req, res) {
   }
 
   const { cat } = req.query;
+  
   const response = categories.find(category => category.link === cat);
 
   if (!response) {
