@@ -18,6 +18,7 @@ const Product = () => {
     const categories = useSelector((state) => state.categories)
     const products = useSelector((state) => state.products)
     const loading = useSelector((state) => state.loading)
+    const [isMobile, setIsMobile] = useState(false);
     
     const [product, setProduct] = useState(null);
     
@@ -32,6 +33,19 @@ const Product = () => {
           swiper1Ref.current.controller.control = swiper2Ref.current;
         }
     }, []);
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth <= 576);
+        };
+        
+        handleResize();
+        
+        window.addEventListener('resize', handleResize);
+        return () => {
+          window.removeEventListener('resize', handleResize);
+        };
+    })
 
     useEffect(() => {
         setProduct(products.filter(i => i._id === id)[0]);
@@ -78,7 +92,7 @@ const Product = () => {
                                     controller={{ control: firstSwiper }}
                                     spaceBetween={0}
                                     slidesPerView={'auto'}
-                                    direction={'vertical'}
+                                    direction={isMobile ? 'horizontal' : 'vertical'}
                                     watchSlidesProgress 
                                     onSwiper={setThumbsSwiper}
                                     modules={[Thumbs, Controller]}

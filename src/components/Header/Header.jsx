@@ -13,6 +13,8 @@ const Header = () => {
     const { data: session, status } = useSession()
     const dispatch = useDispatch()
     const router = useRouter()
+    const products = useSelector((state) => state.products)
+    const categories = useSelector((state) => state.categories)
 
     useEffect(() => {
         dispatch(setLoading(true))
@@ -28,14 +30,17 @@ const Header = () => {
         axios.get('/api/products')
             .then((response) => {
                 dispatch(setProducts(response.data))
-                dispatch(setLoading(false))
             })
             .catch((error) => {
                 console.error(error)
             })
     }, [router.asPath]);
 
-    const categories = useSelector((state) => state.categories)
+    useEffect(() => {
+        if(products.length !== 0 && categories.length !== 0){
+            dispatch(setLoading(false))
+        }
+    }, [products, categories])
 
     return (
         <header className={styles.header}>

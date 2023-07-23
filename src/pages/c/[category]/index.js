@@ -44,13 +44,7 @@ export default function Home() {
       {loading.value !== 404 ? (
         <>
           <Top category={category} subcategory={subcategory} />
-          <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
-            <div className='catalog__body'>
-              <div className='catalog__content'>
-                <Catalog key={category?._id} categorySlug={category?.slug} categoryTitle={category?.name} category={category?._id} more={false}/>
-              </div>
-            </div>
-          </motion.section>
+          <Catalog key={category?._id} categorySlug={category?.slug} categoryTitle={category?.name} category={category?._id} more={false}/>
         </>
       ) : (
         <FourOhFour />

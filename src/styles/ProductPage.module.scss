@@ -4,6 +4,12 @@
     @include res('padding-right', 30px);
     @include res('padding-top', 40px);
     @include res('padding-bottom', 40px);
+    @include media(576){
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+        @include resa('padding-top', 20px);
+        @include resa('padding-bottom', 20px);
+    }
 }
 .title{
     color: var(--primary-text-color);
@@ -12,23 +18,43 @@
     font-weight: 400;
     line-height: 120%;
     @include res('margin-bottom', 40px);
+    @include media(576){
+        @include resa('font-size', 24px);
+        @include resa('letter-spacing', 1px);
+        @include resa('margin-bottom', 20px);
+    }
 }
 .content{
     display: flex;
     justify-content: space-between;
     @include res('gap', 40px);
+    @include media(576){
+        flex-direction: column;
+        @include resa('gap', 20px);
+    }
 }
 .swiper{
     @include res('width', 1081.8px);
     @include res('height', 845.44px);
     display: flex;
     justify-content: space-between;
+    @include media(576){
+        width: 100%;
+        flex-direction: column;
+        @include resa('width', 330px);
+        height: auto;
+        @include resa('gap', 16px);
+    }
     &>div{
         margin-left: 0 !important;
         margin-right: 0 !important;
         position: relative;
         &:nth-of-type(1){
             @include res('width', 845.44px);
+            @include media(576){
+                width: 100%;
+                @include resa('height', 330px);
+            }
             &>div>div{
                 line-height: 0;
                 img{
@@ -42,6 +68,9 @@
         &:nth-of-type(2){
             @include res('width', 216.36px);
             position: relative;
+            @include media(576){
+                width: 100%;
+            }
             &::before{
                 content: '';
                 position: absolute;
@@ -52,6 +81,9 @@
                 background: linear-gradient(180deg, #F9F8F4 0%, rgba(249, 248, 244, 0.00) 100%);
                 z-index: 10;
                 pointer-events: none;
+                @include media(576){
+                    display: none;
+                }
             }
             &::after{
                 content: '';
@@ -63,6 +95,9 @@
                 background: linear-gradient(0deg, #F9F8F4 0%, rgba(249, 248, 244, 0.00) 100%);
                 z-index: 10;
                 pointer-events: none;
+                @include media(576){
+                    display: none;
+                }
             }
             &>div{
                 &>div{
@@ -70,8 +105,16 @@
                     @include res('width', 216.36px);
                     @include res('height', 216.36px);
                     cursor: pointer;
+                    @include media(576){
+                        @include resa('width', 100px);
+                        @include resa('height', 100px);
+                    }
                     &:not(:last-of-type){
                         @include res('margin-bottom', 20px);
+                        @include media(576){
+                            margin-bottom: 0;
+                            @include resa('margin-right', 15px);
+                        }
                     }
                     img{
                         width: 100%;
