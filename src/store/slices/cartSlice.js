@@ -13,8 +13,10 @@ export const cartSlice = createSlice({
       state.push(action.payload)
     },
     deleteCart: (state, action) => {
-      const cartId = action.payload
-      return state.filter(cart => cart._id !== cartId)
+      const index = state.findIndex((cart) => cart._id === action.payload._id);
+      if (index !== -1) {
+        state.splice(index, 1);
+      }
     },
     updateCart: (state, action) => {
       const updatedCart = action.payload

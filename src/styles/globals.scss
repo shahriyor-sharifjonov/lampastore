@@ -104,6 +104,8 @@ input[type="number"] {
     visibility: hidden;
     transition: 300ms ease-out;
     transition-delay: 0ms;
+    @include res('width', 100px);
+    @include res('height', 100px);
   }
 }
 .intro{
@@ -280,6 +282,7 @@ input[type="number"] {
       font-style: normal;
       font-weight: 400;
       line-height: 120%;
+      white-space: nowrap; 
       @include media(576){
         @include resa('font-size', 18px);
       }
@@ -291,14 +294,19 @@ input[type="number"] {
   align-items: center;
   justify-content: center;
   @include res('min-height', 600px);
-  .catalog{
-    width: 100%;
-    @include res('min-height', 600px);
-  }
   &-no{
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
+    @include res('font-size', 24px);
+  }
+  &__wrap{
+    width: 100%;
+    @include res('min-height', 600px);
+  }
+  &__content{
+    display: flex;
+    flex-direction: column;
   }
 }

@@ -84,7 +84,7 @@
             @include res('left', 30px);
             top: 50%;
             transform: translateY(-50%);
-            @include res('height', 1px);
+            @include res('height', 0.2px);
             @include res('width', 1570px);
             background: var(--primary-text-color);
         }

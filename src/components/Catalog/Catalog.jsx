@@ -40,7 +40,7 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                             <div className='catalog__content'>
                                 {
                                 newProducts.map(product => (
-                                    <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={`${product.price}₽`} data={product.created_at}/>
+                                    <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at}/>
                                 ))}
                             </div>
                             {more ? (
@@ -59,9 +59,9 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                                 <div className='catalog__content'>
                                 {
                                     !subcategory ? (productsByCategory.map(product => (
-                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={`${product.price}₽`} data={product.created_at}/>
+                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at}/>
                                     ))) : (productsBySubcategory.map(product => (
-                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={`${product.price}₽`} data={product.created_at}/>
+                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at}/>
                                     )))
                                 }
                                 </div>

@@ -26,16 +26,12 @@ const ProductPage = () => {
     const [product, setProduct] = useState(null);
     
     const addToCart = (product) => {
-        // const isProductInCart = cartItems.some((item) => item._id === product._id)
-
         setAnimation(false)
         setTimeout(() => {
             setAnimation(true)
-        }, 200)
+        }, 100)
       
-        // if (!isProductInCart) {
-          dispatch(addCart(product))
-        // }
+        dispatch(addCart(product))
     };
     
     const [thumbsSwiper, setThumbsSwiper] = useState();
@@ -129,7 +125,7 @@ const ProductPage = () => {
                             </div>
                             <div className={styles.info}>
                                 <p className={styles.subtitle}>{product?.description}</p>
-                                <p className={styles.price}>{product?.price}₽</p>
+                                <p className={styles.price}>{(Number(product.price)).toLocaleString()} ₽</p>
                                 {product?.fields.map((f, index) => (
                                     <div key={index} className={styles.row}>
                                         <b>{f.title}</b>
@@ -137,7 +133,7 @@ const ProductPage = () => {
                                         <span>{f.value}</span>
                                     </div>
                                 ))}
-                                <button type="button" className={styles.button} onClick={() => {addToCart(product)}}>Добавить в корзину</button>
+                                <motion.button whileTap={{ scale: 0.98 }} type="button" className={styles.button} onClick={() => {addToCart(product)}}>Добавить в корзину</motion.button>
                                 {animation && (
                                     <motion.div transition={{duration: 0.5, delay: 0, easings: 'linear'}} exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}} className={styles.cart}>
                                         <p>Товар добавлен.<br/>Сейчас в корзине {cartItems.length} товара.</p>

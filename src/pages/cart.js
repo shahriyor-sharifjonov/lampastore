@@ -2,25 +2,40 @@ import React, { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { motion } from 'framer-motion'
 import { useSelector, useDispatch } from 'react-redux'
-import Product from '../components/Product/Product'
+import CartProduct from '@/components/CartProduct/CartProduct'
 
 
 const Cart = () => {
     const router = useRouter()
     const dispatch = useDispatch()
     const cartItems = useSelector((state) => state.cart)
+    const [sortedItems, setSortedItems] = useState([])
+
+    useEffect(() => {
+        const newItems = cartItems.reduce((acc, item) => {
+          const existingItem = acc.find((i) => i._id === item._id);
+          if (existingItem) {
+            existingItem.quantity += 1;
+          } else {
+            acc.push({ ...item, quantity: 1 });
+          }
+          return acc;
+        }, []);
+      
+        setSortedItems(newItems);
+    }, [cartItems]);
 
     return (
         <motion.section key={`${router.asPath}cart`} transition={{duration: 0.5, delay: 0.5, easings: 'linear'}} exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}} className="cart">
             {cartItems.length === 0 ? (
                 <div className='cart-no'>Нет товаров в корзине.</div>
             ) : (
-                <div className='catalog'>
+                <div className='cart__wrap'>
                     <div className='catalog__body'>
                         <h2 className='catalog__title'>Корзина</h2>
-                        <div className='catalog__content'>
-                            {cartItems.map((product, index) => (
-                                <Product key={index} id={product._id} img={product.images[0]?.url} title={product.title} price={`${product.price}₽`} data={product.created_at}/>
+                        <div className='cart__content'>
+                            {sortedItems.map((product, index) => (
+                                <CartProduct key={index} props={product}/>
                             ))}
                         </div>
                     </div>

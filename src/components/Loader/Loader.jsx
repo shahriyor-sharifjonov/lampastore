@@ -54,7 +54,7 @@ export default function Loader() {
   
     return (
       <div className={`loading active ${loading.value ? 'active' : ''}`}>
-        <Image src="/loading.svg" alt="loading" width={100} height={100}></Image>
+        <Image src="/loading.svg" alt="loading" width={100} height={100} draggable={false}></Image>
       </div>
     )
 }

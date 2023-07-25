@@ -1,0 +1,83 @@
+@import '@/styles/mixins.scss';
+.product{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    @include res('padding-top', 10px);
+    @include res('padding-bottom', 10px);
+    &+.product{
+        border-top: solid var(--primary-border);
+        @include res('border-width', 1px);
+    }
+}
+.left{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @include res('gap', 15px);
+    width: 40%;
+}
+.img{
+    line-height: 0;
+    @include res('border-radius', 10px);
+    overflow: hidden;
+    @include res('width', 70px);
+    @include res('height', 70px);
+    img{
+        line-height: 0;
+        width: 100%;
+        height: 100%;
+    }
+}
+.title{
+    @include res('font-size', 18px);
+    text-decoration: none;
+    @include res('margin-bottom', 3px);
+    display: block;
+}
+.num{
+    color: var(--primary-border);
+    @include res('font-size', 14px);
+}
+.calc{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &P{
+        display: block;
+        @include res('width', 50px);
+        @include res('font-size', 18px);
+        text-align: center;
+        overflow: hidden;
+        span{
+            display: block;
+            @include res('font-size', 18px);
+        }
+    }
+    &Button{
+        border: solid var(--primary-color);
+        color: var(--primary-color);
+        @include res('border-width', 1px);
+        @include res('width', 50px);
+        @include res('height', 50px);
+        @include res('font-size', 24px);
+        @include res('border-radius', 10px);
+        line-height: 120%;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        transition: background 300ms ease-out, color 300ms ease-out;
+        &:hover{
+            background: var(--primary-color);
+            color: #fff;
+        }
+    }
+}
+.price{
+    @include res('font-size', 24px);
+    width: 20%;
+    text-align: right;
+}

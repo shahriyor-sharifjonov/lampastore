@@ -183,6 +183,11 @@
     color: var(--primary-text-color);
     @include res('font-size', 18px);
     @include res('margin-top', 30px);
+    transition: background 300ms ease-out, color 300ms ease-out;
+    &:hover{
+        background: var(--primary-text-color);
+        color: #fff;
+    }
 }
 .button2{
     display: flex;
@@ -235,5 +240,10 @@
         @include res('padding-bottom', 10px);
         text-decoration: none;
         @include res('margin-top', 10px);
+        transition: background 300ms ease-out, color 300ms ease-out;
+        &:hover{
+            background: var(--primary-text-color);
+            color: #fff;
+        }
     }
 }
