@@ -10,6 +10,7 @@ import 'swiper/css';
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import FourOhFour from '../404'
+import Link from 'next/link'
 
 const ProductPage = () => {
     const router = useRouter()
@@ -19,16 +20,22 @@ const ProductPage = () => {
     const products = useSelector((state) => state.products)
     const loading = useSelector((state) => state.loading)
     const cartItems = useSelector((state) => state.cart)
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(false)
+    const [animation, setAnimation] = useState(false)
     
     const [product, setProduct] = useState(null);
     
     const addToCart = (product) => {
-        const isProductInCart = cartItems.some((item) => item._id === product._id);
+        // const isProductInCart = cartItems.some((item) => item._id === product._id)
+
+        setAnimation(false)
+        setTimeout(() => {
+            setAnimation(true)
+        }, 200)
       
-        if (!isProductInCart) {
-          dispatch(addCart(product));
-        }
+        // if (!isProductInCart) {
+          dispatch(addCart(product))
+        // }
     };
     
     const [thumbsSwiper, setThumbsSwiper] = useState();
@@ -131,6 +138,12 @@ const ProductPage = () => {
                                     </div>
                                 ))}
                                 <button type="button" className={styles.button} onClick={() => {addToCart(product)}}>Добавить в корзину</button>
+                                {animation && (
+                                    <motion.div transition={{duration: 0.5, delay: 0, easings: 'linear'}} exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}} className={styles.cart}>
+                                        <p>Товар добавлен.<br/>Сейчас в корзине {cartItems.length} товара.</p>
+                                        <Link href="/cart">Оформить заказ</Link>
+                                    </motion.div>
+                                )}
                             </div>
                         </div>
                     </>

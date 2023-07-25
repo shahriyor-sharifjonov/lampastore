@@ -197,3 +197,43 @@
     color: #fff;
     @include res('font-size', 18px);
 }
+.cart{
+    background: var(--primary-color);
+    @include res('margin-top', 30px);
+    @include res('border-radius', 8px);
+    @include res('padding-top', 20px);
+    @include res('padding-bottom', 20px);
+    @include res('padding-left', 20px);
+    @include res('padding-right', 20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    &::before{
+        content: '';
+        position: absolute;
+        @include res('top', -3px);
+        @include res('height', 20px);
+        @include res('width', 20px);
+        left: 50%;
+        pointer-events: none;
+        transform: rotate(45deg) translateX(-50%);
+        background: var(--primary-color);
+    }
+    p{
+        @include res('font-size', 18px);
+    }
+    a{
+        @include res('font-size', 18px);
+        background: #fff;
+        @include res('border-radius', 100px);
+        @include res('padding-left', 50px);
+        @include res('padding-right', 50px);
+        @include res('padding-top', 10px);
+        @include res('padding-bottom', 10px);
+        text-decoration: none;
+        @include res('margin-top', 10px);
+    }
+}
