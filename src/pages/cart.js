@@ -37,6 +37,7 @@ const Cart = () => {
                             {sortedItems.map((product, index) => (
                                 <CartProduct key={index} props={product}/>
                             ))}
+                            
                         </div>
                     </div>
                 </div>
