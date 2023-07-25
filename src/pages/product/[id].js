@@ -5,22 +5,31 @@ import styles from '@/styles/ProductPage.module.scss'
 import { motion } from 'framer-motion'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { Thumbs, Navigation, Controller } from 'swiper/modules'
+import { addCart } from '@/store/slices/cartSlice'
 import 'swiper/css';
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import FourOhFour from '../404'
 
-
-
-const Product = () => {
+const ProductPage = () => {
     const router = useRouter()
     const { id } = router.query
+    const dispatch = useDispatch()
     const categories = useSelector((state) => state.categories)
     const products = useSelector((state) => state.products)
     const loading = useSelector((state) => state.loading)
+    const cartItems = useSelector((state) => state.cart)
     const [isMobile, setIsMobile] = useState(false);
     
     const [product, setProduct] = useState(null);
+    
+    const addToCart = (product) => {
+        const isProductInCart = cartItems.some((item) => item._id === product._id);
+      
+        if (!isProductInCart) {
+          dispatch(addCart(product));
+        }
+    };
     
     const [thumbsSwiper, setThumbsSwiper] = useState();
     const [firstSwiper, setFirstSwiper] = useState();
@@ -121,9 +130,7 @@ const Product = () => {
                                         <span>{f.value}</span>
                                     </div>
                                 ))}
-                                {product.quantity && <p className={styles.qua}>В наличии: {product.quantity} шт</p>}
-                                <button type="button" className={styles.button}>Добавить в корзину</button>
-                                <button type="button" className={styles.button2}>Купить</button>
+                                <button type="button" className={styles.button} onClick={() => {addToCart(product)}}>Добавить в корзину</button>
                             </div>
                         </div>
                     </>
@@ -133,4 +140,4 @@ const Product = () => {
     );
 };
 
-export default Product;
+export default ProductPage;

@@ -132,6 +132,9 @@ input[type="number"] {
     @include res('width', 50px);
     @include res('height', 50px);
     background: url('/right.svg') center / cover no-repeat;
+    &.swiper-button-disabled{
+      display: none;
+    }
   }
   .swiper-button-prev{
     position: absolute;
@@ -143,6 +146,9 @@ input[type="number"] {
     @include res('width', 50px);
     @include res('height', 50px);
     background: url('/left.svg') center / cover no-repeat;
+    &.swiper-button-disabled{
+      display: none;
+    }
   }
 }
 .catalog{
@@ -278,5 +284,21 @@ input[type="number"] {
         @include resa('font-size', 18px);
       }
     }
+  }
+}
+.cart{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  @include res('min-height', 600px);
+  .catalog{
+    width: 100%;
+    @include res('min-height', 600px);
+  }
+  &-no{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
   }
 }

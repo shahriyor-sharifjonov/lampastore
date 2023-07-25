@@ -31,7 +31,6 @@ const AdminProductsCreate = () => {
     const [fieldValue, setFieldValue] = useState('')
     const [price, setPrice] = useState('')
     const [vip, setVip] = useState(false)
-    const [quantity, setQuantity] = useState('')
 
     const handleFileUpload = async (event) => {
         dispatch(setLoading(true))
@@ -75,7 +74,6 @@ const AdminProductsCreate = () => {
         setFieldValue('')
         setPrice('')
         setVip(false)
-        setQuantity('')
     }
 
     const handleCreateProduct = (e) => {
@@ -93,7 +91,6 @@ const AdminProductsCreate = () => {
                     fields: fields,
                     price: price,
                     vip: vip,
-                    quantity: quantity,
                 })
                 .then(function (response) {
                     dispatch(setLoading(false))
@@ -203,8 +200,6 @@ const AdminProductsCreate = () => {
                             </div>
                             <p className={styles.subtitle}>Цена ₽</p>
                             <input className={styles.input} type="number" placeholder="Цена" value={price} onChange={(e) => {setPrice(e.target.value)}} />
-                            <p className={styles.subtitle}>В инвентаре</p>
-                            <input className={styles.input} type="number" placeholder="В инвентаре шт." value={quantity} onChange={(e) => {setQuantity(e.target.value)}} />
                             <div className={styles.chkrow}>
                                 <label htmlFor='chkvip' className={styles.subtitle}>VIP</label>
                                 <input id="chkvip" className={styles.chk} type="checkbox" value={vip} onChange={(e) => {setVip(!vip)}} />

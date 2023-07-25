@@ -34,7 +34,6 @@ const AdminProductsUpdate = () => {
     const [fieldValue, setFieldValue] = useState('')
     const [price, setPrice] = useState('')
     const [vip, setVip] = useState(false)
-    const [quantity, setQuantity] = useState('')
 
     const handleFileUpload = async (event) => {
         dispatch(setLoading(true))
@@ -69,7 +68,6 @@ const AdminProductsUpdate = () => {
             dispatch(setLoading(404))
         }
         if(product?._id){
-            dispatch(setLoading(false))
             setTitle(product.title)
             setDescription(product.description)
             setCategory(product.category)
@@ -78,9 +76,13 @@ const AdminProductsUpdate = () => {
             setFields(product.fields)
             setPrice(product.price)
             setVip(product.vip)
-            setQuantity(product.quantity)
+            dispatch(setLoading(false))
         }
     }, [product])
+
+    useEffect(() => {
+        console.log(vip);
+    }, [vip])
 
     const handleAddField = (e) => {
         e.preventDefault()
@@ -102,7 +104,6 @@ const AdminProductsUpdate = () => {
         setFieldValue('')
         setPrice('')
         setVip(false)
-        setQuantity('')
     }
 
     const handleUpdateProduct = (e) => {
@@ -236,11 +237,9 @@ const AdminProductsUpdate = () => {
                             </div>
                             <p className={styles.subtitle}>Цена ₽</p>
                             <input className={styles.input} type="number" placeholder="Цена" value={price} onChange={(e) => {setPrice(e.target.value)}} />
-                            <p className={styles.subtitle}>В инвентаре</p>
-                            <input className={styles.input} type="number" placeholder="В инвентаре шт." value={quantity} onChange={(e) => {setQuantity(e.target.value)}} />
                             <div className={styles.chkrow}>
                                 <label htmlFor='chkvip' className={styles.subtitle}>VIP</label>
-                                <input id="chkvip" className={styles.chk} type="checkbox" value={vip} onChange={(e) => {setVip(!vip)}} />
+                                <input id="chkvip" className={styles.chk} type="checkbox" checked={vip} onChange={(e) => {console.log('checked');setVip(!vip)}} />
                             </div>
                             <button type="submit" className={styles.submit}>Сохранить</button>
                         </form>

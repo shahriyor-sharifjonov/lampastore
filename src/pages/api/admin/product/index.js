@@ -26,7 +26,7 @@ const createProduct = async (req, res) => {
             return
         }
 
-        const { title, description, category, subcategory, fields, images, price, vip, quantity } = req.body
+        const { title, description, category, subcategory, fields, images, price, vip } = req.body
         if (!title || !category || !fields || !price || !images[0]) {
             res.status(400).json({ message: 'Add all fields' })
             return
@@ -44,7 +44,6 @@ const createProduct = async (req, res) => {
             fields: fields,
             vip: vip,
             num: num.length+=2,
-            quantity: quantity,
             created_at: new Date(),
             updated_at: new Date(),
         }

@@ -182,7 +182,7 @@
     @include res('border-width', 1px);
     color: var(--primary-text-color);
     @include res('font-size', 18px);
-    @include res('margin-bottom', 10px);
+    @include res('margin-top', 30px);
 }
 .button2{
     display: flex;
