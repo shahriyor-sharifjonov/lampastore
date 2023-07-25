@@ -11,6 +11,7 @@ import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 import FourOhFour from '../404'
 import Link from 'next/link'
+import Catalog from '@/components/Catalog/Catalog'
 
 const ProductPage = () => {
     const router = useRouter()
@@ -145,6 +146,7 @@ const ProductPage = () => {
                     </>
                 ) : <FourOhFour />}
             </motion.section>
+            <Catalog categoryTitle={'НОВИНКИ'} category={'news'} more={true}/>
         </>
     );
 };

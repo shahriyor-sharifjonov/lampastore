@@ -15,10 +15,7 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
     useEffect(() => {
         const twoDaysAgo = new Date();
         twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
-        setNewProducts(products.filter(product => {
-            const productCreatedAt = new Date(product.created_at);
-            return productCreatedAt >= twoDaysAgo;
-        }))
+        setNewProducts(products)
         setProductsByCategory(products.filter(product => product.category === category))
         
     }, [products, category])
@@ -26,7 +23,6 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
     useEffect(() => {
         setProductsBySubcategory(productsByCategory.filter(product => product.subcategory === subcategorySlug))
     }, [productsByCategory, subcategory])
-    
 
     return (
         <>
