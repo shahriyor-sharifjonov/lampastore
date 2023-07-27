@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { useRouter } from 'next/router'
 import { useSelector, useDispatch } from 'react-redux'
 
-const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subcategorySlug}) => {
+const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subcategorySlug, filter}) => {
     const router = useRouter()
     const products = useSelector((state) => state.products)
     const [newProducts, setNewProducts] = useState([])
@@ -13,8 +13,6 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
     const [productsBySubcategory, setProductsBySubcategory] = useState([])
 
     useEffect(() => {
-        const twoDaysAgo = new Date();
-        twoDaysAgo.setDate(twoDaysAgo.getDate() - 2);
         setNewProducts(products)
         setProductsByCategory(products.filter(product => product.category === category))
         
