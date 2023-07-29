@@ -333,8 +333,10 @@ input[type="number"] {
     align-items: center;
     justify-content: space-between;
     border-top: solid var(--primary-border);
+    border-bottom: solid var(--primary-border);
     @include res('border-width', 1px);
     @include res('padding-top', 30px);
+    @include res('padding-bottom', 30px);
     &-p{
       @include res('font-size', 24px);
     }
