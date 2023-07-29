@@ -11,6 +11,8 @@
     align-items: center;
     border-bottom: solid var(--primary-border);
     @include res('border-width', 1px);
+    position: relative;
+    z-index: 2;
     &Body{
         display: flex;
         align-items: center;
