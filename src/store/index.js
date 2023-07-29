@@ -3,6 +3,7 @@ import loadingSlice from "./slices/loadingSlice"
 import categoriesSlice from "./slices/categoriesSlice"
 import productsSlice from "./slices/productsSlice"
 import filterSlice from "./slices/filterSlice"
+import filtersSlice from "./slices/filtersSlice"
 import cartSlice from "./slices/cartSlice"
 
 export const store = configureStore({
@@ -11,6 +12,7 @@ export const store = configureStore({
         categories: categoriesSlice,
         products: productsSlice,
         filter: filterSlice,
+        filters: filtersSlice,
         cart: cartSlice,
     },
 })

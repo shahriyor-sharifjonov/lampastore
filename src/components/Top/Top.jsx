@@ -6,11 +6,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { setLoading } from '@/store/slices/loadingSlice'
 import { setFilter } from '@/store/slices/filterSlice'
+import { setMinPrice, setMaxPrice } from '@/store/slices/filtersSlice'
 
 const Top = ({news, category, subcategory}) => {
     const categories = useSelector((state) => state.categories)
     const loading = useSelector((state) => state.loading)
     const filter = useSelector((state) => state.filter)
+    const filters = useSelector((state) => state.filters)
     const router = useRouter()
     const dispatch = useDispatch()
 
@@ -35,7 +37,7 @@ const Top = ({news, category, subcategory}) => {
                 <motion.div key={`${router.asPath}openedfilter`} transition={{duration: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.filter}>
                     <div className={styles.filterTop}>
                         <button className={styles.filterBtn} onClick={() => {dispatch(setFilter(!filter.value))}}>ФИЛЬТР & СОРТИРОВКА</button>
-                        <button className={styles.filterReset}>СБРОСИТЬ</button> 
+                        <button className={styles.filterReset}>СБРОСИТЬ</button>
                     </div>
                     <div className={styles.filterBot}>
                         <div className={styles.filterItem}>
@@ -43,11 +45,11 @@ const Top = ({news, category, subcategory}) => {
                             <div className={styles.filterPrice}>
                                 <div className={styles.filterPriceItem}>
                                     <p className={styles.filterPriceP}>от</p>
-                                    <input type="number" placeholder='Мин.'/>
+                                    <input type="number" placeholder='Мин.' value={filters.minPrice} onChange={() => {dispatch()}} />
                                 </div>
                                 <div className={styles.filterPriceItem}>
                                     <p className={styles.filterPriceP}>до</p>
-                                    <input type="number" placeholder='Макс.'/>
+                                    <input type="number" placeholder='Макс.' value={filters.maxPrice} onChange={() => {dispatch()}} />
                                 </div>
                             </div>
                         </div>
