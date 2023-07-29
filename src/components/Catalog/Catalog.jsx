@@ -17,6 +17,30 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
 
     useEffect(() => {
         setNewProducts(products)
+        const prod = products
+        let finalProd = null;
+        if(filter){
+            if(minPrice !== "" && maxPrice === ""){
+                finalProd = prod.filter(product => product.price > Number(minPrice));
+                setNewProducts(finalProd)
+            } else if (minPrice !== "" && maxPrice !== ""){
+                finalProd = prod.filter(product => product.price > Number(minPrice) && product.price < Number(maxPrice));
+                setNewProducts(finalProd)
+            } else if (minPrice === "" && maxPrice !== ""){
+                finalProd = prod.filter(product => product.price < Number(maxPrice));
+                setNewProducts(finalProd)
+            } else {
+                finalProd = prod;
+                setNewProducts(finalProd)
+            }
+        }else {
+            finalProd = prod;
+            setNewProducts(finalProd)
+        }
+        setProductsByCategory(finalProd)
+    }, [products, filters])
+    
+    useEffect(() => {
         const prod = products.filter(product => product.category === category)
         let finalProd = null;
         if(filter){
