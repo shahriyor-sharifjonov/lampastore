@@ -138,9 +138,33 @@
     opacity: 0;
     visibility: hidden;
     transition: 300ms ease-out;
+    @include res('padding-top', 70px);
+    @include res('padding-left', 100px);
+    @include res('padding-right', 100px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     &.open{
         opacity: 1;
         visibility: visible;
+    }
+    &List{
+        display: flex;
+        flex-direction: column;
+        @include res('gap', 30px);
+    }
+    &Link{
+        color: #646461;
+        font-family: Montserrat;
+        @include res('font-size', 80px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        text-decoration: none;
+        transition: 300ms ease-out;
+        &:hover{
+            color: #1A1A19;
+        }
     }
 }
 .bot{

@@ -9,6 +9,7 @@ import { setCart } from '@/store/slices/cartSlice'
 import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useSession, signIn, signOut } from 'next-auth/react'
+import Image from 'next/image'
 
 const Header = () => {
     const { data: session, status } = useSession()
@@ -64,7 +65,16 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <div className={`${styles.menu} ${menuOpen ? styles.open : ''}`}>
-                
+                <div className={styles.menuList}>
+                    <Link href="/about" onClick={toggleMenu} className={styles.menuLink}>О магазине</Link>
+                    <Link href="/delivery" onClick={toggleMenu} className={styles.menuLink}>Доставка</Link>
+                    <Link href="/payment" onClick={toggleMenu} className={styles.menuLink}>Оплата</Link>
+                    <Link href="/designers" onClick={toggleMenu} className={styles.menuLink}>Дизайнерам</Link>
+                    <Link href="/contacts" onClick={toggleMenu} className={styles.menuLink}>Контакты</Link>
+                </div>
+                <div className={styles.menuImg}>
+                    <Image src="/menu-img.png" alt="" width={1000} height={600} draggable={false} />
+                </div>
             </div>
             <div className={styles.top}> 
                 <div className={styles.topBody}>
