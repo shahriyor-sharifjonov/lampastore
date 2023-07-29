@@ -1,6 +1,7 @@
 @import '@/styles/mixins.scss';
 .header{
     background: var(--primary-bg-color);
+    z-index: 500;
 }
 .top{
     @include res('height', 70px);
@@ -75,6 +76,23 @@
     @include res('width', 50px);
     @include res('height', 14px);
     position: relative;
+    z-index: 2;
+    &.open {
+        .buttonLine{
+            opacity: 0;
+            visibility: hidden;
+        }
+        &::before {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(135deg);
+        }
+        &::after {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-135deg);
+        }
+    }
     &::before{
         content: '';
         position: absolute;
@@ -83,6 +101,7 @@
         width: 100%;
         @include res('height', 2px);
         background: var(--primary-text-color);
+        transition: 300ms ease-out;
     }
     &::after{
         content: '';
@@ -92,6 +111,7 @@
         width: 100%;
         @include res('height', 2px);
         background: var(--primary-text-color);
+        transition: 300ms ease-out;
     }
     &Line{
         position: absolute;
@@ -101,6 +121,24 @@
         background: var(--primary-text-color);
         width: 100%;
         @include res('height', 2px);
+        transition: 300ms ease-out;
+    }
+}
+.menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    background: #fff;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: 300ms ease-out;
+    &.open{
+        opacity: 1;
+        visibility: visible;
     }
 }
 .bot{

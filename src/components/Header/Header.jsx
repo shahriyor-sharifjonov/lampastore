@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import styles from './Header.module.scss'
 import { setCategories } from '@/store/slices/categoriesSlice'
@@ -14,6 +14,7 @@ const Header = () => {
     const { data: session, status } = useSession()
     const dispatch = useDispatch()
     const router = useRouter()
+    const [menuOpen, setMenuOpen] = useState(false)
     const cartItems = useSelector((state) => state.cart)
     const products = useSelector((state) => state.products)
     const categories = useSelector((state) => state.categories)
@@ -55,6 +56,11 @@ const Header = () => {
         localStorage.setItem('cartItems', JSON.stringify(cartItems))
     }, [cartItems]);
 
+    const toggleMenu = () => {
+        setMenuOpen(!menuOpen)
+        document.body.classList.toggle('oh')
+    }
+ 
     return (
         <header className={styles.header}>
             <div className={styles.top}> 
@@ -74,6 +80,9 @@ const Header = () => {
                         </svg>
                     </Link>
                     <div className={styles.right}>
+                        <div className={`${styles.menu} ${menuOpen ? styles.open : ''}`}>
+                            
+                        </div>
                         {session?.customUser?.role === 'admin' ? (
                             <Link href="/admin" className={styles.link}>
                                 АДМИН
@@ -86,7 +95,7 @@ const Header = () => {
                             КОРЗИНА
                             <span>{cartItems.length}</span>
                         </Link>
-                        <button className={styles.button}>
+                        <button className={`${styles.button} ${menuOpen ? styles.open : ''}`} onClick={toggleMenu}>
                             <div className={styles.buttonLine}></div>
                         </button>
                     </div>
