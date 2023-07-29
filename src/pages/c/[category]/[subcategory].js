@@ -45,7 +45,7 @@ export default function Home() {
       {loading.value !== 404 ? (
         <>
           <Top category={category} subcategory={subcategory} />
-          <Catalog key={category?._id} categorySlug={category?.slug} categoryTitle={category?.name} category={category?._id} more={false} subcategory={subcategory?.name} subcategorySlug={subcategory?.slug}/>
+          <Catalog key={category?._id} categorySlug={category?.slug} categoryTitle={category?.name} category={category?._id} more={false} subcategory={subcategory?.name} subcategorySlug={subcategory?.slug} filter={true}/>
         </>
       ) : (
         <FourOhFour />

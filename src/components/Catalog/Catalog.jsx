@@ -8,19 +8,51 @@ import { useSelector, useDispatch } from 'react-redux'
 const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subcategorySlug, filter}) => {
     const router = useRouter()
     const products = useSelector((state) => state.products)
+    const minPrice = useSelector((state) => state.filters.minPrice)
+    const maxPrice = useSelector((state) => state.filters.maxPrice)
+    const filters = useSelector((state) => state.filters)
     const [newProducts, setNewProducts] = useState([])
     const [productsByCategory, setProductsByCategory] = useState([])
     const [productsBySubcategory, setProductsBySubcategory] = useState([])
 
     useEffect(() => {
         setNewProducts(products)
-        setProductsByCategory(products.filter(product => product.category === category))
-        
-    }, [products, category])
+        const prod = products.filter(product => product.category === category)
+        let finalProd = null;
+        if(filter){
+            if(minPrice !== "" && maxPrice === ""){
+                finalProd = prod.filter(product => product.price > Number(minPrice));
+            } else if (minPrice !== "" && maxPrice !== ""){
+                finalProd = prod.filter(product => product.price > Number(minPrice) && product.price < Number(maxPrice));
+            } else if (minPrice === "" && maxPrice !== ""){
+                finalProd = prod.filter(product => product.price < Number(maxPrice));
+            } else {
+                finalProd = prod;
+            }
+        }else {
+            finalProd = prod;
+        }
+        setProductsByCategory(finalProd)
+    }, [products, category, filters])
 
     useEffect(() => {
-        setProductsBySubcategory(productsByCategory.filter(product => product.subcategory === subcategorySlug))
-    }, [productsByCategory, subcategory])
+        const prod = productsByCategory.filter(product => product.subcategory === subcategorySlug)
+        let finalProd = null;
+        if(filter){
+            if(minPrice !== "" && maxPrice === ""){
+                finalProd = prod.filter(product => product.price > Number(minPrice));
+            } else if (minPrice !== "" && maxPrice !== ""){
+                finalProd = prod.filter(product => product.price > Number(minPrice) && product.price < Number(maxPrice));
+            } else if (minPrice === "" && maxPrice !== ""){
+                finalProd = prod.filter(product => product.price < Number(maxPrice));
+            } else {
+                finalProd = prod;
+            }
+        }else {
+            finalProd = prod;
+        }
+        setProductsBySubcategory(finalProd)
+    }, [productsByCategory, subcategory, filters])
 
     return (
         <>

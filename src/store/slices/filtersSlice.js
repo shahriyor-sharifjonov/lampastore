@@ -1,8 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  minPrice: null,
-  maxPrice: null,
+  minPrice: "",
+  maxPrice: "",
 }
 
 export const filtersSlice = createSlice({

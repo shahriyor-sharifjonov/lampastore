@@ -45,11 +45,11 @@ const Top = ({news, category, subcategory}) => {
                             <div className={styles.filterPrice}>
                                 <div className={styles.filterPriceItem}>
                                     <p className={styles.filterPriceP}>от</p>
-                                    <input type="number" placeholder='Мин.' value={filters.minPrice} onChange={() => {dispatch()}} />
+                                    <input type="number" placeholder='Мин.' value={filters.minPrice} onChange={(e) => {dispatch(setMinPrice(e.target.value))}} />
                                 </div>
                                 <div className={styles.filterPriceItem}>
                                     <p className={styles.filterPriceP}>до</p>
-                                    <input type="number" placeholder='Макс.' value={filters.maxPrice} onChange={() => {dispatch()}} />
+                                    <input type="number" placeholder='Макс.' value={filters.maxPrice} onChange={(e) => {dispatch(setMaxPrice(e.target.value))}} />
                                 </div>
                             </div>
                         </div>
