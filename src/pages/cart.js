@@ -10,8 +10,10 @@ const Cart = () => {
     const dispatch = useDispatch()
     const cartItems = useSelector((state) => state.cart)
     const [sortedItems, setSortedItems] = useState([])
+    const [totalPrice, setTotalPrice] = useState('')
 
     useEffect(() => {
+        console.log(cartItems);
         const newItems = cartItems.reduce((acc, item) => {
           const existingItem = acc.find((i) => i._id === item._id);
           if (existingItem) {
@@ -21,6 +23,13 @@ const Cart = () => {
           }
           return acc;
         }, []);
+
+
+        let p = Number(0);
+        cartItems.forEach(c => {
+            p += Number(c.price)
+        })
+        setTotalPrice(p)
       
         setSortedItems(newItems);
     }, [cartItems]);
@@ -37,7 +46,11 @@ const Cart = () => {
                             {sortedItems.map((product, index) => (
                                 <CartProduct key={index} props={product}/>
                             ))}
-                            
+                            <div className='cart__total'>
+                                <p className='cart__total-p cart__total-title'>Итого:</p>
+                                <p className='cart__total-p cart__total-quantity'>{cartItems.length}</p>
+                                <p className='cart__total-p cart__total-price'>{totalPrice !== '' ? Number(totalPrice).toLocaleString() : ''} ₽</p>
+                            </div>
                         </div>
                     </div>
                 </div>

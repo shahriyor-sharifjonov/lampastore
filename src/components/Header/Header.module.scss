@@ -168,6 +168,16 @@
             color: #1A1A19;
         }
     }
+    &Img{
+        @include res('width', 1000px);
+        @include res('height', 600px);
+        overflow: hidden;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
 }
 .bot{
     @include res('height', 50px);

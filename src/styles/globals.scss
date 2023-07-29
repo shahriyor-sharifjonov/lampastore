@@ -328,4 +328,24 @@ input[type="number"] {
     display: flex;
     flex-direction: column;
   }
+  &__total{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: solid var(--primary-border);
+    @include res('border-width', 1px);
+    @include res('padding-top', 30px);
+    &-p{
+      @include res('font-size', 24px);
+    }
+    &-title{
+      width: 40%;
+      display: block;
+      @include res('padding-left', 85px);
+    }
+    &-price{
+      width: 20%;
+      text-align: right;
+    }
+  }
 }
