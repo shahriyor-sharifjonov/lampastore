@@ -98,9 +98,9 @@ const Header = () => {
                                 АДМИН
                             </Link>
                         ) : ''}
-                        <Link href="#!" className={styles.link} onClick={() => {menuOpen ? toggleMenu() : ''}}>
+                        {/* <Link href="#!" className={styles.link} onClick={() => {menuOpen ? toggleMenu() : ''}}>
                             ПОИСК
-                        </Link>
+                        </Link> */}
                         <Link href="/cart" className={styles.link} onClick={() => {menuOpen ? toggleMenu() : ''}}>
                             КОРЗИНА
                             <span>{cartItems.length}</span>

@@ -10,7 +10,7 @@ export default async function handler(req, res) {
                 text += `Новый заказ на ${Number(val).toLocaleString()} ₽\n-----------------------------------\n`
             } else if (key === 'Товары') {
                 const products = val.map(product => ({
-                    link: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/c/${product._id}`,
+                    link: `${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/product/${product._id}`,
                     title: product.title,
                     quantity: product.quantity,
                     price: product.price,
