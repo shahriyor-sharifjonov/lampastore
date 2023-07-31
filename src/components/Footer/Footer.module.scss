@@ -6,6 +6,8 @@
     @include media(576){
         @include resa('padding-top', 36px);
         @include resa('padding-bottom', 36px);
+        display: flex;
+        flex-direction: column;
     }
 }
 .row{
@@ -78,7 +80,12 @@
     align-items: center;
     justify-content: center;
     @include media(576){
-        display: none;
+        order: -1;
+        border: none;
+        @include resa('width', 200px);
+        margin-left: auto;
+        margin-right: auto;
+        @include resa('margin-bottom', 36px);
     }
     svg{
         width: 100%;

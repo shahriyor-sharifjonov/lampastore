@@ -137,6 +137,11 @@ input[type="number"] {
     @include res('width', 50px);
     @include res('height', 50px);
     background: url('/right.svg') center / cover no-repeat;
+    @include media(576){
+      @include resa('right', 15px);
+      @include resa('width', 30px);
+      @include resa('height', 30px);
+    }
     &.swiper-button-disabled{
       display: none;
     }
@@ -151,6 +156,11 @@ input[type="number"] {
     @include res('width', 50px);
     @include res('height', 50px);
     background: url('/left.svg') center / cover no-repeat;
+    @include media(576){
+      @include resa('left', 15px);
+      @include resa('width', 30px);
+      @include resa('height', 30px);
+    }
     &.swiper-button-disabled{
       display: none;
     }
