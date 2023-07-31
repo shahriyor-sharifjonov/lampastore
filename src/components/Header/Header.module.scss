@@ -98,7 +98,7 @@
     z-index: 2;
     @include media(576){
         @include resa('width', 25px);
-        @include resa('height', 10px);
+        @include resa('height', 11px);
     }
     &.open {
         .buttonLine{
@@ -134,7 +134,7 @@
         background: var(--primary-text-color);
         transition: 300ms ease-out;
         @include media(576){
-            @include resa('height', 2px);
+            @include resa('height', 1px);
         }
     }
     &::after{
@@ -147,7 +147,7 @@
         background: var(--primary-text-color);
         transition: 300ms ease-out;
         @include media(576){
-            @include resa('height', 2px);
+            @include resa('height', 1px);
         }
     }
     &Line{
@@ -160,8 +160,8 @@
         @include res('height', 2px);
         transition: 300ms ease-out;
         @include media(576){
-            @include resa('top', 4px);
-            @include resa('height', 2px);
+            @include resa('top', 5px);
+            @include resa('height', 1px);
         }
     }
 }

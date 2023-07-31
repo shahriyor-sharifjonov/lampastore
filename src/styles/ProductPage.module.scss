@@ -131,16 +131,27 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    @include media(576){
+        width: 100%;
+    }
 }
 .subtitle{
     @include res('font-size', 24px);
     line-height: 140%;
     @include res('margin-bottom', 20px);
+    @include media(576){
+        @include resa('font-size', 16px);
+        @include resa('margin-bottom', 20px);
+    }
 }
 .price{
     @include res('font-size', 48px);
     line-height: 140%;
     @include res('margin-bottom', 20px);
+    @include media(576){
+        @include resa('font-size', 24px);
+        @include resa('margin-bottom', 20px);
+    }
 }
 .row{
     display: flex;
@@ -148,21 +159,36 @@
     justify-content: space-between;
     width: 100%;
     @include res('gap', 10px);
+    @include media(576){
+        @include resa('gap', 10px);
+    }
     &+.row{
         @include res('margin-top', 10px);
+        @include media(576){
+            @include resa('margin-top', 10px);
+        }
     }
     b{
         font-weight: 500;
         @include res('font-size', 18px);
+        @include media(576){
+            @include resa('font-size', 16px);
+        }
     }
     span{
         @include res('font-size', 18px);
+        @include media(576){
+            @include resa('font-size', 16px);
+        }
     }
     div{
         flex: 1 1 auto;
         border-bottom: dashed #ddd;
         height: 70%;
         @include res('border-width', 1px);
+        @include media(576){
+            @include resa('border-width', 1px);
+        }
     }
 }
 .qua{
@@ -184,6 +210,13 @@
     @include res('font-size', 18px);
     @include res('margin-top', 30px);
     transition: background 300ms ease-out, color 300ms ease-out;
+    @include media(576){
+        @include resa('border-radius', 100px);
+        @include resa('height', 50px);
+        @include resa('border-width', 1px);
+        @include resa('font-size', 16px);
+        @include resa('margin-top', 30px);
+    }
     &:hover{
         background: var(--primary-text-color);
         color: #fff;
@@ -216,6 +249,14 @@
     text-align: center;
     width: 100%;
     position: relative;
+    @include media(576){
+        @include resa('margin-top', 30px);
+        @include resa('border-radius', 8px);
+        @include resa('padding-top', 20px);
+        @include resa('padding-bottom', 20px);
+        @include resa('padding-left', 20px);
+        @include resa('padding-right', 20px);
+    }
     &::before{
         content: '';
         position: absolute;
@@ -226,9 +267,17 @@
         pointer-events: none;
         transform: rotate(45deg) translateX(-50%);
         background: var(--primary-color);
+        @include media(576){
+            @include resa('top', -3px);
+            @include resa('height', 20px);
+            @include resa('width', 20px);
+        }
     }
     p{
         @include res('font-size', 18px);
+        @include media(576){
+            @include resa('font-size', 16px);
+        }
     }
     a{
         @include res('font-size', 18px);
@@ -241,6 +290,15 @@
         text-decoration: none;
         @include res('margin-top', 10px);
         transition: background 300ms ease-out, color 300ms ease-out;
+        @include media(576){
+            @include resa('font-size', 16px);
+            @include resa('border-radius', 100px);
+            @include resa('padding-left', 50px);
+            @include resa('padding-right', 50px);
+            @include resa('padding-top', 10px);
+            @include resa('padding-bottom', 10px);
+            @include resa('margin-top', 10px);
+        }
         &:hover{
             background: var(--primary-text-color);
             color: #fff;
