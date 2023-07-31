@@ -109,6 +109,10 @@ input[type="number"] {
     transition-delay: 0ms;
     @include res('width', 100px);
     @include res('height', 100px);
+    @include media(576){
+      @include resa('width', 70px);
+      @include resa('height', 70px);
+    }
   }
 }
 .intro{

@@ -177,6 +177,7 @@
     }
     span{
         @include res('font-size', 18px);
+        text-align: right;
         @include media(576){
             @include resa('font-size', 16px);
         }
