@@ -353,18 +353,33 @@ input[type="number"] {
     @include res('border-width', 1px);
     @include res('padding-top', 30px);
     @include res('padding-bottom', 30px);
+    @include media(576){
+      @include resa('border-width', 1px);
+      @include resa('padding-top', 20px);
+      @include resa('padding-bottom', 20px);
+    }
     &-p{
       @include res('font-size', 18px);
+      @include media(576){
+        @include resa('font-size', 16px);
+      }
     }
     &-title{
       width: 40%;
       display: block;
       @include res('padding-left', 85px);
+      @include media(576){
+        @include resa('padding-left', 0px);
+      }
     }
     &-price{
       width: 20%;
       text-align: right;
       @include res('font-size', 24px);
+      @include media(576){
+        width: 40%;
+        @include resa('font-size', 16px);
+      }
     }
   }
   &__p{
@@ -480,8 +495,12 @@ input[type="number"] {
     justify-content: center;
     flex-direction: column;
     @include res('gap', 20px);
+    @include res('padding-left', 30px);
+    @include res('padding-right', 30px);
     @include media(576){
       @include resa('min-height', 500px);
+      @include resa('padding-left', 15px);
+      @include resa('padding-right', 15px);
       height: 100%;
     }
     h1{
@@ -490,7 +509,7 @@ input[type="number"] {
       text-align: center;
       line-height: 140%;
       @include media(576){
-        @include resa('font-size', 36px);
+        @include resa('font-size', 34px);
         max-width: 100%;
       }
     }
