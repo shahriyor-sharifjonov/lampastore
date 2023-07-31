@@ -219,10 +219,56 @@
                     @include resa('height', 30px);
                     @include resa('padding-left', 9px);
                     @include resa('font-size', 14px);
-                    min-width: 0;
                     @include resa('width', 117px);
                 }
             }
+        }
+    }
+}
+.dropdown{
+    display: none;
+    @include resa('padding-left', 15px);
+    @include resa('padding-right', 15px);
+    @include media(576){
+        display: block;
+    }
+    &Button{
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include resa('margin-top', 20px);
+        border: solid var(--primary-color);
+        @include resa('border-width', 1px);
+        @include resa('border-radius', 50px);
+        @include resa('padding-left', 24px);
+        @include resa('padding-right', 24px);
+        @include resa('padding-top', 10px);
+        @include resa('padding-bottom', 10px);
+        @include resa('font-size', 12px);
+        text-transform: uppercase;
+        @include resa('letter-spacing', 1px);
+    }
+    &List{
+        @include resa('margin-top', 20px);
+    }
+    &Track{
+        display: flex;
+        flex-wrap: wrap;
+        @include resa('row-gap', 15px);
+        @include resa('column-gap', 20px);
+    }
+    &Item{
+        text-decoration: none;
+        font-weight: 500;
+        line-height: 140%;
+        text-transform: uppercase;
+        @include resa('font-size', 14px);
+        @include resa('letter-spacing', 0.96px);
+        transition: color 0s .5s linear;
+        &.active{
+            color: var(--primary-color);
         }
     }
 }
