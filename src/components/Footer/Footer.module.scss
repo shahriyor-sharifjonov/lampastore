@@ -3,6 +3,10 @@
     background: #1A1A19;
     @include res('padding-top', 36px);
     @include res('padding-bottom', 36px);
+    @include media(576){
+        @include resa('padding-top', 36px);
+        @include resa('padding-bottom', 36px);
+    }
 }
 .row{
     display: flex;
@@ -10,15 +14,29 @@
     @include res('border-width', 1px);
     border-right: none;
     border-left: none;
+    @include media(576){
+        border: none;
+        flex-direction: column;
+        align-items: center;
+    }
 }
 .col{
     width: 33.3333%;
     @include res('padding', 30px);
     display: flex;
     flex-direction: column;
+    @include media(576){
+        width: 100%;
+        padding: 0;
+        align-items: center;
+    }
     &+.col{
         border-left: solid var(--primary-bg-color);
         @include res('border-width', 1px);
+        @include media(576){
+            @include resa('padding-top', 30px);
+            border-left: none;
+        }
     }
 }
 .title{
@@ -28,6 +46,10 @@
     font-weight: 600;
     line-height: 120%;
     color: var(--primary-bg-color);
+    @include media(576){
+        @include resa('margin-bottom', 14px);
+        @include resa('font-size', 18px);
+    }
 }
 .link{
     color: var(--primary-bg-color);
@@ -37,8 +59,14 @@
     line-height: 120%;
     text-decoration: none;
     width: max-content;
+    @include media(576){
+        @include resa('font-size', 14px);
+    }
     &+.link{
         @include res('margin-top', 12px);
+        @include media(576){
+            @include resa('margin-top', 12px);
+        }
     }
 }
 .big{
@@ -49,6 +77,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include media(576){
+        display: none;
+    }
     svg{
         width: 100%;
         @include res('height', 139px);
@@ -64,6 +95,13 @@
     @include res('padding-left', 30px);
     border-bottom: solid var(--primary-bg-color);
     @include res('border-width', 1px);
+    @include media(576){
+        @include resa('padding-top', 40px);
+        flex-direction: column;
+        align-items: center;
+        border: none;
+        @include resa('gap', 10px);
+    }
 }
 .copy{
     color: var(--primary-bg-color);
@@ -72,6 +110,10 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+    @include media(576){
+        @include resa('font-size', 12px);
+        opacity: 0.7;
+    }
     a{
         color: var(--primary-bg-color);
         text-align: center;
@@ -80,5 +122,9 @@
         font-weight: 400;
         line-height: 120%;
         text-decoration: underline;
+        @include media(576){
+            @include resa('font-size', 12px);
+            opacity: 0.7;
+        }
     }
 }
