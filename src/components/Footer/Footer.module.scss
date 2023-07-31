@@ -96,7 +96,7 @@
     border-bottom: solid var(--primary-bg-color);
     @include res('border-width', 1px);
     @include media(576){
-        @include resa('padding-top', 40px);
+        @include resa('padding-top', 30px);
         flex-direction: column;
         align-items: center;
         border: none;

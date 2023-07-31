@@ -4,11 +4,19 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    @include res('padding-top', 10px);
     @include res('padding-bottom', 10px);
+    @include media(576){
+        flex-direction: column;
+        align-items: stretch;
+        @include resa('padding-bottom', 20px);
+    }
     &+.product{
         border-top: solid var(--primary-border);
         @include res('border-width', 1px);
+        @include res('padding-top', 10px);
+        @include media(576){
+            @include resa('padding-top', 20px);
+        }
     }
 }
 .left{
@@ -17,6 +25,10 @@
     justify-content: flex-start;
     @include res('gap', 15px);
     width: 40%;
+    @include media(576){
+        width: 100%;
+        @include resa('gap', 15px);
+    }
 }
 .img{
     line-height: 0;
@@ -24,6 +36,12 @@
     overflow: hidden;
     @include res('width', 70px);
     @include res('height', 70px);
+    @include media(576){
+        @include resa('border-radius', 10px);
+        @include resa('width', 70px);
+        @include resa('min-width', 70px);
+        @include resa('height', 70px);
+    }
     img{
         line-height: 0;
         width: 100%;
@@ -35,24 +53,42 @@
     text-decoration: none;
     @include res('margin-bottom', 3px);
     display: block;
+    @include media(576){
+        @include resa('font-size', 16px);
+        @include resa('margin-bottom', 5px);
+    }
 }
 .num{
     color: var(--primary-border);
     @include res('font-size', 14px);
+    @include media(576){
+        @include resa('font-size', 14px);
+    }
 }
 .calc{
     display: flex;
     align-items: center;
     justify-content: center;
+    @include media(576){
+        order: 1;
+        justify-content: flex-start;
+    }
     &P{
         display: block;
         @include res('width', 50px);
         @include res('font-size', 18px);
         text-align: center;
         overflow: hidden;
+        @include media(576){
+            @include resa('width', 50px);
+            @include resa('font-size', 18px);
+        }
         span{
             display: block;
             @include res('font-size', 18px);
+            @include media(576){
+                @include resa('font-size', 16px);
+            }
         }
     }
     &Button{
@@ -70,7 +106,20 @@
         justify-content: center;
         position: relative;
         transition: background 300ms ease-out, color 300ms ease-out;
-        &:hover{
+        @include media(576){
+            @include resa('border-width', 1px);
+            @include resa('width', 40px);
+            @include resa('height', 40px);
+            @include resa('font-size', 24px);
+            @include resa('border-radius', 10px);
+        }
+        @media (hover: hover){
+            &:hover{
+                background: var(--primary-color);
+                color: #fff;
+            }
+        }
+        &:active{
             background: var(--primary-color);
             color: #fff;
         }
@@ -78,6 +127,13 @@
 }
 .price{
     @include res('font-size', 24px);
-    width: 20%;
+    width: 40%;
     text-align: right;
+    @include media(576){
+        text-align: left;
+        @include resa('margin-top', 15px);
+        @include resa('margin-bottom', 15px);
+        width: 100%;
+        @include resa('font-size', 20px);
+    }
 }

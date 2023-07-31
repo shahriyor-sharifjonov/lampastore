@@ -331,6 +331,9 @@ input[type="number"] {
     justify-content: center;
     width: 100%;
     @include res('font-size', 24px);
+    @include media(576){
+      @include resa('font-size', 24px);
+    }
   }
   &__wrap{
     width: 100%;
@@ -366,6 +369,9 @@ input[type="number"] {
   }
   &__p{
     @include res('font-size', 16px);
+    @include media(576){
+      @include resa('font-size', 14px);
+    }
     span{
       color: var(--primary-color);
     }
@@ -378,6 +384,10 @@ input[type="number"] {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+    @include media(576){
+      width: 100%;
+      @include resa('margin-bottom', 0px);
+    }
     &-content{
       display: flex;
       flex-direction: column;
@@ -386,6 +396,11 @@ input[type="number"] {
     &-p{
       @include res('font-size', 20px);
       @include res('min-width', 300px);
+      @include media(576){
+        @include resa('font-size', 16px);
+        @include resa('margin-bottom', 15px);
+        width: 100%;
+      }
       span{
         color: var(--primary-color);
       }
@@ -394,12 +409,24 @@ input[type="number"] {
       border-bottom: solid var(--primary-border);
       @include res('border-width', 1px);
       @include res('padding-bottom', 20px);
+      @include media(576){
+        @include resa('border-width', 1px);
+        @include resa('padding-bottom', 10px);
+        .catalog__title{
+          @include resa('margin-bottom', 10px);
+        }
+      }
     }
     &-group{
       display: flex;
       align-items: center;
       justify-content: flex-start;
       @include res('margin-top', 20px);
+      @include media(576){
+        flex-direction: column;
+        align-items: stretch;
+        @include resa('margin-top', 15px);
+      }
       input{
         @include res('height', 60px);
         @include res('padding-left', 20px);
@@ -409,6 +436,13 @@ input[type="number"] {
         background: none;
         @include res('font-size', 18px);
         @include res('border-width', 1px);
+        @include media(576){
+          @include resa('height', 40px);
+          @include resa('padding-left', 15px);
+          @include resa('padding-right', 15px);
+          @include resa('font-size', 16px);
+          @include resa('border-width', 1px);
+        }
       }
     }
     &-btn{
@@ -420,8 +454,16 @@ input[type="number"] {
       @include res('padding-left', 28px);
       @include res('padding-right', 28px);
       @include res('height', 60px);
+      @include media(576){
+        @include resa('margin-top', 30px);
+        @include resa('border-width', 1px);
+        @include resa('font-size', 16px);
+        @include resa('padding-left', 28px);
+        @include resa('padding-right', 28px);
+        @include resa('height', 50px);
+      }
       &:disabled{
-        opacity: 0.5;
+        opacity: 0.7;
         cursor: not-allowed;
       }
       &:not(:disabled):hover{
