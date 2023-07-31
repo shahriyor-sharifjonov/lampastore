@@ -101,6 +101,7 @@ const ProductPage = () => {
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
+                                
                                 <Swiper
                                     controller={{ control: firstSwiper }}
                                     spaceBetween={0}

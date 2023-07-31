@@ -13,6 +13,11 @@
     @include res('border-width', 1px);
     position: relative;
     z-index: 2;
+    @include media(576){
+        @include resa('height', 50px);
+        @include resa('padding-right', 15px);
+        @include resa('padding-left', 15px);
+    }
     &Body{
         display: flex;
         align-items: center;
@@ -31,6 +36,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include media(576){
+        position: static;
+        transform: translate(0);
+        @include resa('width', 117px);
+        @include resa('height', 13px);
+    }
     svg{
         width: 100%;
         height: 100%;
@@ -41,6 +52,9 @@
     align-items: center;
     justify-content: flex-start;
     @include res('gap', 30px);
+    @include media(576){
+        display: none;
+    }
 }
 .right{
     display: flex;
@@ -58,6 +72,9 @@
     align-items: center;
     justify-content: center;
     @include res('gap', 8px);
+    @include media(576){
+        display: none;
+    }
     svg{
         @include res('width', 24px);
         @include res('height', 24px);
@@ -79,6 +96,10 @@
     @include res('height', 14px);
     position: relative;
     z-index: 2;
+    @include media(576){
+        @include resa('width', 25px);
+        @include resa('height', 10px);
+    }
     &.open {
         .buttonLine{
             opacity: 0;
@@ -89,12 +110,18 @@
             left: 50%;
             @include res('width', 30px);
             transform: translate(-50%, -50%) rotate(135deg);
+            @include media(576){
+                @include resa('width', 20px);
+            }
         }
         &::after {
             top: 50%;
             left: 50%;
             @include res('width', 30px);
             transform: translate(-50%, -50%) rotate(-135deg);
+            @include media(576){
+                @include resa('width', 20px);
+            }
         }
     }
     &::before{
@@ -106,6 +133,9 @@
         @include res('height', 2px);
         background: var(--primary-text-color);
         transition: 300ms ease-out;
+        @include media(576){
+            @include resa('height', 2px);
+        }
     }
     &::after{
         content: '';
@@ -116,6 +146,9 @@
         @include res('height', 2px);
         background: var(--primary-text-color);
         transition: 300ms ease-out;
+        @include media(576){
+            @include resa('height', 2px);
+        }
     }
     &Line{
         position: absolute;
@@ -126,6 +159,10 @@
         width: 100%;
         @include res('height', 2px);
         transition: 300ms ease-out;
+        @include media(576){
+            @include resa('top', 4px);
+            @include resa('height', 2px);
+        }
     }
 }
 .menu{
@@ -154,6 +191,9 @@
         display: flex;
         flex-direction: column;
         @include res('gap', 30px);
+        @include media(576){
+            display: none;
+        }
     }
     &Link{
         color: #646461;
@@ -172,6 +212,9 @@
         @include res('width', 1000px);
         @include res('height', 600px);
         overflow: hidden;
+        @include media(576){
+            display: none;
+        }
         img{
             width: 100%;
             height: 100%;
@@ -187,6 +230,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    @include media(576){
+        display: none;
+    }
     &Link{
         @include res('border-radius', 50px);
         border: solid var(--primary-border);
