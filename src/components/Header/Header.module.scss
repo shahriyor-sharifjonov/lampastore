@@ -183,6 +183,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    @include media(576){
+        padding: 0;
+        align-items: flex-end;
+    }
     &.open{
         opacity: 1;
         visibility: visible;
@@ -204,6 +208,15 @@
         line-height: 120%;
         text-decoration: none;
         transition: 300ms ease-out;
+        @include media(576){
+            color: #1A1A19;
+            @include resa('font-size', 18px);
+        }
+        &+.menuLink{
+            @include media(576){
+                @include resa('margin-top', 15px);
+            }
+        }
         &:hover{
             color: #1A1A19;
         }
@@ -219,6 +232,59 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+    }
+    &Sm{
+        display: none;
+        height: calc(100vh - 13.8888888889vw);
+        overflow-y: auto;
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+        @include media(576){
+            display: block;
+        }
+    }
+    &Track{
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: max-content;
+        min-height: calc(100vh - 13.8888888889vw);
+        @include resa('padding-top', 15px);
+        @include resa('padding-bottom', 30px);
+    }
+    &Items{
+        display: flex;
+        flex-direction: column;
+    }
+    &Soc{
+        @include resa('margin-top', 40px);
+        display: flex;
+        flex-direction: column;
+        @include resa('gap', 15px);
+        &Link{
+            @include resa('font-size', 20px);
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 500;
+        }
+        &Icon{
+            text-decoration: none;
+            @include resa('width', 40px);
+            @include resa('min-width', 40px);
+            @include resa('height', 40px);
+            @include resa('padding', 8px);
+            line-height: 0;
+            color: #fff;
+            border-radius: 50%;
+            background: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            svg{
+                fill: currentColor;
+                line-height: 0;
+            }
         }
     }
 }
