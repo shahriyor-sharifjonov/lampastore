@@ -354,7 +354,7 @@ input[type="number"] {
     width: 100%;
     @include res('font-size', 24px);
     @include media(576){
-      @include resa('font-size', 24px);
+      @include resa('font-size', 16px);
     }
   }
   &__wrap{
