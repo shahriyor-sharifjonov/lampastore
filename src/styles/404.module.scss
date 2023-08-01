@@ -11,6 +11,8 @@
     @include media(576){
         @include resa('padding-top', 0px);
         @include resa('padding-bottom', 40px);
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
     }
     img{
         max-width: 100%;
@@ -18,7 +20,8 @@
         @include res('width', 500px);
         @include res('height', 500px);
         @include media(576){
-            height: 290px;
+            @include resa('width', 294px);
+            @include resa('height', 294px);
         }
     }
 }
@@ -63,4 +66,15 @@
     transition: 300ms ease-out;
     @include res('min-width', 300px);
     text-align: center;
+    @include media(576){
+        @include resa('margin-top', 20px);
+        @include resa('font-size', 16px);
+        @include resa('padding-top', 14px);
+        @include resa('padding-bottom', 14px);
+        @include resa('padding-right', 30px);
+        @include resa('padding-left', 30px);
+        @include resa('height', 48px);
+        @include resa('border-radius', 8px);
+        @include resa('min-width', 300px);
+    }
 }
