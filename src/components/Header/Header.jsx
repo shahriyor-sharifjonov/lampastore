@@ -75,6 +75,11 @@ const Header = () => {
                 <div className={styles.menuImg}>
                     <Image src="/menu-img.png" alt="" width={1000} height={600} draggable={false} />
                 </div>
+                <div className={styles.menuSm}>
+                    <div className={styles.menuTrack}>
+                        
+                    </div>
+                </div>
             </div>
             <div className={styles.top}>
                 <div className={styles.topBody}>
