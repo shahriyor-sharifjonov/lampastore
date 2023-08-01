@@ -286,9 +286,13 @@ input[type="number"] {
     display: flex;
     align-items: center;
     justify-content: center;
+    &.left{
+      right: auto;
+      @include res('left', 10px);
+    }
     @include media(576){
       @include resa('top', 10px);
-      @include resa('right', 10px);
+      @include resa('left', 10px);
       @include resa('padding-top', 6px);
       @include resa('padding-bottom', 6px);
       @include resa('padding-right', 18px);

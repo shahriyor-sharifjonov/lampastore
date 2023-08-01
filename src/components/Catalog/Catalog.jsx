@@ -17,7 +17,12 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
 
     useEffect(() => {
         setNewProducts(products)
-        const prod = products
+        let prod = [...products]
+        prod.sort((a, b) => {
+            if (a.vip && !b.vip) return -1;
+            if (!a.vip && b.vip) return 1;
+            return 0;
+        });
         let finalProd = null;
         if(filter){
             if(minPrice !== "" && maxPrice === ""){
@@ -41,7 +46,11 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
     }, [products, filters])
     
     useEffect(() => {
-        const prod = products.filter(product => product.category === category)
+        const prod = products.filter(product => product.category === category).sort((a, b) => {
+            if (a.vip && !b.vip) return -1;
+            if (!a.vip && b.vip) return 1;
+            return 0;
+        });
         let finalProd = null;
         if(filter){
             if(minPrice !== "" && maxPrice === ""){
@@ -60,7 +69,11 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
     }, [products, category, filters])
 
     useEffect(() => {
-        const prod = productsByCategory.filter(product => product.subcategory === subcategorySlug)
+        const prod = productsByCategory.filter(product => product.subcategory === subcategorySlug).sort((a, b) => {
+            if (a.vip && !b.vip) return -1;
+            if (!a.vip && b.vip) return 1;
+            return 0;
+        });
         let finalProd = null;
         if(filter){
             if(minPrice !== "" && maxPrice === ""){
@@ -90,7 +103,7 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                             <div className='catalog__content'>
                                 {
                                 newProducts.map(product => (
-                                    <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at}/>
+                                    <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
                                 ))}
                             </div>
                             {more ? (
@@ -109,9 +122,9 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                                 <div className='catalog__content'>
                                 {
                                     !subcategory ? (productsByCategory.map(product => (
-                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at}/>
+                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
                                     ))) : (productsBySubcategory.map(product => (
-                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at}/>
+                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
                                     )))
                                 }
                                 </div>

@@ -76,7 +76,7 @@ const Header = () => {
                     <Image src="/menu-img.png" alt="" width={1000} height={600} draggable={false} />
                 </div>
             </div>
-            <div className={styles.top}> 
+            <div className={styles.top}>
                 <div className={styles.topBody}>
                     <div className={styles.left}>
                         <Link href="tel:+79917617072" className={styles.link}>+79917617072</Link>
