@@ -67,10 +67,7 @@ const Header = () => {
             <div className={`${styles.menu} ${menuOpen ? styles.open : ''}`}>
                 <div className={styles.menuList}>
                     <Link href="/about" onClick={toggleMenu} className={styles.menuLink}>О магазине</Link>
-                    <Link href="/delivery" onClick={toggleMenu} className={styles.menuLink}>Доставка</Link>
-                    <Link href="/payment" onClick={toggleMenu} className={styles.menuLink}>Оплата</Link>
                     <Link href="/designers" onClick={toggleMenu} className={styles.menuLink}>Дизайнерам</Link>
-                    <Link href="/contacts" onClick={toggleMenu} className={styles.menuLink}>Контакты</Link>
                 </div>
                 <div className={styles.menuImg}>
                     <Image src="/menu-img.png" alt="" width={1000} height={600} draggable={false} />
@@ -82,10 +79,7 @@ const Header = () => {
                                 <Link key={cat.slug} href={`/c/${cat.slug}`} className={`${styles.menuLink} ${router.query?.category == cat.slug ? styles.active : ''}`}>{cat.name}</Link>
                             ))}
                             <Link href="/about" onClick={toggleMenu} className={styles.menuLink}>О магазине</Link>
-                            <Link href="/delivery" onClick={toggleMenu} className={styles.menuLink}>Доставка</Link>
-                            <Link href="/payment" onClick={toggleMenu} className={styles.menuLink}>Оплата</Link>
                             <Link href="/designers" onClick={toggleMenu} className={styles.menuLink}>Дизайнерам</Link>
-                            <Link href="/contacts" onClick={toggleMenu} className={styles.menuLink}>Контакты</Link>
                         </div>
                         <div className={styles.menuSoc}>
                             <Link href="tel:+79917617072" className={styles.menuSocLink}>+79917617072</Link>

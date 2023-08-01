@@ -12,8 +12,6 @@ const Footer = () => {
                 <div className={styles.col}>
                     <p className={styles.title}>КОМПАНИЯ</p>
                     <Link href="/about" className={styles.link}>О магазине</Link>
-                    <Link href="/delivery" className={styles.link}>Доставка</Link>
-                    <Link href="/payment" className={styles.link}>Оплата</Link>
                     <Link href="/designers" className={styles.link}>Дизайнерам</Link>
                 </div>        
                 <div className={styles.col}>
