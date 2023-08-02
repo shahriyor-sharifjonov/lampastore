@@ -2,9 +2,13 @@
 .top{
     @include res('padding-top', 60px);
     @include res('padding-bottom', 60px);
+    @include res('padding-right', 30px);
+    @include res('padding-left', 30px);
     border-bottom: solid var(--primary-text-color);
     @include res('border-width', 1px);
     @include media(576){
+        @include resa('padding-left', 0px);
+        @include resa('padding-right', 0px);
         @include resa('padding-top', 30px);
         @include resa('padding-bottom', 30px);
         @include resa('border-width', 1px);
