@@ -40,7 +40,7 @@ export default function Loader() {
             router.events.off('routeChangeComplete', handleComplete)
             router.events.off('routeChangeError', handleComplete)
         };
-    }, [dispatch, router])
+    }, [dispatch, router, categories, products])
   
     useEffect(() => {
         if (loading.value === false || loading.value === 404) {
@@ -50,7 +50,7 @@ export default function Loader() {
                 }
             }, 1000)
         }
-    }, [loading, products])
+    }, [loading, categories, products])
   
     return (
       <div className={`loading active ${loading.value ? 'active' : ''}`}>
