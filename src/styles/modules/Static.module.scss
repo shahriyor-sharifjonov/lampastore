@@ -127,3 +127,89 @@
         }
     }
 }
+.row{
+    @include res('margin-top', 50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include media(576){
+        @include resa('margin-top', 30px);
+    }
+    &Content{
+        width: 50%;
+        @include res('padding-right', 60px);
+        display: flex;
+        flex-direction: column;
+        @include media(576){
+            width: 100%;
+        }
+        .subtitle{
+            @include res('max-width', 600px);
+            @include res('margin-bottom', 50px);
+            @include media(576){
+                @include resa('max-width', 10000px);
+                @include resa('margin-bottom', 15px);
+            }
+        }
+    }
+    &Image{
+        width: 50%;
+        line-height: 0;
+        @include res('height', 450px);
+        @include media(576){
+            display: none;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            line-height: 0;
+            object-fit: cover;
+            object-position: bottom;
+        }
+    }
+}
+.input{
+    @include res('height', 50px);
+    @include res('font-size', 14px);
+    @include res('padding-left', 20px);
+    @include res('margin-bottom', 15px);
+    @include res('border-radius', 8px);
+    border: solid var(--primary-border);
+    @include res('border-width', 1px);
+    @include media(576){
+        @include resa('height', 50px);
+        @include resa('font-size', 14px);
+        @include resa('padding-left', 20px);
+        @include resa('margin-bottom', 15px);
+        @include resa('border-radius', 8px);
+        @include resa('border-width', 1px);
+    }
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    background: var(--primary-text-color);
+    @include res('height', 50px);
+    @include res('font-size', 14px);
+    @include res('padding-left', 20px);
+    @include res('padding-right', 20px);
+    @include res('border-radius', 8px);
+    @include res('margin-bottom', 15px);
+    color: #fff;
+    @include media(576){
+        @include resa('height', 50px);
+        @include resa('font-size', 14px);
+        @include resa('padding-left', 20px);
+        @include resa('padding-right', 20px);
+        @include resa('border-radius', 8px);
+        @include resa('margin-bottom', 15px);
+    }
+}
+.psm{
+    @include res('font-size', 14px);
+    @include media(576){
+        @include resa('font-size', 14px);
+    }
+}
