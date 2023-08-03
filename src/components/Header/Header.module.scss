@@ -265,6 +265,7 @@
         @include resa('padding-right', 15px);
         @include media(576){
             display: block;
+            width: 100%;
         }
     }
     &Track{
@@ -288,8 +289,11 @@
         &Link{
             @include resa('font-size', 20px);
             text-decoration: none;
-            color: var(--primary-color);
+            color: var(--primary-text-color);
             font-weight: 500;
+            &:first-of-type{
+                color: var(--primary-color);
+            }
         }
         &Icon{
             text-decoration: none;
@@ -300,7 +304,7 @@
             line-height: 0;
             color: #fff;
             border-radius: 50%;
-            background: var(--primary-color);
+            background: var(--primary-text-color);
             display: flex;
             align-items: center;
             justify-content: center;

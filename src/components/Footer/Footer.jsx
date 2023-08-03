@@ -17,7 +17,7 @@ const Footer = () => {
                 </div>        
                 <div className={styles.col}>
                     <p className={styles.title}>КОНТАКТЫ</p>
-                    <Link href="tel:+79917617072" className={styles.link}>+79917617072</Link>
+                    <Link href="tel:+79917617072" className={styles.link}>+7(991)761-70-72</Link>
                     <Link href="mailto:lampastore@inbox.ru" className={styles.link}>lampastore@inbox.ru</Link>
                 </div>        
                 <div className={styles.col}>
