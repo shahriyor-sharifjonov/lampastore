@@ -259,7 +259,7 @@
     }
     &Sm{
         display: none;
-        height: -webkit-fill-available;
+        height: 100%;
         overflow-y: auto;
         @include resa('padding-left', 15px);
         @include resa('padding-right', 15px);
@@ -274,7 +274,7 @@
         flex-direction: column;
         justify-content: space-between;
         height: max-content;
-        min-height: 100svh;
+        min-height: 100%;
         @include resa('padding-top', 15px);
         @include resa('padding-bottom', 30px);
     }
