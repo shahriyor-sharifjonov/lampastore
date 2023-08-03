@@ -264,7 +264,6 @@
         @include resa('padding-left', 15px);
         @include resa('padding-right', 15px);
         padding-top: 13.8888888889vw;
-        padding-bottom: env(safe-area-inset-bottom);
         @include media(576){
             display: block;
             width: 100%;
