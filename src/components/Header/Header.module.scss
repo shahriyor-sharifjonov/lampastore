@@ -274,7 +274,7 @@
         flex-direction: column;
         justify-content: space-between;
         height: max-content;
-        min-height: calc(100vh - 13.8888888889vw);
+        min-height: -webkit-fill-available;
         @include resa('padding-top', 15px);
         @include resa('padding-bottom', 30px);
     }
