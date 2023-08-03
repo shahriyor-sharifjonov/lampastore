@@ -52,8 +52,6 @@ const Cart = () => {
         
         dataObject.Товары = sortedItems;
 
-        const jsonString = JSON.stringify(dataObject);
-
         const response = await fetch('/api/sendmail', {
             method: 'POST',
             headers: {
