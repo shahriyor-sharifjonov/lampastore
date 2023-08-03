@@ -259,10 +259,11 @@
     }
     &Sm{
         display: none;
-        height: calc(100vh - 13.8888888889vw);
+        height: 100vh;
         overflow-y: auto;
         @include resa('padding-left', 15px);
         @include resa('padding-right', 15px);
+        padding-top: 13.8888888889vw;
         @include media(576){
             display: block;
             width: 100%;
