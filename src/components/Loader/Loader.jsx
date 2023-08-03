@@ -50,7 +50,7 @@ export default function Loader() {
                 }
             }, 1000)
         }
-    }, [loading])
+    }, [loading, products])
   
     return (
       <div className={`loading active ${loading.value ? 'active' : ''}`}>
