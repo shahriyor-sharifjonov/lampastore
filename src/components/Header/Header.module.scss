@@ -337,7 +337,7 @@
         @include res('padding-right', 16px);
         font-weight: 500;
         text-decoration: none;
-        @include res('font-size', 14px);
+        @include res('font-size', 18px);
         line-height: 120%;
         @include res('letter-spacing', 0.84px);
         transition: background 0s .5s linear, color 0s .5s linear;
