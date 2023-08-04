@@ -77,7 +77,7 @@ const Header = () => {
                     <div className={styles.menuTrack}>
                         <div className={styles.menuItems}>
                             {categories.map(cat => (
-                                <Link key={cat.slug} href={`/c/${cat.slug}`} className={`${styles.menuLink} ${router.query?.category == cat.slug ? styles.active : ''}`}>{cat.name}</Link>
+                                <Link key={cat.slug} href={`/c/${cat.slug}`} onClick={toggleMenu} className={`${styles.menuLink} ${router.query?.category == cat.slug ? styles.active : ''}`}>{cat.name}</Link>
                             ))}
                             <Link href="/about" onClick={toggleMenu} className={styles.menuLink}>О магазине</Link>
                             <Link href="/designers" onClick={toggleMenu} className={styles.menuLink}>Дизайнерам</Link>
