@@ -17,7 +17,6 @@ const Cart = () => {
     const [email, setEmail] = useState('')
 
     useEffect(() => {
-        console.log(cartItems);
         const newItems = cartItems.reduce((acc, item) => {
           const existingItem = acc.find((i) => i._id === item._id);
           if (existingItem) {

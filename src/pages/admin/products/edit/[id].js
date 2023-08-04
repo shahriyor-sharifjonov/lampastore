@@ -80,10 +80,6 @@ const AdminProductsUpdate = () => {
         }
     }, [product])
 
-    useEffect(() => {
-        console.log(vip);
-    }, [vip])
-
     const handleAddField = (e) => {
         e.preventDefault()
         if(fieldTitle !== '' && fieldValue !== ''){
@@ -239,7 +235,7 @@ const AdminProductsUpdate = () => {
                             <input className={styles.input} type="number" placeholder="Цена" value={price} onChange={(e) => {setPrice(e.target.value)}} />
                             <div className={styles.chkrow}>
                                 <label htmlFor='chkvip' className={styles.subtitle}>VIP</label>
-                                <input id="chkvip" className={styles.chk} type="checkbox" checked={vip} onChange={(e) => {console.log('checked');setVip(!vip)}} />
+                                <input id="chkvip" className={styles.chk} type="checkbox" checked={vip} onChange={(e) => {setVip(!vip)}} />
                             </div>
                             <button type="submit" className={styles.submit}>Сохранить</button>
                         </form>

@@ -27,7 +27,6 @@ export default function Loader() {
                     }
                 }, 500)
             }else{
-                console.log(router.asPath)
             }
         };
   

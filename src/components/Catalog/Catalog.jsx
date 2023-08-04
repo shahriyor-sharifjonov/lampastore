@@ -92,11 +92,11 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
     }, [productsByCategory, subcategory, filters])
 
     return (
-        <>
-            {
-                category === 'news' && newProducts.length >= 1 ? (
-                    <motion.section key={`${router.asPath}newproducts`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
-                        <div className='catalog__body'>
+        <motion.section key={`${router.asPath}newproducts5121`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
+            <div className='catalog__body'>
+                <>
+                    {category === 'news' && newProducts.length >= 1 && (
+                        <>
                             {more ? (
                                 <h2 className='catalog__title'>{categoryTitle}</h2>
                             ) : ''}
@@ -109,35 +109,40 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                             {more ? (
                                 <Link href="/c/news" className='catalog__btn'>ПОСМОТРЕТЬ ВСЕ</Link>
                             ) : ''}
-                        </div>
-                    </motion.section>
-                ) : (
-                    <>
-                        {productsByCategory.length >= 1 ? (
-                        <motion.section key={`${router.asPath}newproducts`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
-                            <div className='catalog__body'>
-                                {more ? (
-                                    <h2 className='catalog__title'>{categoryTitle}</h2>
-                                ) : ''}
-                                <div className='catalog__content'>
-                                {
-                                    !subcategory ? (productsByCategory.map(product => (
-                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
-                                    ))) : (productsBySubcategory.map(product => (
-                                        <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
-                                    )))
-                                }
-                                </div>
-                                {more ? (
-                                    <Link href={`/c/${categorySlug}`} className='catalog__btn'>ПОСМОТРЕТЬ ВСЕ</Link>
-                                ) : ''}
+                        </>
+                    )}
+                    
+                    {category !== 'news' && productsByCategory.length >= 1 ? (
+                        <>
+                            {more ? (
+                                <h2 className='catalog__title'>{categoryTitle}</h2>
+                            ) : ''}
+                            <div className='catalog__content'>
+                            {
+                                !subcategory ? (productsByCategory.map(product => (
+                                    <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
+                                ))) : (productsBySubcategory.map(product => (
+                                    <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
+                                )))
+                            }
                             </div>
-                        </motion.section>
-                        ) : ""}
-                    </>
-                )
-            }
-        </>
+                            {more ? (
+                                <Link href={`/c/${categorySlug}`} className='catalog__btn'>ПОСМОТРЕТЬ ВСЕ</Link>
+                            ) : ''}
+                        </>
+                    ) : ""}
+
+                    {subcategory && category !== 'news' && productsBySubcategory.length === 0 ? (
+                        <h2 className='catalog__title center'>Ничего не найдено.</h2>
+                    ) : ""}
+                    
+                    {!subcategory && category !== 'news' && productsByCategory.length === 0 ? (
+                        <h2 className='catalog__title center'>Ничего не найдено.</h2>
+                    ) : ""}
+                </>
+            </div>
+        </motion.section>
+        
     )
 }
  
