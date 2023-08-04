@@ -36,19 +36,6 @@ const Top = ({news, category, subcategory}) => {
                     ))}
                 </div>
             )}
-            {!news && category?.subcategories?.length !== 0 && (
-                <div className={styles.dropdown}>
-                    <button className={styles.dropdownButton} onClick={() => {setDropOpen(!dropOpen)}}>Подкатегории</button>
-                    {dropOpen && <motion.div key={`${router.asPath}top`} transition={{duration: 0.5, delay: 0, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.dropdownList}>
-                        <div className={styles.dropdownTrack}>
-                            <Link href={`/c/${category?.slug}`} className={`${styles.dropdownItem} ${router.query.subcategory ? '' : styles.active}`}>Все</Link>
-                            {category?.subcategories?.map(item => (
-                                <Link href={`/c/${category.slug}/${item.slug}`} key={`${item.slug}`} className={`${styles.dropdownItem} ${item.slug === subcategory?.slug ? styles.active : ''}`}>{item.name}</Link>
-                            ))}
-                        </div>
-                    </motion.div>}
-                </div>
-            )}
             {!filter.value ? (
                 <motion.div key={`${router.asPath}notopenedfilter`} transition={{duration: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className={styles.filters}>
                     <button className={styles.filterBtn} onClick={() => {dispatch(setFilter(!filter.value))}}>ФИЛЬТР & СОРТИРОВКА</button>
