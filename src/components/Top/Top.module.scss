@@ -119,7 +119,7 @@
             top: 50%;
             transform: translateY(-50%);
             @include res('height', 0.2px);
-            @include res('width', 1570px);
+            width: 80.9708333333vw;
             background: var(--primary-text-color);
             @include media(576){
                 @include resa('left', 15px);
