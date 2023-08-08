@@ -45,7 +45,7 @@ const ProductPage = () => {
         if (swiper1Ref.current !== null) {
           swiper1Ref.current.controller.control = swiper2Ref.current;
         }
-    }, []);
+    }, [router.asPath]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -73,7 +73,7 @@ const ProductPage = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <motion.section key={`${router.asPath}subcategorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: 'linear'}} exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}} className={styles.body}>
-                {product !== null && product ? (
+                {loading.value !== true && product !== null && product ? (
                     <>
                         <h2 className={styles.title}>{product?.title}</h2>
                         <div className={styles.content}>
