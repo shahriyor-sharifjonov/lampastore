@@ -41,8 +41,18 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
         }else {
             finalProd = prod;
             setNewProducts(finalProd)
+            if(more === true) {
+                let finalProdCopy = [...finalProd];
+                finalProdCopy = finalProdCopy.slice(-10);
+                setNewProducts(finalProdCopy)
+            }
         }
         setProductsByCategory(finalProd)
+        if(more === true) {
+            let finalProdCopy = [...finalProd];
+            finalProdCopy = finalProdCopy.slice(-10);
+            setProductsByCategory(finalProdCopy)
+        }
     }, [products, filters])
     
     useEffect(() => {
@@ -66,6 +76,11 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
             finalProd = prod;
         }
         setProductsByCategory(finalProd)
+        if(more === true) {
+            let finalProdCopy = [...finalProd];
+            finalProdCopy = finalProdCopy.slice(-10);
+            setProductsByCategory(finalProdCopy)
+        }
     }, [products, category, filters])
 
     useEffect(() => {

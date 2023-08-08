@@ -13,9 +13,6 @@ const getProducts = async (req, res) => {
     const client = await clientPromise
     const db = client.db()
 
-    // const wait = new Promise(resolve => setTimeout(resolve, 5000))
-
-    // const products = await wait.then(() => db.collection('products').find().sort({ created_at: -1 }).toArray()) 
     const products = await db.collection('products').find().sort({ created_at: -1 }).toArray()
     res.status(200).json(products)
   }
