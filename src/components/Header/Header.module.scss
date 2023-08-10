@@ -72,7 +72,7 @@
     align-items: center;
     justify-content: center;
     @include res('gap', 8px);
-    &.lg{
+    &.lg:not(.svg){
         svg{
             display: none;
         }
@@ -93,8 +93,8 @@
         }
     }
     svg{
-        @include res('width', 24px);
-        @include res('height', 24px);
+        @include res('width', 30px);
+        @include res('height', 30px);
     }
     span{
         display: flex;

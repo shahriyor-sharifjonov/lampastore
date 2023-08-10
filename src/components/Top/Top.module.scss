@@ -35,6 +35,38 @@
         display: block;
     }
 }
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    @include res('padding-left', 30px);
+    @include res('padding-right', 30px);
+    @include res('padding-top', 50px);
+    @include media(576){
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+        @include resa('padding-top', 30px);
+    }
+}
+.input{
+    border: solid var(--primary-border);
+    background: transparent;
+    @include res('border-radius', 50px);
+    @include res('height', 50px);
+    @include res('width', 400px);
+    @include res('padding-left', 20px);
+    @include res('font-size', 16px);
+    @include res('border-width', 1px);
+    @include media(576){
+        @include resa('border-radius', 50px);
+        @include resa('height', 40px);
+        @include resa('width', 260px);
+        @include resa('padding-left', 20px);
+        @include resa('font-size', 14px);
+        @include resa('border-width', 1px);
+    }
+}
 .items{
     display: flex;
     align-items: center;
