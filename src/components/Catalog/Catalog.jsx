@@ -19,7 +19,11 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
     const [productsBySubcategory, setProductsBySubcategory] = useState([])
 
     useEffect(() => {
-        setNewProducts(products)
+        let newestProducts = [...products]
+        if(products.length > 0){
+            setNewProducts(newestProducts.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)))
+        }
+        
         let prod = [...products]
         prod.sort((a, b) => {
             if (a.vip && !b.vip) return -1;
@@ -30,24 +34,36 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
         if(filter){
             if(minPrice !== "" && maxPrice === ""){
                 finalProd = prod.filter(product => product.price > Number(minPrice));
-                setNewProducts(finalProd)
+                setNewProducts(finalProd.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)))
             } else if (minPrice !== "" && maxPrice !== ""){
                 finalProd = prod.filter(product => product.price > Number(minPrice) && product.price < Number(maxPrice));
-                setNewProducts(finalProd)
+                setNewProducts(finalProd.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)))
             } else if (minPrice === "" && maxPrice !== ""){
                 finalProd = prod.filter(product => product.price < Number(maxPrice));
-                setNewProducts(finalProd)
+                setNewProducts(finalProd.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)))
             } else {
                 finalProd = prod;
-                setNewProducts(finalProd)
+                setNewProducts(finalProd.sort((a, b) => new Date(b.created_at) - new Date(a.created_at)))
             }
         }else {
-            finalProd = prod;
-            setNewProducts(finalProd)
+            finalProd = prod.sort((a, b) => {
+                new Date(b.created_at) - new Date(a.created_at)
+            })
+            finalProd = prod.sort((a, b) => {
+                if (a.vip && !b.vip) return -1;
+                if (!a.vip && b.vip) return 1;
+                return 0;
+            })
+            setNewProducts(finalProd);
             if(more === true) {
                 let finalProdCopy = [...finalProd];
-                finalProdCopy = finalProdCopy.slice(-10);
-                setNewProducts(finalProdCopy)
+                finalProdCopy.sort((a, b) => new Date(b.created_at) - new Date(a.created_at))
+                finalProdCopy = finalProdCopy.slice(0, 10);
+                setNewProducts(finalProdCopy.sort((a, b) => {
+                    if (a.vip && !b.vip) return -1;
+                    if (!a.vip && b.vip) return 1;
+                    return 0;
+                }))
             }
         }
         setProductsByCategory(finalProd)
@@ -58,6 +74,8 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
         }
     }, [products, filters])
     
+
+    // category 
     useEffect(() => {
         const prod = products.filter(product => product.category === category).sort((a, b) => {
             if (a.vip && !b.vip) return -1;
@@ -76,16 +94,22 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                 finalProd = prod;
             }
         }else {
-            finalProd = prod;
+            finalProd = prod.sort((a, b) => {
+                if (a.vip && !b.vip) return -1;
+                if (!a.vip && b.vip) return 1;
+                return 0;
+            });
         }
         setProductsByCategory(finalProd)
         if(more === true) {
             let finalProdCopy = [...finalProd];
-            finalProdCopy = finalProdCopy.slice(-10);
+            finalProdCopy = finalProdCopy.slice(0, 10);
             setProductsByCategory(finalProdCopy)
         }
     }, [products, category, filters])
 
+
+    // subcategory 
     useEffect(() => {
         const prod = productsByCategory.filter(product => product.subcategory === subcategorySlug).sort((a, b) => {
             if (a.vip && !b.vip) return -1;
@@ -139,7 +163,8 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                                     {
                                     newProducts.map(product => (
                                         <Product key={product._id} id={product._id} img={product.images[0]?.url} title={product.title} price={product.price} data={product.created_at} vip={product.vip}/>
-                                    ))}
+                                    ))
+                                    }
                                 </div>
                                 {more ? (
                                     <Link href="/c/news" className='catalog__btn'>ПОСМОТРЕТЬ ВСЕ</Link>
@@ -188,7 +213,6 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
                     </form>
                 </motion.section>
                 <div className='catalog__body'>
-                    {productsBySearch.length !== 0 && <h2 className='catalog__title'>Найдено {productsBySearch.length} продуктов</h2>}
                     <div className='catalog__content'>
                         {productsBySearch.length !== 0 ? (
                             productsBySearch.map(product => (

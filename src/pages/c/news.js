@@ -25,7 +25,7 @@ export default function Home() {
         </Head>
         <Top news={true}/>
         <motion.section key={`${router.asPath}categorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className='catalog'>
-            <Catalog categoryTitle={'НОВИНКИ'} category={'news'} more={false} filter={true}/>
+          <Catalog categoryTitle={'НОВИНКИ'} category={'news'} more={false} filter={true}/>
         </motion.section>
     </>
   )

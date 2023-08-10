@@ -17,7 +17,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Intro />
-      <Catalog categoryTitle={'НОВИНКИ'} category={'news'} more={true}/>
+      <Catalog categoryTitle={'НОВИНКИ'} category={'news'} more={true} filter={false}/>
       {categories.map(cat => (
         <Catalog key={cat._id} categorySlug={cat.slug} categoryTitle={cat.name} category={cat._id} more={true}/>
       ))}
