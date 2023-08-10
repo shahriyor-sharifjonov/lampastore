@@ -86,7 +86,7 @@
                 display: none;
             }
             svg{
-                display: block;
+                display: block !important;
                 @include resa('width', 24px);
                 @include resa('height', 24px);
             }
