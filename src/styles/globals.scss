@@ -560,6 +560,8 @@ input[type="number"] {
       @include res('padding-left', 28px);
       @include res('padding-right', 28px);
       @include res('height', 60px);
+      color: var(--primary-text-color);
+      font-weight: 400;
       @include media(576){
         @include resa('margin-top', 30px);
         @include resa('border-width', 1px);
@@ -569,7 +571,7 @@ input[type="number"] {
         @include resa('height', 50px);
       }
       &:disabled{
-        opacity: 0.7;
+        opacity: 0.5;
         cursor: not-allowed;
       }
       &:not(:disabled):hover{
