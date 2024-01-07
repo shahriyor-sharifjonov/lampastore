@@ -31,7 +31,7 @@ const Footer = () => {
                 </svg>
             </div>
             <div className={styles.bot}>
-                <p className={styles.copy}>© 2023 LAMPA STORE. ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
+                <p className={styles.copy}>© 2023-2024 LAMPA STORE. ВСЕ ПРАВА ЗАЩИЩЕНЫ</p>
                 <p className={styles.copy}>РАЗРАБОТКА САЙТОВ <Link href="https://www.shahriyorweb.com" target="_blank">SHAHRIYORWEB</Link></p>
             </div>
         </motion.footer>
