@@ -34,6 +34,9 @@
         text-align: left;
         width: 100%;
         justify-content: flex-start;
+        &.sm{
+            @include resa('font-size', 19px);
+        }
     }
     span{
         display: block;

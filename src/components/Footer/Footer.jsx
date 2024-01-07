@@ -22,9 +22,7 @@ const Footer = () => {
                 </div>        
                 <div className={styles.col}>
                     <p className={styles.title}>ПОЛИТИКИ</p>
-                    <Link href="#!" className={styles.link}>Условия и положения</Link>
-                    <Link href="#!" className={styles.link}>Политика конфиденциальности</Link>
-                    <Link href="#!" className={styles.link}>Cookies</Link>
+                    <Link href="/privacy" className={styles.link}>Политика конфиденциальности</Link>
                 </div>        
             </div>
             <div className={styles.big}>
