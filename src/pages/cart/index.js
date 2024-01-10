@@ -32,6 +32,12 @@ const Cart = () => {
             p += Number(c.price)
         })
         setTotalPrice(p)
+        
+        function sortByNum(a, b) {
+            return a.num - b.num;
+        }
+
+        newItems.sort(sortByNum);
       
         setSortedItems(newItems);
     }, [cartItems]);

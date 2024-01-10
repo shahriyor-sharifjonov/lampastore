@@ -5,6 +5,7 @@ import productsSlice from "./slices/productsSlice"
 import filterSlice from "./slices/filterSlice"
 import filtersSlice from "./slices/filtersSlice"
 import cartSlice from "./slices/cartSlice"
+import promoSlice from "./slices/promoSlice"
 
 export const store = configureStore({
     reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
         filter: filterSlice,
         filters: filtersSlice,
         cart: cartSlice,
+        promo: promoSlice,
     },
 })

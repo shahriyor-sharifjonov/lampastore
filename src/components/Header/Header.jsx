@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styles from './Header.module.scss'
 import { setCategories } from '@/store/slices/categoriesSlice'
 import { setProducts } from '@/store/slices/productsSlice'
+import { setPromo } from '@/store/slices/promoSlice'
 import { setLoading } from '@/store/slices/loadingSlice'
 import { setCart } from '@/store/slices/cartSlice'
 import axios from 'axios'
@@ -18,6 +19,7 @@ const Header = () => {
     const [menuOpen, setMenuOpen] = useState(false)
     const cartItems = useSelector((state) => state.cart)
     const products = useSelector((state) => state.products)
+    const promo = useSelector((state) => state.promo)
     const categories = useSelector((state) => state.categories)
 
     useEffect(() => {
@@ -34,6 +36,14 @@ const Header = () => {
         axios.get('/api/products')
             .then((response) => {
                 dispatch(setProducts(response.data))
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        axios.get('/api/promo')
+            .then((response) => {
+                dispatch(setPromo(response.data))
             })
             .catch((error) => {
                 console.error(error)
