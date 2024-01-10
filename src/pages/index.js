@@ -6,8 +6,7 @@ import Catalog from '@/components/Catalog/Catalog'
 import { useSelector, useDispatch } from 'react-redux'
 
 
-export default function Home() {
-  const categories = useSelector((state) => state.categories)
+export default function Home({categories}) {
   return (
     <>
       <Head>
@@ -23,4 +22,27 @@ export default function Home() {
       ))}
     </>
   )
+}
+
+export async function getServerSideProps(context) {
+  try {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_NEXTAUTH_URL}/api/categories`);
+    if (!response.ok) {
+      throw new Error('Categories not found');
+    }
+    const categories = await response.json();
+
+    return {
+      props: {
+        categories: categories, 
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    return {
+      props: {
+        categories: null,
+      },
+    };
+  }
 }
