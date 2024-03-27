@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from 'react'
-import Head from 'next/head'
-import styles from '@/styles/modules/Admin.module.scss'
-import { useDispatch, useSelector } from 'react-redux'
-import { setLoading } from '@/store/slices/loadingSlice'
-import { setProducts } from '@/store/slices/productsSlice'
-
-import { useSession, signIn, signOut } from 'next-auth/react'
-import FourOhFour from '../../404'
-import Loader from '@/components/Loader/Loader'
+import React, { useEffect, useState } from 'react';
+import Head from 'next/head';
+import styles from '@/styles/modules/Admin.module.scss';
+import { useDispatch, useSelector } from 'react-redux';
+import { setLoading } from '@/store/slices/loadingSlice';
+import { setProducts } from '@/store/slices/productsSlice';
+import { useSession } from 'next-auth/react';
+import FourOhFour from '../../404';
+import Loader from '@/components/Loader/Loader';
 import { motion } from 'framer-motion';
-import { useRouter } from 'next/router'
-import AdminSidebar from '@/components/AdminSidebar/AdminSidebar'
-import axios from 'axios'
-import Link from 'next/link'
-import Image from 'next/image'
+import { useRouter } from 'next/router';
+import AdminSidebar from '@/components/AdminSidebar/AdminSidebar';
+import axios from 'axios';
+import Link from 'next/link';
+import Image from 'next/image';
 
 const AdminProducts = () => {
-    const router = useRouter()
-    const products = useSelector((state) => state.products)
-    const { data: session, status } = useSession()
-    const dispatch = useDispatch()
+    const router = useRouter();
+    const products = useSelector((state) => state.products);
+    const { data: session, status } = useSession();
+    const dispatch = useDispatch();
+    const [visibleProducts, setVisibleProducts] = useState(50); // Number of products initially visible
 
     const handleDelete = (productId) => {
-        dispatch(setLoading(true))
+        dispatch(setLoading(true));
         axios
             .delete(`/api/admin/product/${productId}`)
             .then(function (response) {
-                dispatch(setLoading(false))
-                dispatch(setProducts(response.data))
+                dispatch(setLoading(false));
+                dispatch(setProducts(response.data));
             })
             .catch(function (error) {
-                console.error(error)
-                dispatch(setLoading(false))
-        })
-    }
+                console.error(error);
+                dispatch(setLoading(false));
+            });
+    };
 
     return (
         <>
@@ -47,7 +47,7 @@ const AdminProducts = () => {
                         <h1 className={styles.title}>Продукты
                             <Link href="/admin/products/create">Создать</Link>
                         </h1>
-                        {products.map(el => (
+                        {products.slice(0, visibleProducts).map(el => (
                             <div key={el._id} className={`${styles.row} ${styles.border}`}>
                                 <div className={styles.rowLeft}>
                                     {el.images[0] ? (
@@ -68,18 +68,20 @@ const AdminProducts = () => {
                                 </div>                               
                             </div>
                         ))}
+                        {visibleProducts < products.length && (
+                            <button className={styles.showmore} onClick={() => setVisibleProducts(prev => prev + 50)}>Show More</button>
+                        )}
                     </div>
                 </div>
             </motion.section>
         </>
-    )
-}
+    );
+};
 
-export default AdminProducts
-
+export default AdminProducts;
 
 AdminProducts.auth = {
     role: "admin",
     loading: <Loader />,
     unauthorized: "/",
-}
+};

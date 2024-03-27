@@ -12,6 +12,7 @@ const AdminSidebar = () => {
             <Link href="/admin/categories" className={`${styles.link} ${router.asPath === '/admin/categories' ? styles.active : ''}`}>Категории</Link>
             <Link href="/admin/products" className={`${styles.link} ${router.asPath === '/admin/products' ? styles.active : ''}`}>Продукты</Link>
             <Link href="/admin/promo" className={`${styles.link} ${router.asPath === '/admin/promo' ? styles.active : ''}`}>Промо</Link>
+            <Link href="/admin/promocode" className={`${styles.link} ${router.asPath === '/admin/promocode' ? styles.active : ''}`}>Промокоды</Link>
         </div>
     )
 }

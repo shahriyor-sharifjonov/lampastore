@@ -11,6 +11,7 @@ import axios from 'axios'
 import { useRouter } from 'next/router'
 import { useSession, signIn, signOut } from 'next-auth/react'
 import Image from 'next/image'
+import { setPromocode } from '@/store/slices/promocodeSlice'
 
 const Header = () => {
     const { data: session, status } = useSession()
@@ -33,7 +34,7 @@ const Header = () => {
                 console.error(error)
             })
 
-        axios.get('/api/products')
+        axios.get('/api/products?limit=50')
             .then((response) => {
                 dispatch(setProducts(response.data))
             })
@@ -44,6 +45,14 @@ const Header = () => {
         axios.get('/api/promo')
             .then((response) => {
                 dispatch(setPromo(response.data))
+            })
+            .catch((error) => {
+                console.error(error)
+            })
+
+        axios.get('/api/promocode')
+            .then((response) => {
+                dispatch(setPromocode(response.data))
             })
             .catch((error) => {
                 console.error(error)

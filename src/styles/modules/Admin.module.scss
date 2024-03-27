@@ -136,6 +136,15 @@
         }
     }
 }
+.col{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    @include res("gap", 5px);
+    &>*{
+        width: 100% !important;
+    }
+}
 .btn{
     @include res('width', 50px);
     @include res('min-width', 50px);
@@ -262,5 +271,19 @@
         @include res('height', 40px);
         background: #00000080;
         border-radius: 0 0 12px 0;
+    }
+}
+.btn{
+    @include res("padding", 12px);
+    @include res('height', 50px);
+    background: var(--primary-text-color);
+    @include res('border-radius', 10px);
+    color: #fff;
+    font-weight: 500;
+    @include res('font-size', 16px);
+    svg{
+        @include res('width', 20px);
+        @include res('height', 20px);
+        line-height: 0;
     }
 }

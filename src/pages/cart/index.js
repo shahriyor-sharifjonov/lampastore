@@ -10,11 +10,19 @@ const Cart = () => {
     const router = useRouter()
     const dispatch = useDispatch()
     const cartItems = useSelector((state) => state.cart)
+    const promocode = useSelector((state) => state.promocode)
     const [sortedItems, setSortedItems] = useState([])
     const [totalPrice, setTotalPrice] = useState('')
     const [name, setName] = useState('')
     const [phone, setPhone] = useState('')
     const [email, setEmail] = useState('')
+    const [promo, setPromo] = useState('')
+    const [error, setError] = useState('')
+    const [success, setSuccess] = useState('')
+    const [isPromoActive, setIsPromoActive] = useState(false)
+    const [isPromoPer, setIsPromoPer] = useState(false)
+    const [discount, setDiscount] = useState('')
+    const [totalPriceWithDiscount, setTotalPriceWithDiscount] = useState(0)
 
     useEffect(() => {
         const newItems = cartItems.reduce((acc, item) => {
@@ -47,8 +55,11 @@ const Cart = () => {
 
         const dataObject = {
             'Общая цена': totalPrice,
+            'Общая цена со скидкой': totalPriceWithDiscount,
+            'Скидка': `${discount}`,
             'Имя': name,
             'Телефон': phone,
+            'Промокод': isPromoActive ? promo : ''
         };
 
         if (email !== '') {
@@ -57,7 +68,7 @@ const Cart = () => {
         
         dataObject.Товары = sortedItems;
 
-        const response = await fetch('/api/sendmail', {
+        const response = await fetch('/api/sendmail', { 
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -68,11 +79,78 @@ const Cart = () => {
         setName('')
         setPhone('')
         setEmail('')
+        setPromo('')
+        setSuccess('')
+        setDiscount('')
+        setTotalPriceWithDiscount('')
+        setIsPromoPer(false)
+        setIsPromoActive(false)
         const message = await response.json()
 
         if(message.success === true){
             dispatch(setCart([]))
             router.push('/cart/success')
+        }
+    }
+
+    useEffect(() => {
+        // Здесь вы можете выполнять действия, зависящие от обновленного значения discount
+        // console.log(discount);
+        // console.log(totalPriceWithDiscount);
+    }, [discount,totalPriceWithDiscount]);
+
+    const handlePromoEntered = () => {
+        const havePromo = promocode.filter(el => el.promoCode === promo)
+        if (havePromo.length === 0) {
+            setError("Промокод не найден")
+            setTimeout(() => {
+                setError("")
+            }, 3000)
+        }else{
+            const promo = havePromo[0]
+            const startDate = new Date(promo.startDate).getTime();
+            const endDate = new Date(promo.endDate).getTime();
+            const currentDate = Date.now();
+            if (startDate <= currentDate && currentDate <= endDate) {
+                if(totalPrice > promo.otPrice){
+                    if(promo.type === 'fix'){
+                        const ds = `${Math.abs(parseInt(promo.discount))} ₽`
+                        setDiscount(ds)
+                        setIsPromoPer(false)
+                        const q = ds.replace(" ₽", "")
+                        const discountPercentage = parseFloat(Number(q))
+                        const stotalPriceWithDiscount = Number(totalPrice) - Number(discountPercentage)
+                        const r = `${stotalPriceWithDiscount} ₽`
+                        setTotalPriceWithDiscount(r)
+                    }
+                    else if(promo.type === 'per'){
+                        const ds = `${Math.abs(parseInt(promo.discount))}%`
+                        setDiscount(ds)
+                        setIsPromoPer(true)
+                        const q = ds.replace("%", "");
+                        const discountPercentage = parseFloat(Number(q)) / 100;
+                        const discountAmount = totalPrice * discountPercentage;
+                        const stotalPriceWithDiscount = totalPrice - discountAmount;
+                        const r = `${stotalPriceWithDiscount} ₽`
+                        setTotalPriceWithDiscount(r)
+                    }
+                    setIsPromoActive(true)
+                    setSuccess("Промокод активирован")
+                    console.log(totalPrice);
+                    console.log(discount);
+                    console.log(totalPriceWithDiscount);
+                }else{
+                    setError(`Применение промокода возможно при совершении заказа на сумму от ${promo.otPrice} ₽`)
+                    setTimeout(() => {
+                        setError("")
+                    }, 3000)
+                }
+            } else {
+                setError("Промокод не найден")
+                setTimeout(() => {
+                    setError("")
+                }, 3000)
+            }
         }
     }
 
@@ -91,7 +169,11 @@ const Cart = () => {
                             <div className='cart__total'>
                                 <p className='cart__total-p cart__total-title'>Итого:</p>
                                 <p className='cart__total-p cart__total-quantity'>{cartItems.length}</p>
-                                <p className='cart__total-p cart__total-price'>{totalPrice !== '' ? Number(totalPrice).toLocaleString() : ''} ₽</p>
+                                <div>
+                                    <p className='cart__total-p cart__total-price'>Общая сумма: {totalPrice !== '' ? Number(totalPrice).toLocaleString() : ''} ₽</p>
+                                    {discount !== '' && <p className='cart__total-p cart__total-price'>Скидка: {!isPromoPer ? `${Number(discount.replace(" ₽", "")).toLocaleString()}  ₽` : `${Number(discount.replace("%", "")).toLocaleString()}%`}</p>}
+                                    {totalPriceWithDiscount !== 0 && <p className='cart__total-p cart__total-price'>Общая сумма со скидкой: {Number(totalPriceWithDiscount.replace(" ₽", "")).toLocaleString()} ₽</p>}
+                                </div>
                             </div>
                         </div>
                         <div className='cart__form'>
@@ -102,16 +184,54 @@ const Cart = () => {
                             <form onSubmit={handleSubmit} className='cart__form-content'>
                                 <div className='cart__form-group'>
                                     <p className='cart__form-p'>Имя, Фамилия <span>*</span></p>
-                                    <input type='text' placeholder='' value={name} onChange={(e) => {setName(e.target.value)}} required={true}/>
+                                    <div className='cart__form-group-input'>
+                                        <input type='text' placeholder='' value={name} onChange={(e) => {setName(e.target.value)}} required={true}/>
+                                    </div>
                                 </div>
                                 <div className='cart__form-group'>
                                     <p className='cart__form-p'>Номер телефона <span>*</span></p>
-                                    <input type='text' placeholder='' value={phone} onChange={(e) => {setPhone(e.target.value)}} required={true}/>
+                                    <div className='cart__form-group-input'>
+                                        <input type='text' placeholder='' value={phone} onChange={(e) => {setPhone(e.target.value)}} required={true}/>
+                                    </div>
                                 </div>
                                 <div className='cart__form-group'>
                                     <p className='cart__form-p'>E-mail</p>
-                                    <input type='text' placeholder='' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                                    <div className='cart__form-group-input'>
+                                        <input type='text' placeholder='' value={email} onChange={(e) => {setEmail(e.target.value)}}/>
+                                    </div>
                                 </div>
+                                <div className='cart__form-group'>
+                                    <p className='cart__form-p'>Промокод</p>
+                                    <div className='cart__form-group-input'>
+                                        {isPromoActive ? (
+                                            <>
+                                                <input type='text' placeholder='' disabled value={promo} onChange={(e) => {setPromo(e.target.value)}}/>
+                                                <button type="button" disabled className='cart__form-group-activate' onClick={handlePromoEntered}>Применить</button>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <input type='text' placeholder='' value={promo} onChange={(e) => {setPromo(e.target.value)}}/>
+                                                <button type="button" disabled={promo === ''} className='cart__form-group-activate' onClick={handlePromoEntered}>Применить</button>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+                                {error && (
+                                    <div className='cart__form-group'>
+                                        <p className='cart__form-p'></p>
+                                        <div className='cart__form-group-error'>
+                                            {error}
+                                        </div>
+                                    </div>
+                                )}
+                                {success && (
+                                    <div className='cart__form-group'>
+                                        <p className='cart__form-p'></p>
+                                        <div className='cart__form-group-success'>
+                                            {success}
+                                        </div>
+                                    </div>
+                                )}
                                 <button type="submit" disabled={name === '' || phone === ''} className='cart__form-btn'>Отправить заказ</button>
                             </form>
                         </div>
