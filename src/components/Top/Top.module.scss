@@ -1,0 +1,331 @@
+@import '@/styles/mixins.scss';
+.top{
+    @include res('padding-top', 60px);
+    @include res('padding-bottom', 60px);
+    @include res('padding-right', 30px);
+    @include res('padding-left', 30px);
+    border-bottom: solid var(--primary-text-color);
+    @include res('border-width', 1px);
+    @include media(576){
+        @include resa('padding-left', 0px);
+        @include resa('padding-right', 0px);
+        @include resa('padding-top', 30px);
+        @include resa('padding-bottom', 30px);
+        @include resa('border-width', 1px);
+    }
+}
+.title{
+    color: var(--primary-text-color);
+    text-align: center;
+    @include res('font-size', 54px);
+    @include res('letter-spacing', 3.24px);
+    font-weight: 400;
+    line-height: 120%;
+    overflow: hidden;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    text-transform: uppercase;
+    @include media(576){
+        @include resa('font-size', 28px);
+        font-weight: 400;
+        @include resa('letter-spacing', 3.24px);
+    }
+    span{
+        display: block;
+    }
+}
+.search{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    @include res('padding-left', 30px);
+    @include res('padding-right', 30px);
+    @include res('padding-top', 50px);
+    @include media(576){
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+        @include resa('padding-top', 30px);
+    }
+}
+.input{
+    border: solid var(--primary-border);
+    background: transparent;
+    @include res('border-radius', 50px);
+    @include res('height', 50px);
+    @include res('width', 400px);
+    @include res('padding-left', 20px);
+    @include res('font-size', 16px);
+    @include res('border-width', 1px);
+    @include media(576){
+        @include resa('border-radius', 50px);
+        @include resa('height', 40px);
+        @include resa('width', 260px);
+        @include resa('padding-left', 20px);
+        @include resa('font-size', 14px);
+        @include resa('border-width', 1px);
+    }
+}
+.items{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    @include res('gap', 15px);
+    @include res('margin-top', 30px);
+    @include res('max-width', 950px);
+    @include res('min-height', 74px);
+    margin-left: auto;
+    margin-right: auto;
+    @include media(576){
+        @include resa('gap', 18px);
+        @include resa('margin-top', 30px);
+        @include resa('max-width', 950px);
+        flex-direction: column;
+        flex-wrap: nowrap;
+    }
+}
+.item{
+    text-decoration: none;
+    font-weight: 500;
+    line-height: 120%;
+    text-transform: uppercase;
+    @include res('font-size', 16px);
+    @include res('letter-spacing', 0.96px);
+    @include res('padding-top', 6px);
+    @include res('padding-bottom', 6px);
+    @include res('padding-left', 10px);
+    @include res('padding-right', 10px);
+    @include res('border-radius', 50px);
+    transition: color 0s .5s linear;
+    @include media(576){
+        &:first-of-type{
+            display: none;
+        }
+        @include resa('font-size', 18px);
+        line-height: 160%;
+        letter-spacing: 0;
+        font-weight: 400;
+        @include resa('padding-top', 0px);
+        @include resa('padding-bottom', 0px);
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+        @include resa('border-radius', 0px);
+        text-align: center;
+    }
+    &.active{
+        color: var(--primary-color);
+    }
+}
+.filters{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include res('margin-top', 30px);
+    @include media(576){
+        @include resa('margin-top', 20px);
+    }
+}
+.filter{
+    &Btn{
+        color: #F9F8F4;
+        @include res('font-size', 14px);
+        font-style: normal;
+        font-weight: 400;
+        line-height: 120%;
+        @include res('letter-spacing', 0.84px);
+        @include res('padding-top', 10px);
+        @include res('padding-bottom', 10px);
+        @include res('padding-left', 24px);
+        @include res('padding-right', 24px);
+        @include res('border-radius', 50px);
+        background: #1A1A19;
+        @include media(576){
+            @include resa('margin-top', 20px);
+            @include resa('font-size', 16px);
+            @include resa('letter-spacing', 0.84px);
+            @include resa('padding-top', 10px);
+            @include resa('padding-bottom', 10px);
+            @include resa('padding-left', 24px);
+            @include resa('padding-right', 24px);
+            @include resa('border-radius', 50px);
+        }
+    }
+    &Top{
+        display: flex;
+        justify-content: flex-end;
+        position: relative;
+        @include res('padding-right', 30px);
+        @include res('padding-left', 30px);
+        @include res('margin-top', 30px);
+        @include media(576){
+            @include resa('padding-right', 15px);
+            @include resa('padding-left', 15px);
+            @include resa('margin-top', 20px);
+            justify-content: center;
+        }
+        &::before{
+            content: '';
+            position: absolute;
+            @include res('left', 30px);
+            top: 50%;
+            transform: translateY(-50%);
+            @include res('height', 0.2px);
+            width: 80.9708333333vw;
+            background: var(--primary-text-color);
+            @include media(576){
+                @include resa('left', 15px);
+                @include resa('height', 0.2px);
+                @include resa('width', 100px);
+                display: none;
+            }
+        }
+    }
+    &Reset{
+        position: absolute;
+        @include res('top', 50px);
+        @include res('right', 110px);
+        color: #646461;
+        font-family: Montserrat;
+        @include res('font-size', 14px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        @include media(576){
+            @include resa('top', 70px);
+            @include resa('font-size', 14px);
+            right: auto;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+    }
+    &Bot{
+        @include res('padding-left', 30px);
+        @include res('padding-right', 30px);
+        @include media(576){
+            @include resa('padding-left', 15px);
+            @include resa('padding-right', 15px);
+            @include resa('padding-top', 50px);
+        }
+    }
+    &Title{
+        @include res('margin-bottom', 10px);
+        color: var(--primary-text-color);
+        @include res('font-size', 14px);
+        font-style: normal;
+        font-weight: 500;
+        line-height: 120%;
+        @include media(576){
+            @include resa('margin-bottom', 10px);
+            @include resa('font-size', 14px);
+        }
+    }
+    &Price{
+        @include res('border-radius', 51px);
+        background: var(--primary-bg-color);
+        border: solid var(--primary-text-color);
+        @include res('border-width', 1px);
+        display: flex;
+        @include res('padding-left', 12px);
+        @include res('padding-right', 12px);
+        width: max-content;
+        @include res('height', 30px);
+        @include media(576){
+            @include resa('border-radius', 51px);
+            @include resa('border-width', 1px);
+            @include resa('padding-left', 12px);
+            @include resa('padding-right', 12px);
+            @include resa('height', 30px);
+        }
+        &P{
+            @include res('font-size', 14px);
+            font-style: normal;
+            font-weight: 400;
+            line-height: 120%;
+            @include media(576){
+                @include resa('font-size', 14px);
+            }
+        }
+        &Item{
+            display: flex;
+            align-items: center;
+            @include res('padding-right', 12px);
+            @include media(576){
+                @include resa('padding-right', 12px);
+            }
+            &:first-of-type{
+                border-right: solid var(--primary-text-color);
+                @include res('border-width', 1px);
+                @include res('margin-right', 12px);
+                @include media(576){
+                    @include resa('border-width', 1px);
+                    @include resa('margin-right', 12px);
+                }
+            }
+            input{
+                @include res('height', 30px);
+                border: none;
+                background: none;
+                @include res('padding-left', 9px);
+                @include res('font-size', 14px);
+                font-style: normal;
+                font-weight: 400;
+                line-height: 120%;
+                @include media(576){
+                    @include resa('height', 30px);
+                    @include resa('padding-left', 9px);
+                    @include resa('font-size', 14px);
+                    @include resa('width', 117px);
+                }
+            }
+        }
+    }
+}
+.dropdown{
+    display: none;
+    @include resa('padding-left', 15px);
+    @include resa('padding-right', 15px);
+    @include media(576){
+        display: block;
+    }
+    &Button{
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include resa('margin-top', 20px);
+        border: solid var(--primary-color);
+        @include resa('border-width', 1px);
+        @include resa('border-radius', 50px);
+        @include resa('padding-left', 24px);
+        @include resa('padding-right', 24px);
+        @include resa('padding-top', 10px);
+        @include resa('padding-bottom', 10px);
+        @include resa('font-size', 12px);
+        text-transform: uppercase;
+        @include resa('letter-spacing', 1px);
+    }
+    &List{
+        @include resa('margin-top', 20px);
+    }
+    &Track{
+        display: flex;
+        flex-wrap: wrap;
+        @include resa('row-gap', 15px);
+        @include resa('column-gap', 20px);
+    }
+    &Item{
+        text-decoration: none;
+        font-weight: 500;
+        line-height: 140%;
+        text-transform: uppercase;
+        @include resa('font-size', 14px);
+        @include resa('letter-spacing', 0.96px);
+        transition: color 0s .5s linear;
+        &.active{
+            color: var(--primary-color);
+        }
+    }
+}

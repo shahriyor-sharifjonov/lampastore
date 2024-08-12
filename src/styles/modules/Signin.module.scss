@@ -1,0 +1,17 @@
+@import '../mixins.scss';
+.signin{
+    @include res('height', 500px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.p{
+    @include res('font-size', 16px);
+}
+.btn{
+    @include res('font-size', 16px);
+    @include res('padding', 10px);
+    background: var(--primary-text-color);
+    color: #fff;
+    @include res('border-radius', 10px);
+}

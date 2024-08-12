@@ -1,0 +1,218 @@
+@import '@/styles/mixins.scss';
+.top{
+    @include res('padding-top', 60px);
+    @include res('padding-bottom', 60px);
+    @include res('padding-right', 30px);
+    @include res('padding-left', 30px);
+    border-bottom: solid var(--primary-text-color);
+    @include res('border-width', 1px);
+    @include media(576){
+        @include resa('padding-top', 30px);
+        @include resa('padding-bottom', 30px);
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+        @include resa('border-width', 1px);
+    }
+}
+.title{
+    color: var(--primary-text-color);
+    text-align: center;
+    @include res('font-size', 54px);
+    @include res('letter-spacing', 3.24px);
+    font-weight: 400;
+    line-height: 120%;
+    overflow: hidden;
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    text-transform: uppercase;
+    @include res('margin-bottom', 30px);
+    @include media(576){
+        @include resa('font-size', 20px);
+        @include resa('letter-spacing', 3.24px);
+        @include resa('margin-bottom', 30px);
+        text-align: left;
+        width: 100%;
+        justify-content: flex-start;
+        &.sm{
+            @include resa('font-size', 19px);
+        }
+    }
+    span{
+        display: block;
+    }
+}
+.subtitle{
+    color: #000;
+    @include res('font-size', 26px);
+    font-style: normal;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 1.56px;
+    @include res('margin-bottom', 10px);
+    @include media(576){
+        font-weight: 500;
+        @include resa('font-size', 18px);
+        @include resa('margin-bottom', 10px);
+    }
+}
+.p{
+    color: #1A1A19;
+    @include res('font-size', 24px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: 1.44px;
+    @include media(576){
+        @include resa('font-size', 16px);
+    }
+    &+.subtitle{
+        @include res('margin-top', 30px);
+        @include media(576){
+            @include resa('margin-top', 30px);
+        }
+    }
+}
+.img{
+    @include res('margin-left', -30px);
+    @include res('margin-right', -30px);
+    @include res('height', 960px);
+    @include res('margin-top', 30px);
+    @include res('margin-bottom', 30px);
+    @include media(576){
+        @include resa('margin-left', -15px);
+        @include resa('margin-right', -15px);
+        @include resa('margin-top', 30px);
+        @include resa('margin-bottom', 30px);
+    }
+    img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+.contacts{
+    @include res('margin-top', 30px);
+    display: flex;
+    flex-direction: column;
+    @include media(576){
+        @include resa('margin-top', 30px);
+    }
+}
+.soc{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    @include res('gap', 8px);
+    color: #1A1A19;
+    @include res('font-size', 24px);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    letter-spacing: 1.44px;
+    text-decoration: none;
+    @include media(576){
+        @include resa('gap', 8px);
+        @include resa('font-size', 16px);
+    }
+    svg{
+        @include res('width', 25px);
+        @include res('height', 25px);
+        @include media(576){
+            @include resa('width', 20px);
+            @include resa('height', 20px);
+        }
+    }
+    &+.soc{
+        @include res('margin-top', 10px);
+        @include media(576){
+            @include resa('margin-top', 10px);
+        }
+    }
+}
+.row{
+    @include res('margin-top', 50px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    @include media(576){
+        @include resa('margin-top', 30px);
+    }
+    &Content{
+        width: 50%;
+        @include res('padding-right', 60px);
+        display: flex;
+        flex-direction: column;
+        @include media(576){
+            width: 100%;
+        }
+        .subtitle{
+            @include res('max-width', 600px);
+            @include res('margin-bottom', 50px);
+            @include media(576){
+                @include resa('max-width', 10000px);
+                @include resa('margin-bottom', 15px);
+            }
+        }
+    }
+    &Image{
+        width: 50%;
+        line-height: 0;
+        @include res('height', 450px);
+        @include media(576){
+            display: none;
+        }
+        img{
+            width: 100%;
+            height: 100%;
+            line-height: 0;
+            object-fit: cover;
+            object-position: bottom;
+        }
+    }
+}
+.input{
+    @include res('height', 50px);
+    @include res('font-size', 14px);
+    @include res('padding-left', 20px);
+    @include res('margin-bottom', 15px);
+    @include res('border-radius', 8px);
+    border: solid var(--primary-border);
+    @include res('border-width', 1px);
+    @include media(576){
+        @include resa('height', 50px);
+        @include resa('font-size', 14px);
+        @include resa('padding-left', 20px);
+        @include resa('margin-bottom', 15px);
+        @include resa('border-radius', 8px);
+        @include resa('border-width', 1px);
+    }
+}
+.button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: max-content;
+    background: var(--primary-text-color);
+    @include res('height', 50px);
+    @include res('font-size', 14px);
+    @include res('padding-left', 20px);
+    @include res('padding-right', 20px);
+    @include res('border-radius', 8px);
+    @include res('margin-bottom', 15px);
+    color: #fff;
+    @include media(576){
+        @include resa('height', 50px);
+        @include resa('font-size', 14px);
+        @include resa('padding-left', 20px);
+        @include resa('padding-right', 20px);
+        @include resa('border-radius', 8px);
+        @include resa('margin-bottom', 15px);
+    }
+}
+.psm{
+    @include res('font-size', 14px);
+    @include media(576){
+        @include resa('font-size', 14px);
+    }
+}
