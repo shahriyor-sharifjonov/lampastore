@@ -15,9 +15,9 @@ import axios from 'axios'
 import Link from 'next/link'
 import Image from 'next/image'
 
-const AdminProductsUpdate = () => {
-    const router = useRouter()
-    const { data: session, status } = useSession()
+const AdminProductsUpdate = () => { 
+    const router = useRouter() 
+    const { data: session, status } = useSession() 
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.categories)
     const products = useSelector((state) => state.products)
