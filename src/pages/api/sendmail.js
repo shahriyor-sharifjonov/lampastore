@@ -26,7 +26,7 @@ export default async function handler(req, res) {
                 text += `${key}: ${val}\n`;
             }
         }
-    
+     
         text += `\n${req.socket.remoteAddress}`;
         text += `\n${new Date().toLocaleString()}`;
     
