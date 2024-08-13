@@ -14,7 +14,7 @@
     position: relative;
     z-index: 2;
     @include media(576){
-        @include resa('height', 50px);
+        @include resa('height', 80px);
         @include resa('padding-right', 15px);
         @include resa('padding-left', 15px);
     }
@@ -24,6 +24,9 @@
         justify-content: space-between;
         width: 100%;
         position: relative;
+        @include media(576){
+            flex-wrap: wrap;
+        }
     }
 }
 .logo{
@@ -53,7 +56,15 @@
     justify-content: flex-start;
     @include res('gap', 30px);
     @include media(576){
-        display: none;
+        width: 100%;
+        justify-content: center;
+        order: 1;
+        @include resa('padding-top', 14px);
+        @include resa('padding-bottom', 4px);
+        @include resa('gap', 14px);
+        &>*{
+            display: block !important;
+        }
     }
 }
 .right{
@@ -72,6 +83,9 @@
     align-items: center;
     justify-content: center;
     @include res('gap', 8px);
+    &:nth-child(2){
+        line-height: 0;
+    }
     &.lg:not(.svg){
         svg{
             display: none;
@@ -79,6 +93,8 @@
     }
     @include media(576){
         display: none;
+        font-weight: 400;
+        @include resa('font-size', 14px);
         &.lg{
             display: flex;
             @include resa('margin-right', 10px);
@@ -95,6 +111,10 @@
     svg{
         @include res('width', 30px);
         @include res('height', 30px);
+        @include media(576){
+            @include resa('width', 18px);
+            @include resa('height', 18px);
+        }
     }
     span{
         display: flex;
@@ -263,7 +283,7 @@
         overflow-y: auto;
         @include resa('padding-left', 15px);
         @include resa('padding-right', 15px);
-        padding-top: 13.8888888889vw;
+        padding-top: 22.2222222222vw;
         @include media(576){
             display: block;
             width: 100%;
