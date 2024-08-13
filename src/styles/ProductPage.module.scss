@@ -202,19 +202,33 @@
     @include res('font-size', 20px);
     @include res('margin-top', 30px);
     @include res('margin-bottom', 12px);
+    @include media(576){
+        @include resa('font-size', 18px);
+        @include resa('margin-top', 30px);
+        @include resa('margin-bottom', 12px);
+    }
     &Select{
         width: 100%;
-        @include res('height', 60px);
+        background: none;
         border: solid var(--primary-border);
+        @include res('height', 60px);
         @include res('border-width', 1px);
         @include res('padding-right', 15px);
-        background: none;
         @include res('padding-left', 8px);
         @include res('border-radius', 100px);
+        color: var(--primary-text-color);
+        @include media(576){
+            @include resa('height', 50px);
+            @include resa('border-width', 1px);
+            @include resa('padding-right', 15px);
+            @include resa('padding-left', 8px);
+            @include resa('border-radius', 100px);
+        }
         select{
             background: none;
             border: none;
             height: 100%;
+            color: var(--primary-text-color);
         }
     }
 }
