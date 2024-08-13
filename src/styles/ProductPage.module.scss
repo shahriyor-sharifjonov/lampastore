@@ -216,6 +216,7 @@
         @include res('padding-right', 15px);
         @include res('padding-left', 8px);
         @include res('border-radius', 100px);
+        @include res('font-size', 16px);
         color: var(--primary-text-color);
         @include media(576){
             @include resa('height', 50px);
@@ -223,12 +224,17 @@
             @include resa('padding-right', 15px);
             @include resa('padding-left', 8px);
             @include resa('border-radius', 100px);
+            @include resa('font-size', 16px);
         }
         select{
             background: none;
             border: none;
             height: 100%;
             color: var(--primary-text-color);
+            @include res('font-size', 16px);
+            @include media(576){
+                @include resa('font-size', 16px);
+            }
         }
     }
 }
