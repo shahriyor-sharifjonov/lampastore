@@ -78,7 +78,7 @@ const ProductPage = () => {
         const dataObject = {
             'Имя': name,
             'Телефон': phone,
-            'Товар': product.title,
+            'Товар': `[${product.title}](https://lampa-store.ru/product/${product._id})`,
         };
 
         const response = await fetch('/api/sendprice', {
