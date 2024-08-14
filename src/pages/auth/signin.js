@@ -52,8 +52,8 @@ const Signin = () => {
                         <p className={styles.error}>{error}</p>
                     )}
                     <button onClick={handleSubmit} className={styles.btn}>Вход</button>
-                    <span>или</span>
-                    <button onClick={() => signIn("yandex")} className={styles.btn}>Вход через Яндекс</button>
+                    {/* <span>или</span>
+                    <button onClick={() => signIn("yandex")} className={styles.btn}>Вход через Яндекс</button> */}
                 </div>
             )}
         </div>
