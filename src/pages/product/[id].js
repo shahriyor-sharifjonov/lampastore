@@ -75,6 +75,8 @@ const ProductPage = () => {
     const handleUznat = (e) => {
         e.preventDefault()
         setPopupOpen(false)
+        setName("")
+        setPhone("")
     }
 
     return (
