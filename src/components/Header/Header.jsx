@@ -24,8 +24,6 @@ const Header = () => {
     const promo = useSelector((state) => state.promo)
     const categories = useSelector((state) => state.categories)
     const info = useSelector((state) => state.info)
-
-    console.log(session);
     
 
     useEffect(() => {
