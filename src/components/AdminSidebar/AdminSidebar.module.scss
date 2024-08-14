@@ -12,6 +12,7 @@
     @include res('padding-top', 10px);
     @include res('padding-bottom', 10px);
     @include res('font-size', 18px);
+    text-align: left;
     text-decoration: none;
     border-bottom: solid var(--primary-border);
     @include res('border-width', 1px);

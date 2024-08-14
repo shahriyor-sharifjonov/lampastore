@@ -1,70 +1,75 @@
 import NextAuth from "next-auth";
-import YandexProvider from "next-auth/providers/yandex";
+import CredentialsProvider from "next-auth/providers/credentials";
 import { getSession } from "next-auth/react";
-import { MongoDBAdapter } from "@next-auth/mongodb-adapter";
 import clientPromise from "@/lib/mongodb";
-import axios from "axios";
 
 export const authOptions = {
-  providers: [
-    YandexProvider({
-      clientId: process.env.YANDEX_CLIENT_ID,
-      clientSecret: process.env.YANDEX_CLIENT_SECRET,
-      scope: "login:info",
-      async profile(profile, tokens) {
-        const { access_token } = tokens;
+    providers: [
+        CredentialsProvider({
+            id: "credentials",
+            name: "credentials",
+            credentials: {
+                email: { type: "text" },
+                password: { type: "password" },
+            },
 
-        const { data } = await axios.get("https://login.yandex.ru/info", {
-          headers: {
-            Authorization: `OAuth ${access_token}`,
-          },
-        })
+            async authorize(credentials, req) {
+                const { email, password } = credentials;
 
-        return profile
-      },
-    }),
-  ],
-  callbacks: {
-    async session({ session, token, user  }) {
-      const client = await clientPromise;
-      const db = client.db();
+                try {
+                    const client = await clientPromise;
+                    const db = client.db();
+                    const admin = await db
+                        .collection("users")
+                        .findOne({ email });
+                        
+                    if (!admin) {
+                        return null;
+                    }
 
-      const customUsersCollection = db.collection("customUser");
-
-      if (session.user) {
-        const existingUser = await customUsersCollection.findOne({ userId: user.id });
-        if (!existingUser) {
-          const newCustomUser = {
-            userId: user.id,
-            name: user.display_name,
-            phone: user.default_phone?.number,
-            email: user.default_email,
-            image: `https://avatars.yandex.net/get-yapic/${user.default_avatar_id}/islands-200`,
-            role: "user",
-          };
-
-          await customUsersCollection.insertOne(newCustomUser);
-
-          session.customUser = newCustomUser;
-        } else {
-          session.customUser = existingUser;
-        }
-      }
-
-      return session;
+                    if (password) {
+                        if (password === admin.password) {
+                            return admin;
+                        } else {
+                            return null;
+                        }
+                    } else {
+                        return null;
+                    }
+                } catch (error) {
+                    console.log(error);
+                }
+            },
+        }),
+    ],
+    callbacks: {
+        jwt: async ({ token, user }) => {
+            if (user) {
+                token._id = user._id;
+                token.email = user.email;
+                token.role = user.role;
+                token.accessToken = user.token;
+            }
+            return token;
+        },
+        session: ({ session, token, user }) => {
+            if (token) {
+                session.user._id = token._id;
+                session.user.email = token.email;
+                session.user.role = token.role;
+                session.user.accessToken = token.accessToken;
+            }
+            return session;
+        },
     },
-  },
-  pages: {
-    signIn: "/auth/signin",
-  },
-  theme: {
-    colorScheme: "light",
-    brandColor: "#1A1A19",
-    logo: "",
-    buttonText: "",
-  },
-  adapter: MongoDBAdapter(clientPromise),
-  secret: process.env.JWT_SECRET,
+    session: {
+        strategy: "jwt",
+        maxAge: 30 * 60 * 60 * 24,
+    },
+    pages: {
+        signIn: "/auth/signin",
+    },
+    secret: process.env.NEXTAUTH_SECRET,
 };
 
 export default NextAuth(authOptions);

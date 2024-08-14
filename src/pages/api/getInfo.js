@@ -13,7 +13,7 @@ const getInfo = async (req, res) => {
     const client = await clientPromise
     const db = client.db()
 
-    const info = await db.collection('info').find().toArray()
+    const info = await db.collection('info').find({}, { projection: { password: 0, logemail: 0 } }).toArray();
     res.status(200).json(info)
   }
   catch (err) {

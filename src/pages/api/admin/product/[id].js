@@ -24,7 +24,7 @@ const deleteProduct = async (req, res) => {
     const client = await clientPromise;
     const db = client.db();
 
-    if (!session || session.customUser.role !== 'admin') {
+    if (!session || session.user.role !== 'admin') {
         res.status(401).json({ error: 'Unauthorized' });
         return;
     }
@@ -50,7 +50,7 @@ const updateProduct = async (req, res) => {
         const client = await clientPromise;
         const db = client.db();
     
-        if (!session || session.customUser.role !== 'admin') {
+        if (!session || session.user.role !== 'admin') {
             res.status(401).json({ error: 'Unauthorized' });
             return;
         }

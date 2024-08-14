@@ -14,7 +14,7 @@ import { setLoading } from '@/store/slices/loadingSlice'
 import Script from 'next/script'
 
 
-export default function App({ Component, pageProps: { session, ...pageProps } }) {
+export default function App({ Component, pageProps: { session, ...pageProps } }) {  
   return (
     <Provider store={store}>
       <SessionProvider session={session}>
@@ -65,12 +65,13 @@ function Auth({ children }) {
   if (status === "loading") {
     return ''
   } else {
+
   }
 
   if (role){
     if(role === 'admin'){
-      if(session.customUser.role){
-        if(session.customUser.role === 'admin'){
+      if(session.user.role){
+        if(session.user.role === 'admin'){
           return children
         }else{
           return <FourOhFour />

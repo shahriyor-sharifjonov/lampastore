@@ -25,6 +25,9 @@ const Header = () => {
     const categories = useSelector((state) => state.categories)
     const info = useSelector((state) => state.info)
 
+    console.log(session);
+    
+
     useEffect(() => {
         dispatch(setLoading(true))
         
@@ -38,8 +41,6 @@ const Header = () => {
 
         axios.get('/api/getInfo')
             .then((response) => {
-                console.log(response.data);
-                
                 dispatch(setInfo(response.data[0]))
             })
             .catch((error) => {
@@ -146,7 +147,7 @@ const Header = () => {
                         </svg>
                     </Link>
                     <div className={styles.right}>
-                        {session?.customUser?.role === 'admin' ? (
+                        {session?.user?.role === 'admin' ? (
                             <Link href="/admin" className={styles.link} onClick={() => {menuOpen ? toggleMenu() : ''}}>
                                 АДМИН
                             </Link>
