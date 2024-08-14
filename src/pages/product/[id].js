@@ -72,8 +72,23 @@ const ProductPage = () => {
         setProduct(products.filter(i => i._id === id)[0]);
     }, [id, products]);
 
-    const handleUznat = (e) => {
+    const handleUznat = async (e) => {
         e.preventDefault()
+
+        const dataObject = {
+            'Имя': name,
+            'Телефон': phone,
+            'Товар': product.title,
+        };
+
+        const response = await fetch('/api/sendprice', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataObject),
+        })
+
         setPopupOpen(false)
         setName("")
         setPhone("")
