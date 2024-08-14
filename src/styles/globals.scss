@@ -694,7 +694,14 @@ input[type="number"] {
   display: flex;
   align-items: center;
   justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: 300ms ease-out;
   @include res('padding', 15px);
+  &.active{
+    opacity: 1;
+    visibility: visible;
+  }
   @include media(576){
     @include resa('padding', 15px);
   }
