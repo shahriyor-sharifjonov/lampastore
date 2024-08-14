@@ -17,7 +17,7 @@ import Image from 'next/image'
 
 const AdminProductsCreate = () => {
     const router = useRouter()
-    const { data: session, status } = useSession()
+    const { data: session, status } = useSession() 
     const dispatch = useDispatch()
     const categories = useSelector((state) => state.categories)
 

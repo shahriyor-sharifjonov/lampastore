@@ -3,9 +3,12 @@ import styles from './Footer.module.scss'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { useDispatch, useSelector } from 'react-redux'
 
 const Footer = () => {
     const router = useRouter()
+    const info = useSelector(state => state.info)
+
     return ( 
         <motion.footer key={`${router.asPath}footer`} transition={{duration: 0.5, delay: 0.5, easings: "linear"}} exit={{opacity: 0}} initial={{ opacity: 0 }} animate={{ opacity: 1 }} id="contacts" className={styles.footer}>
             <div className={styles.row}>
@@ -17,8 +20,15 @@ const Footer = () => {
                 </div>        
                 <div className={styles.col}>
                     <p className={styles.title}>КОНТАКТЫ</p>
-                    <Link href="tel:+79917617072" className={styles.link}>+7(991)761-70-72</Link>
-                    <Link href="mailto:lampastore@inbox.ru" className={styles.link}>lampastore@inbox.ru</Link>
+                    {info.tel1 !== "" && (
+                        <Link href={`tel:${info.tel1}`} className={styles.link}>{info.tel1}</Link>
+                    )}
+                    {info.tel2 !== "" && (
+                        <Link href={`tel:${info.tel2}`} className={styles.link}>{info.tel2}</Link>
+                    )}
+                    {info.email !== "" && (
+                        <Link href={`mailto:${info.email}`} className={styles.link}>{info.email}</Link>
+                    )}
                 </div>        
                 <div className={styles.col}>
                     <p className={styles.title}>ПОЛИТИКИ</p>
