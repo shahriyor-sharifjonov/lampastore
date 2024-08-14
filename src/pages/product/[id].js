@@ -186,7 +186,7 @@ const ProductPage = () => {
                                         <span>{f.value}</span>
                                     </div>
                                 ))}
-                                {product.kom && (
+                                {product.kom?.length > 0 && (
                                     <>
                                         <p className={styles.kom}>Выберите комплектацию</p>
                                         <div className={styles.komSelect}>
