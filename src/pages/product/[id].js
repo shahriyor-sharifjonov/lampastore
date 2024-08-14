@@ -23,8 +23,10 @@ const ProductPage = () => {
     const cartItems = useSelector((state) => state.cart)
     const [isMobile, setIsMobile] = useState(false)
     const [animation, setAnimation] = useState(false)
+    const [popupOpen, setPopupOpen] = useState(false)
+    const [name, setName] = useState("")
+    const [phone, setPhone] = useState("")
     const [kom, setKom] = useState("")
-    
     const [product, setProduct] = useState(null);
     
     const addToCart = (product) => {
@@ -70,6 +72,11 @@ const ProductPage = () => {
         setProduct(products.filter(i => i._id === id)[0]);
     }, [id, products]);
 
+    const handleUznat = (e) => {
+        e.preventDefault()
+        setPopupOpen(false)
+    }
+
     return (
         <>
             <Head>
@@ -78,6 +85,18 @@ const ProductPage = () => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
+            <div className={`popup ${popupOpen && 'active'}`}>
+                <button type="button" onClick={() => {setPopupOpen(false)}} className='popup__overlay'></button>
+                <div className='popup__content'>
+                    <p className='popup__title'>Узнать оптовую стоимость</p>
+                    <p className='popup__p'>Оставьте заявку, мы скоро свяжемся с вами</p>
+                    <form onSubmit={handleUznat} className='popup__form'>
+                        <input type="text" value={name} onChange={(e) => {setName(e.target.value)}} placeholder='Имя'/>
+                        <input type="text" value={phone} onChange={(e) => {setPhone(e.target.value)}} placeholder='Номер телефона'/>
+                        <button type="submit" className="popup__btn">Оставить заявку</button>
+                    </form>
+                </div>
+            </div>
             <motion.section key={`${router.asPath}subcategorycatalog`} transition={{duration: 0.5, delay: 0.5, easings: 'linear'}} exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}} className={styles.body}>
                 {loading.value !== true && product !== null && product ? (
                     <>
@@ -162,6 +181,7 @@ const ProductPage = () => {
                                         </div>
                                     </>
                                 )}
+                                <motion.button whileTap={{ scale: 0.98 }} type="button" className={styles.button2} onClick={() => {setPopupOpen(true)}}>Узнать оптовую стоимость</motion.button>
                                 <motion.button whileTap={{ scale: 0.98 }} type="button" className={styles.button} onClick={() => {addToCart(product)}}>Добавить в корзину</motion.button>
                                 {animation && (
                                     <motion.div transition={{duration: 0.5, delay: 0, easings: 'linear'}} exit={{opacity: 0}} initial={{opacity: 0}} animate={{opacity: 1}} className={styles.cart}>

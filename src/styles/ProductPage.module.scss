@@ -249,10 +249,12 @@
     @include res('font-size', 18px);
     @include res('margin-top', 30px);
     transition: background 300ms ease-out, color 300ms ease-out;
+    @include res('margin-top', 12px);
     @include media(576){
         @include resa('height', 50px);
         @include resa('border-width', 1px);
         @include resa('font-size', 16px);
+        @include resa('margin-top', 12px);
         @include resa('margin-top', 30px);
     }
     // &:hover{
@@ -265,13 +267,19 @@
     align-items: center;
     justify-content: center;
     background: var(--primary-text-color);
-    @include res('border-radius', 100px);
     width: 100%;
     @include res('height', 60px);
     border: solid var(--primary-text-color);
     @include res('border-width', 1px);
     color: #fff;
     @include res('font-size', 18px);
+    @include res('margin-top', 30px);
+    @include media(576){
+        @include resa('height', 50px);
+        @include resa('border-width', 1px);
+        @include resa('font-size', 16px);
+        @include resa('margin-top', 30px);
+    }
 }
 .cart{
     background: var(--primary-color);
