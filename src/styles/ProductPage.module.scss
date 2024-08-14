@@ -215,7 +215,6 @@
         @include res('border-width', 1px);
         @include res('padding-right', 15px);
         @include res('padding-left', 8px);
-        @include res('border-radius', 100px);
         @include res('font-size', 16px);
         color: var(--primary-text-color);
         @include media(576){
@@ -223,7 +222,6 @@
             @include resa('border-width', 1px);
             @include resa('padding-right', 15px);
             @include resa('padding-left', 8px);
-            @include resa('border-radius', 100px);
             @include resa('font-size', 16px);
         }
         select{
@@ -242,26 +240,25 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include res('border-radius', 100px);
     width: 100%;
     @include res('height', 60px);
-    border: solid var(--primary-border);
+    border: solid var(--primary-color);
     @include res('border-width', 1px);
-    color: var(--primary-text-color);
+    color: #fff;
+    background: var(--primary-color);
     @include res('font-size', 18px);
     @include res('margin-top', 30px);
     transition: background 300ms ease-out, color 300ms ease-out;
     @include media(576){
-        @include resa('border-radius', 100px);
         @include resa('height', 50px);
         @include resa('border-width', 1px);
         @include resa('font-size', 16px);
         @include resa('margin-top', 30px);
     }
-    &:hover{
-        background: var(--primary-text-color);
-        color: #fff;
-    }
+    // &:hover{
+    //     background: var(--primary-text-color);
+    //     color: #fff;
+    // }
 }
 .button2{
     display: flex;
@@ -278,8 +275,9 @@
 }
 .cart{
     background: var(--primary-color);
+    color: #fff;
     @include res('margin-top', 30px);
-    @include res('border-radius', 8px);
+    // @include res('border-radius', 8px);
     @include res('padding-top', 20px);
     @include res('padding-bottom', 20px);
     @include res('padding-left', 20px);
@@ -292,7 +290,7 @@
     position: relative;
     @include media(576){
         @include resa('margin-top', 30px);
-        @include resa('border-radius', 8px);
+        // @include resa('border-radius', 8px);
         @include resa('padding-top', 20px);
         @include resa('padding-bottom', 20px);
         @include resa('padding-left', 20px);
@@ -323,7 +321,7 @@
     a{
         @include res('font-size', 18px);
         background: #fff;
-        @include res('border-radius', 100px);
+        // @include res('border-radius', 100px);
         @include res('padding-left', 50px);
         @include res('padding-right', 50px);
         @include res('padding-top', 10px);
@@ -333,7 +331,7 @@
         transition: background 300ms ease-out, color 300ms ease-out;
         @include media(576){
             @include resa('font-size', 16px);
-            @include resa('border-radius', 100px);
+            // @include resa('border-radius', 100px);
             @include resa('padding-left', 50px);
             @include resa('padding-right', 50px);
             @include resa('padding-top', 10px);

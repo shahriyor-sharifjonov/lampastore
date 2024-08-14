@@ -135,9 +135,15 @@ const Catalog = ({categoryTitle, category, more, categorySlug, subcategory, subc
 
     useEffect(() => {
         if (search.length > 0) {
-            const filteredProducts = products.filter((product) =>
-                product.title.toLowerCase().includes(search.toLowerCase())
-            );
+            const filteredProducts = products.filter((product) => {
+                const searchLowerCase = search.toLowerCase();
+                const titleMatch = product.title.toLowerCase().includes(searchLowerCase);
+            
+                // Check if the search term is a numeric string and matches the product num exactly
+                const numMatch = !isNaN(search) && product.num.toString() === search;
+            
+                return titleMatch || numMatch;
+            });
     
             setProductsBySearch(filteredProducts);
         } else {

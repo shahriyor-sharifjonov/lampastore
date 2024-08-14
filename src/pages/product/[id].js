@@ -138,6 +138,11 @@ const ProductPage = () => {
                                 ) : (
                                     <p className={styles.price}>{(Number(product.price)).toLocaleString()} ₽</p>
                                 )}
+                                <div className={styles.row}>
+                                    <b>Артикул</b>
+                                    <div></div>
+                                    <span>{product.num}</span>
+                                </div>
                                 {product?.fields.map((f, index) => (
                                     <div key={index} className={styles.row}>
                                         <b>{f.title}</b>
