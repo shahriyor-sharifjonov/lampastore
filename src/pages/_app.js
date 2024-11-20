@@ -12,6 +12,7 @@ import FourOhFour from './404'
 import Loader from '@/components/Loader/Loader'
 import { setLoading } from '@/store/slices/loadingSlice'
 import Script from 'next/script'
+import Head from 'next/head'
 
 
 export default function App({ Component, pageProps: { session, ...pageProps } }) {  
