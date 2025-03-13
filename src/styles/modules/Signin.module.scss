@@ -1,0 +1,77 @@
+@import '../mixins.scss';
+.signin{
+    @include res('padding-top', 100px);
+    @include res('padding-bottom', 100px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include media(576){
+        @include resa('padding-top', 100px);
+        @include resa('padding-bottom', 100px);
+    }
+}
+.p{
+    @include res('font-size', 16px);
+    @include media(576){
+        @include resa('font-size', 16px);
+    }
+}
+.btn{
+    @include res('font-size', 16px);
+    @include res('padding', 10px);
+    @include res('height', 50px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--primary-text-color);
+    color: #fff;
+    @include media(576){
+        @include resa('font-size', 16px);
+        @include resa('padding', 10px);
+        @include resa('height', 50px);
+    }
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    @include res('gap', 12px);
+    @include res('max-width', 500px);
+    @include res('padding-left', 15px);
+    @include res('padding-right', 15px);
+    width: 100%;
+    @include media(576){
+        @include resa('gap', 12px);
+        @include resa('max-width', 500px);
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+    }
+    input{
+        border: none;
+        background: none;
+        border: solid var(--primary-border);
+        border-radius: 0;
+        @include res('border-width', 1px);
+        @include res('padding', 10px);
+        @include res('font-size', 14px);
+        @include res('height', 50px);
+        @include media(576){
+            @include resa('border-width', 1px);
+            @include resa('height', 50px);
+            @include resa('padding', 10px);
+            @include resa('font-size', 14px);
+        }
+    }
+    span{
+        @include res('font-size', 16px);
+        text-align: center;
+        @include media(576){
+            @include resa('font-size', 16px);
+        }
+    }
+}
+.error{
+    @include res('font-size', 16px);
+    @include media(576){
+        @include resa('font-size', 16px);
+    }
+}

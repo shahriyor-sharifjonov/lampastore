@@ -1,0 +1,80 @@
+@import './mixins.scss';
+.container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    flex: 1 1 auto;
+    @include res('padding-top', 0px);
+    @include res('padding-bottom', 80px);
+    @include media(576){
+        @include resa('padding-top', 0px);
+        @include resa('padding-bottom', 40px);
+        @include resa('padding-left', 15px);
+        @include resa('padding-right', 15px);
+    }
+    img{
+        max-width: 100%;
+        object-fit: contain;
+        @include res('width', 500px);
+        @include res('height', 500px);
+        @include media(576){
+            @include resa('width', 294px);
+            @include resa('height', 294px);
+        }
+    }
+}
+.title{
+    @include res('margin-bottom', 15px);
+    text-align: center;
+    font-family: var(--font-secondary);
+    @include res('font-size', 36px);
+    @include media(576){
+        @include resa('font-size', 28px);
+        @include resa('margin-bottom', 15px);
+    }
+}
+.p{
+    @include res('max-width', 700px);
+    text-align: center;
+    font-family: var(--font-secondary);
+    font-weight: 500;
+    @include res('font-size', 16px);
+    @include media(576){
+        max-width: 100%;
+        @include resa('font-size', 14px);
+    }
+}
+.link{
+    @include res('margin-top', 30px);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    font-weight: 500;
+    @include res('font-size', 16px);
+    line-height: 120%;
+    color: #fff;
+    background: var(--primary-color);
+    @include res('padding-top', 14px);
+    @include res('padding-bottom', 14px);
+    @include res('padding-right', 30px);
+    @include res('padding-left', 30px);
+    @include res('height', 48px);
+    @include res('border-radius', 8px);
+    transition: 300ms ease-out;
+    @include res('min-width', 300px);
+    text-align: center;
+    @include media(576){
+        @include resa('margin-top', 20px);
+        @include resa('font-size', 16px);
+        @include resa('padding-top', 14px);
+        @include resa('padding-bottom', 14px);
+        @include resa('padding-right', 30px);
+        @include resa('padding-left', 30px);
+        @include resa('height', 48px);
+        @include resa('border-radius', 8px);
+        @include resa('min-width', 300px);
+    }
+}

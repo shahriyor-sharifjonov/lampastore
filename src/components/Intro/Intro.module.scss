@@ -1,0 +1,8 @@
+@import '@/styles/mixins.scss';
+.intro{
+    max-height: calc(100vh - 6.25vw);
+    @include res('height', 1080px);
+    @include media(576){
+        @include resa('height', 202.5px);
+    }
+}
