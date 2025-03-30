@@ -28,9 +28,9 @@ const Product = ({ id, img, title, price, data, vip }) => {
         <Link href={`/product/${id}`} className='product'>
             <div className='product__top'>
                 {img ? (
-                    <Image src={img} alt="" width={344} height={344} draggable="false"/>
+                    <img src={img} alt="" width={344} height={344} draggable="false"/>
                 ) : (
-                    <Image src="/noimage.png" alt="" width={344} height={344} draggable="false"/>
+                    <img src="/noimage.png" alt="" width={344} height={344} draggable="false"/>
                 )}
                 {isDataOld ? "" : (
                     <div className='product__badge'>

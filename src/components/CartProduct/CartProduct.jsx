@@ -36,7 +36,7 @@ const CartProduct = ({props}) => {
         <div className={styles.product}>
             <div className={styles.left}>
                 <div className={styles.img}>
-                    <Image src={props.images[0].url} alt={props.title} width={70} height={70} draggable={false} />
+                    <img src={props.images[0].url} alt={props.title} width={70} height={70} draggable={false} />
                 </div>
                 <div className={styles.name}>
                     <Link href={`/product/${props._id}`} className={styles.title}>{props.title}</Link>

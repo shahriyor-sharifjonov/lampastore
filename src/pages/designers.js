@@ -48,7 +48,7 @@ const Designers = () => {
                     <p className={styles.psm}>Нажимая кнопку «Получить предложение» Вы соглашаетесь на <Link href="#!">обработку персональных данных</Link></p>
                 </form>
                 <div className={styles.rowImage}>
-                    <Image src="/designer.jpg" alt="" width={1522} height={1120} draggable={false} />
+                    <img src="/designer.jpg" alt="" width={1522} height={1120} draggable={false} />
                 </div>
             </div>
         </motion.section>

@@ -100,7 +100,7 @@ const Header = () => {
                     <Link href="/about#staticContacts" onClick={toggleMenu} className={styles.menuLink}>Контакты</Link>
                 </div>
                 <div className={styles.menuImg}>
-                    <Image src="/menu-img.png" alt="" width={1000} height={600} draggable={false} />
+                    <img src="/menu-img.png" alt="" width={1000} height={600} draggable={false} />
                 </div>
                 <div className={styles.menuSm}>
                     <div className={styles.menuTrack}>

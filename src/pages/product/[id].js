@@ -139,7 +139,7 @@ const ProductPage = () => {
                                 >
                                     {product.images.map((img, index) => (
                                         <SwiperSlide key={index}>
-                                            <Image src={img.url} alt="" width={845.44} height={845.44} draggable="false" />
+                                            <img src={img.url} alt="" width={845.44} height={845.44} draggable="false" />
                                         </SwiperSlide>
                                     ))}
                                 </Swiper>
@@ -156,7 +156,7 @@ const ProductPage = () => {
                                 >
                                     {product?.images?.map((img, index) => (
                                         <SwiperSlide key={`asf${index}`}>
-                                            <Image
+                                            <img
                                                 src={img.url}
                                                 alt=""
                                                 width={216.36}

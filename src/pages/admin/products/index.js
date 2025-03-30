@@ -51,7 +51,7 @@ const AdminProducts = () => {
                             <div key={el._id} className={`${styles.row} ${styles.border}`}>
                                 <div className={styles.rowLeft}>
                                     {el.images[0] ? (
-                                        <Image src={el.images[0].url} alt="" width={50} height={50} draggable={false} />
+                                        <img src={el.images[0].url} alt="" width={50} height={50} draggable={false} />
                                     ) : ""}
                                     <p className={styles.p}>{el.title}</p>
                                 </div>

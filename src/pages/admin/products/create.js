@@ -169,7 +169,7 @@ const AdminProductsCreate = () => {
                                                         <path d="M4.99996 15.8333C4.99996 16.75 5.74996 17.5 6.66663 17.5H13.3333C14.25 17.5 15 16.75 15 15.8333V5.83333H4.99996V15.8333ZM15.8333 3.33333H12.9166L12.0833 2.5H7.91663L7.08329 3.33333H4.16663V5H15.8333V3.33333Z" fill="#fff"/>
                                                     </svg>
                                                 </button>
-                                                <Image src={images[key].url} width={100} height={100} draggable={false} alt="Image" className={styles.imageItem} />
+                                                <img src={images[key].url} width={100} height={100} draggable={false} alt="Image" className={styles.imageItem} />
                                             </div>
                                             )}
                                             {images.length <= key && (

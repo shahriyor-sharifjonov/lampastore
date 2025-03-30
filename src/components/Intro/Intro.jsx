@@ -18,7 +18,7 @@ const Intro = () => {
                 loop={true}
             >
                 {promo.map(el => (
-                    <SwiperSlide key={el._id}><Image src={el.images[0].url} alt="" width={1920} height={1080} draggable={false}/></SwiperSlide>
+                    <SwiperSlide key={el._id}><img src={el.images[0].url} alt="" width={1920} height={1080} draggable={false}/></SwiperSlide>
                 ))}
             </Swiper>
         </motion.section>
