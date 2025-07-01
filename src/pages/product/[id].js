@@ -78,8 +78,8 @@ const ProductPage = ({ product, news }) => {
                   <p className="popup__title">Узнать оптовую стоимость</p>
                   <p className="popup__p">Оставьте заявку, мы скоро свяжемся с вами</p>
                   <form onSubmit={handleUznat} className="popup__form">
-                      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Имя" />
-                      <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Номер телефона" />
+                      <input type="text" value={name} onChange={(e) => setName(e.target.value)} placeholder="Имя" required={true} />
+                      <input type="text" value={phone} onChange={(e) => setPhone(e.target.value)} placeholder="Номер телефона" required={true} />
                       <button type="submit" className="popup__btn">Оставить заявку</button>
                   </form>
               </div>
