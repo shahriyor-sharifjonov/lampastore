@@ -37,6 +37,7 @@ export default function Home({ categories, newsProducts }) {
           category={cat._id}
           products={cat.products}
           more={true}
+          infinite={false}
         />
       ))}
     </>

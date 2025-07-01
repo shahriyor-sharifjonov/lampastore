@@ -315,7 +315,8 @@ input[type="number"] {
     }
   }
 }
-.product{
+.product,
+.catalog__content > div {
   @include res('width', 348px);
   text-decoration: none;
   &:hover{

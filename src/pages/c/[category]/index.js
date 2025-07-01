@@ -63,8 +63,8 @@ export async function getServerSideProps({ params }) {
     }
 
     const query = subcategory
-      ? `/api/products?subcategory=${subcategorySlug}`
-      : `/api/products?category=${category._id}`
+      ? `/api/products?subcategory=${subcategorySlug}&limit=40&page=1`
+      : `/api/products?category=${category._id}&limit=40&page=1`
 
     const productsRes = await fetch(`${API}${query}`)
     const products = productsRes.ok ? await productsRes.json() : []
