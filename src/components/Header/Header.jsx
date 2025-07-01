@@ -27,46 +27,57 @@ const Header = () => {
 
     useEffect(() => {
         dispatch(setLoading(true))
-        
-        axios.get('/api/categories')
-            .then((response) => {
+
+        const fetchCategories = async () => {
+            try {
+                const response = await axios.get('/api/categories')
                 dispatch(setCategories(response.data))
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error(error)
-            })
+            }
+        }
 
-        axios.get('/api/getInfo')
-            .then((response) => {
+        const fetchInfo = async () => {
+            try {
+                const response = await axios.get('/api/getInfo')
                 dispatch(setInfo(response.data[0]))
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error(error)
-            })
+            }
+        }
 
-        axios.get('/api/products?limit=50')
-            .then((response) => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get('/api/products?limit=50')
                 dispatch(setProducts(response.data))
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error(error)
-            })
+            }
+        }
 
-        axios.get('/api/promo')
-            .then((response) => {
+        const fetchPromo = async () => {
+            try {
+                const response = await axios.get('/api/promo')
                 dispatch(setPromo(response.data))
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error(error)
-            })
+            }
+        }
 
-        axios.get('/api/promocode')
-            .then((response) => {
+        const fetchPromocode = async () => {
+            try {
+                const response = await axios.get('/api/promocode')
                 dispatch(setPromocode(response.data))
-            })
-            .catch((error) => {
+            } catch (error) {
                 console.error(error)
-            })
+            }
+        }
+
+        fetchCategories()
+        fetchInfo()
+        fetchProducts()
+        fetchPromo()
+        fetchPromocode()
     }, [router.asPath]);
 
     useEffect(() => {

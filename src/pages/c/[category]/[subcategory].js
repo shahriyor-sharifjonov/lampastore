@@ -8,7 +8,6 @@ import FourOhFour from '@/pages/404'
 import { useRouter } from 'next/router'
 import Catalog from '@/components/Catalog/Catalog'
 
-
 export default function Home() {
   const categories = useSelector((state) => state.categories)
   const loading = useSelector((state) => state.loading)
