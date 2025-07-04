@@ -42,8 +42,8 @@ const Designers = () => {
             <div className={styles.row}>
                 <form className={styles.rowContent} onSubmit={handleSubmit}>
                     <p className={styles.subtitle}>Заполните форму, мы перезвоним и расскажем все подробности!</p>
-                    <input type="text" placeholder='Ваше имя' className={styles.input} value={name} onChange={(e) => {setName(e.target.value)}} />
-                    <input type="text" placeholder='Телефон' className={styles.input} value={phone} onChange={(e) => {setPhone(e.target.value)}} />
+                    <input type="text" placeholder='Ваше имя' className={styles.input} required value={name} onChange={(e) => {setName(e.target.value)}} />
+                    <input type="text" placeholder='Телефон' className={styles.input} required value={phone} onChange={(e) => {setPhone(e.target.value)}} />
                     <button type="submit" className={styles.button}>Получить предложение</button>
                     <p className={styles.psm}>Нажимая кнопку «Получить предложение» Вы соглашаетесь на <Link href="#!">обработку персональных данных</Link></p>
                 </form>
