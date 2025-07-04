@@ -192,6 +192,9 @@ const Catalog = ({
             {!hasMore && (
               <h2 className="catalog__title center"></h2>
             )}
+            {more ? (
+              <Link href={`/c/${categorySlug}`} className='catalog__btn'>ПОСМОТРЕТЬ ВСЕ</Link>
+            ) : ''}
           </>
         ) : (
           <h2 className="catalog__title center">Ничего не найдено.</h2>
